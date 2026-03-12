@@ -1,0 +1,198 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ============================================
+// AUTH & USERS
+// ============================================
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String  @map("user_id")
+  type              String
+  provider          String
+  providerAccountId String  @map("provider_account_id")
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+  @@map("accounts")
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique @map("session_token")
+  userId       String   @map("user_id")
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("sessions")
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+  @@map("verificationtokens")
+}
+
+model User {
+  id            String    @id @default(cuid())
+  email         String    @unique
+  emailVerified DateTime? @map("email_verified")
+  name          String?
+  image         String?
+  createdAt     DateTime  @default(now()) @map("created_at")
+  updatedAt     DateTime  @updatedAt @map("updated_at")
+
+  // Relations
+  accounts  Account[]
+  sessions  Session[]
+  business  Business?
+
+  @@map("users")
+}
+
+// ============================================
+// BUSINESS (Profil professionnel)
+// ============================================
+
+model Business {
+  id                String   @id @default(cuid())
+  userId            String   @unique @map("user_id")
+  slug              String   @unique // URL publique: rendez.co/[slug]
+  name              String // Nom affiché publiquement
+  description       String?  @db.Text
+  phone             String?
+  address           String?
+  city              String?
+  zipCode           String?  @map("zip_code")
+  country           String   @default("FR")
+  logoUrl           String?  @map("logo_url")
+  isActive          Boolean  @default(true) @map("is_active")
+  stripeAccountId   String?  @unique @map("stripe_account_id") // S2: Connect account
+  stripeOnboarding  Boolean  @default(false) @map("stripe_onboarding") // S1: lien généré
+  createdAt         DateTime @default(now()) @map("created_at")
+  updatedAt         DateTime @updatedAt @map("updated_at")
+
+  // Relations
+  user     User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  services Service[]
+  bookings Booking[]
+
+  @@index([slug])
+  @@index([isActive])
+  @@map("businesses")
+}
+
+// ============================================
+// SERVICES (Prestations)
+// ============================================
+
+model Service {
+  id          String   @id @default(cuid())
+  businessId  String   @map("business_id")
+  name        String // Ex: "Coupe homme"
+  description String?  @db.Text
+  duration    Int // Durée en minutes (ex: 30)
+  price       Int // Prix en centimes (ex: 2500 = 25€)
+  currency    String   @default("EUR")
+  color       String?  // Couleur pour le calendrier (hex)
+  isActive    Boolean  @default(true) @map("is_active")
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  // Relations
+  business Business @relation(fields: [businessId], references: [id], onDelete: Cascade)
+  slots    Slot[]
+  bookings Booking[]
+
+  @@index([businessId])
+  @@index([isActive])
+  @@map("services")
+}
+
+// ============================================
+// SLOTS (Disponibilités récurrentes)
+// ============================================
+
+// Définit les créneaux récurrents par service
+// Ex: Lundi 9h-12h et 14h-18h pour "Coupe homme"
+
+model Slot {
+  id        String @id @default(cuid())
+  serviceId String @map("service_id")
+  dayOfWeek Int    @map("day_of_week") // 0 = Dimanche, 1 = Lundi, ..., 6 = Samedi
+  startTime String @map("start_time") // Format "HH:MM" (ex: "09:00")
+  endTime   String @map("end_time") // Format "HH:MM" (ex: "12:00")
+
+  // Relations
+  service Service @relation(fields: [serviceId], references: [id], onDelete: Cascade)
+
+  @@index([serviceId])
+  @@index([dayOfWeek])
+  @@map("slots")
+}
+
+// ============================================
+// BOOKINGS (Réservations)
+// ============================================
+
+model Booking {
+  id            String        @id @default(cuid())
+  businessId    String        @map("business_id")
+  serviceId     String        @map("service_id")
+  customerName  String        @map("customer_name")
+  customerEmail String        @map("customer_email")
+  customerPhone String?       @map("customer_phone")
+  startTime     DateTime      @map("start_time") // Date + heure début
+  endTime       DateTime      @map("end_time") // Date + heure fin (calculé)
+  status        BookingStatus @default(CONFIRMED)
+  notes         String?       @db.Text // Notes du client
+  // S2: Paiement
+  paymentStatus PaymentStatus @default(PENDING) @map("payment_status")
+  stripePaymentIntentId String? @map("stripe_payment_intent_id")
+  amountPaid    Int?          @map("amount_paid") // En centimes
+  createdAt     DateTime      @default(now()) @map("created_at")
+  updatedAt     DateTime      @updatedAt @map("updated_at")
+
+  // Relations
+  business Business @relation(fields: [businessId], references: [id], onDelete: Cascade)
+  service  Service  @relation(fields: [serviceId], references: [id], onDelete: Cascade)
+
+  @@index([businessId])
+  @@index([serviceId])
+  @@index([startTime])
+  @@index([status])
+  @@map("bookings")
+}
+
+enum BookingStatus {
+  CONFIRMED
+  CANCELLED
+  NO_SHOW
+}
+
+enum PaymentStatus {
+  PENDING // S1: Toujours pending (mode démo)
+  PAID // S2: Après confirmation Stripe
+  REFUNDED
+  FAILED
+}
