@@ -11,9 +11,9 @@ https://rendez-landing-beta.surge.sh
 
 ---
 
-## Rapports
+## Décision
 
-[RAPPORT-INTERMEDIAIRE.md](./RAPPORT-INTERMEDIAIRE.md)
+[product-strategy.md](./product-strategy.md)
 
 ---
 

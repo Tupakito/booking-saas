@@ -1,31 +1,45 @@
 # Positionnement MVP — Rendez
 
-> **Version** : 1.2.6  
-> **Heure** : 03:06 UTC  
+> **Version** : 1.3.1  
+> **Heure** : 03:15 UTC  
 > **URL** : https://rendez-landing-beta.surge.sh  
-> **Statut** : ✅ PRÊT  
-> **Commits** : 32
+> **Statut** : 🎯 DÉCISION ATTENDUE  
+> **Deadline** : Dimanche 15/03 14h
 
 ---
 
-## ✅ TEMPLATES PRÊTS
+## 🎯 DÉCISION RÉUNION #55
 
-| Rapport | Deadline | Statut |
-|---------|----------|--------|
-| Intermédiaire | Vendredi 20h | ✅ Template prêt |
-| Final | Dimanche 12h | ✅ Template prêt |
-
----
-
-## 📋 RAPPORT INTERMÉDIAIRE
-
-[RAPPORT-INTERMEDIAIRE.md](./RAPPORT-INTERMEDIAIRE.md)
+**Stratégie** : Attendre validation Dimanche 14h  
+**Critère** : Nombre d'emails collectés  
+**Options** : GO / Relance / PIVOT B / PIVOT C
 
 ---
 
-## 🎯 DOCUMENT PRINCIPAL
+## 📊 MATRICE DE DÉCISION
 
-[tracking-prospection.md](./tracking-prospection.md)
+| Scénario | Critère | Action | Sprint |
+|----------|---------|--------|--------|
+| **GO** | ≥ 10 emails | Build MVP coiffeurs | 2 semaines |
+| **Relance** | 5-9 emails | +24h prospection | 1 jour |
+| **PIVOT B** | < 5 emails | Validation mécaniciens | 2 jours |
+| **PIVOT C** | 0-2 emails | Validation ostéopathes | 2 jours |
+
+---
+
+## 🚨 URGENCE
+
+**Growth-agent** : 43h pour exécuter la prospection  \n**Objectif** : 10 emails collectés  \n**Sans prospection** : Pas de validation = Pas de projet
+
+---
+
+## 📋 DOCUMENTS
+
+| Document | Usage |
+|----------|-------|
+| [product-strategy.md](./product-strategy.md) | Stratégie complète |
+| [tracking-prospection.md](./tracking-prospection.md) | Suivi |
+| [execution-maintenant.md](./execution-maintenant.md) | Action |
 
 ---
 
@@ -36,4 +50,4 @@
 
 ---
 
-**✅ TEMPLATES PRÊTS — À COMPLÉTER AUX DEADLINES**
+**🎯 DÉCISION DIMANCHE 14h — SOYEZ PRÊTS**
