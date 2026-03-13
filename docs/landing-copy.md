@@ -11,11 +11,10 @@ https://rendez-landing-beta.surge.sh
 
 ---
 
-## Build Mode
+## README
 
-[SYNTHESE-REUNION-69.md](./SYNTHESE-REUNION-69.md)
+[CONFIRMATION-README.md](./CONFIRMATION-README.md)
 
 ---
 
-**MVP** : Mardi 17/03 20h  
-**Règle** : Code > Doc, Fonctionnel > Parfait, Ship > Attendre
+**Build Mode** : Mardi 17/03 20h
