@@ -1,81 +1,89 @@
 # Positionnement MVP — Rendez
 
-> **Version** : 1.0.0  
+> **Version** : 1.0.1  
 > **Dernière mise à jour** : 2026-03-13  
-> **Statut** : 🚀 Phase validation 48h + Plans B/C prêts
+> **Statut** : 🚨 EN COURS — Déploiement + Prospection
 
 ---
 
-## 🎯 Décision stratégique
+## 🎯 Situation actuelle
 
-**Option A validée** : Validation 48h avant build  
-**Critère de go** : ≥ 10 pré-inscriptions  
-**Time-box** : 48h strict  
-**Deadline décision** : Dimanche 15/03 14h
+**Phase** : Validation 48h en cours  
+**Deadline** : Dimanche 15/03 12h (bilan) / 14h (décision)  
+**Objectif** : 10 pré-inscriptions
 
----
+### Statut immédiat
 
-## 🎨 Plan de pivot à 3 branches
-
-| Scénario | Critère | Action | Cible | Landing prête |
-|----------|---------|--------|-------|---------------|
-| **GO beauté** | ≥ 10 pré-inscriptions | Build MVP | Coiffeurs/beauté | ✅ [landing-copy.md](./landing-copy.md) |
-| **PIVOT mécaniciens** | < 10 pré-inscriptions beauté | Même produit, cible garages | Mécaniciens auto | ✅ [landing-copy-mecaniciens.md](./landing-copy-mecaniciens.md) |
-| **PIVOST ostéopathes** | < 5 pré-inscriptions mécaniciens | Adaptation légère, cible santé | Ostéopathes/kinés | ✅ [landing-copy-osteopathes.md](./landing-copy-osteopathes.md) |
+| Élément | Statut | Action requise |
+|---------|--------|----------------|
+| Landing page | ✅ Build prêt | Déploiement Vercel/Netlify |
+| Formulaire | ✅ Formspree configuré | Test après déploiement |
+| Prospection | 🔴 Pas commencée | Lancer IMMÉDIATEMENT |
+| Tracking | ✅ Tableau prêt | [tracking-prospection.md](./tracking-prospection.md) |
 
 ---
 
-## Élément de langage (Cible actuelle : Coiffeurs)
+## 🚀 Plan d'action immédiat (Vendredi 13/03)
 
-### Promise
-**"Votre premier RDV en ligne en 5 minutes."**
+### 14h — Déploiement (15 min)
+Option A : Vercel
+```bash
+cd landing-page/
+npx vercel login
+npx vercel --prod
+```
 
-### Positionnement
-Rendez n'est pas un logiciel de gestion. C'est une page de réservation simple pour les artisans du bien-être qui veulent arrêter de répondre au téléphone.
+Option B : Netlify Drop (plus rapide)
+- Aller sur https://app.netlify.com/drop
+- Glisser-déposer le dossier `landing-page/dist/`
+- Récupérer l'URL (ex: rendez-landing-abc123.netlify.app)
 
-### Cible
-- **Segment** : Coiffeurs, ongleries, spas, barbiers
-- **Profil** : Indépendant ou TPE, 1-3 employés
-- **Pain** : Perd du temps au téléphone, des no-shows, des trous dans le planning
-- **Gain** : Gagne 5-10h/semaine, réduit les oublis, paraît plus pro
+### 14h15 — Test (5 min)
+- [ ] Landing accessible
+- [ ] Formulaire fonctionnel
+- [ ] Email reçu sur Formspree
 
----
+### 15h — Lancement prospection (3h)
+- [ ] 10 DMs Instagram (coiffeurs Lyon/Marseille)
+- [ ] 1 post Facebook groupes coiffeurs
+- [ ] 3 appels salons locaux
 
-## Validation Sprint 1 (48h) — EN COURS
-
-### Plan de prospection
-
-| Canal | Action | Cible |
-|-------|--------|-------|
-| Instagram DMs | 20 coiffeurs locaux | 2 inscriptions |
-| Facebook Groups | 3 posts | 3 inscriptions |
-| Appels directs | 5 salons | 2 inscriptions |
-| **Total** | **28 contacts** | **10 inscriptions** |
-
-### Timeline
-
-| Jour | Date | Actions clés |
-|------|------|--------------|
-| J1 | Ven 13/03 | 20 DMs + 1 post + 3 appels |
-| J2 | Sam 14/03 | Relances + 2 posts + 2 appels |
-| J3 | Dim 15/03 | Bilan + décision go/pivot/pivot2 |
+### 20h — Premier bilan
+- Combien d'emails collectés ?
+- Quels feedbacks reçus ?
 
 ---
 
-## North Star Metric
-**"RDV pris via la plateforme"** — pas les inscriptions, la vraie valeur créée.
+## 🎨 Plan de pivot (si besoin Dimanche)
+
+| Scénario | Critère | Action | Landing prête |
+|----------|---------|--------|---------------|
+| **GO beauté** | ≥ 10 pré-inscriptions | Build MVP | ✅ |
+| **PIVOT mécaniciens** | < 10 beauté | Nouvelle cible | ✅ [landing-copy-mecaniciens.md](./landing-copy-mecaniciens.md) |
+| **PIVOT ostéopathes** | < 5 mécaniciens | Santé | ✅ [landing-copy-osteopathes.md](./landing-copy-osteopathes.md) |
 
 ---
 
-## Ressources liées
+## 📊 North Star Metric
+**"RDV pris via la plateforme"** — mais d'abord : **10 emails collectés**
 
-### Landings prêtes
-- [Coiffeurs (Plan A)](./landing-copy.md)
-- [Mécaniciens (Plan B)](./landing-copy-mecaniciens.md) ⬅️ NOUVEAU
-- [Ostéopathes (Plan C)](./landing-copy-osteopathes.md) ⬅️ NOUVEAU
+---
 
-### Plans & Stratégies
-- [Naming](./naming.md)
+## 📞 Contacts et ressources
+
+### Dashboard
+- **Formspree** : https://formspree.io/forms/xnqevwdr/submissions
+- **Tracking** : [tracking-prospection.md](./tracking-prospection.md)
+
+### Templates prospection
 - [Prospection Plan](./prospection-plan.md)
-- [Pivot Plan](./pivot-plan.md)
-- [Deployment Instructions](./deployment-instructions.md)
+
+### Landings
+- [Coiffeurs](./landing-copy.md)
+- [Mécaniciens](./landing-copy-mecaniciens.md)
+- [Ostéopathes](./landing-copy-osteopathes.md)
+
+---
+
+**⚠️ URGENCE** : Chaque heure perdue = -2% de chances d'atteindre 10 pré-inscriptions.  
+**Action immédiate** : Déployer maintenant, prospection dans l'heure qui suit.
