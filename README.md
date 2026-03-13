@@ -1,113 +1,118 @@
-# Rendez — 3 Plans B Prêts
+# Booking-Saas — Build Sprint 0 🚀
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Plan%20A-Rendez%20(Validation)-orange?style=flat-square" alt="Plan A" />
-  <img src="https://img.shields.io/badge/Plan%20B-3%20options-blue?style=flat-square" alt="Plan B" />
-  <img src="https://img.shields.io/badge/Décision-Dim%2015%2F03%2014h-red?style=flat-square" alt="Decision" />
+  <img src="https://img.shields.io/badge/Sprint-0-brightgreen?style=flat-square" alt="Sprint 0" />
+  <img src="https://img.shields.io/badge/Status-Building-blue?style=flat-square" alt="Building" />
+  <img src="https://img.shields.io/badge/Deadline-Mar%2017%2020h-red?style=flat-square" alt="Deadline" />
 </p>
 
 <p align="center">
-  <strong>Status</strong>: Plan A en cours | <strong>Plans B</strong>: Prêts | <strong>Pivot</strong>: 1-3 jours selon option
+  <strong>Décision fondateur #69</strong>: Pas de pivot • Build direct • MVP Mardi 17/03 20h
 </p>
 
 ---
 
-## 🎯 Situation
+## 🎯 Sprint 0 — Foundation (5 jours)
 
 ```
-Plan A: Rendez (Coiffeurs)          Plans B (si abandon Dimanche)
-     │                                    │
-     ▼                                    ▼
-Validation 48h                    ┌────────┬────────┬────────┐
-En cours...                       │ Admin  │FeedBack│ Consult│
-     │                            │Freelance│Restau│   RDV  │
-     ▼                            └────────┴────────┴────────┘
-Dim 14h: GO / ABANDON                        │
-     │                                       │
-     ├─ GO ───► Build MVP                    ├─ Consult ───► 1 jour pivot
-     │                                        ├─ Admin ─────► 2-3 jours
-     └─ ABANDON ───► Plan B                  └─ FeedBack ──► 3-4 jours
+Ven 13/03          Sam 14/03          Dim 15/03          Lun 16/03          Mar 17/03
+   │                  │                  │                  │                  │
+   ▼                  ▼                  ▼                  ▼                  ▼
+┌────────┐        ┌────────┐        ┌────────┐        ┌────────┐        ┌────────┐
+│  AUTH  │───────▶│SERVICES│───────▶│ SLOTS  │───────▶│ PUBLIC │───────▶│BOOKINGS│
+│  ✅    │        │  ⏳    │        │  ⏳    │        │  ⏳    │        │  ⏳    │
+└────────┘        └────────┘        └────────┘        └────────┘        └────────┘
+                                                                               │
+                                                                               ▼
+                                                                        ┌────────┐
+                                                                        │ DEPLOY │
+                                                                        │  🎯    │
+                                                                        └────────┘
 ```
 
 ---
 
-## 📋 Plans B Disponibles
+## ✅ Livrés Aujourd'hui (Ven 13/03)
 
-| Plan | Problème | Cible | Pivot | Réutilisation |
-|------|----------|-------|-------|---------------|
-| **Admin Freelance** | Admin chronophage | Freelances tech | 2-3 jours | 60% |
-| **FeedBack** | Perde clients | Restaurants | 3-4 jours | 40% |
-| **Consult** ⭐ | RDV consultants | Consultants | **1 jour** | **100%** |
+| Feature | Fichier | Statut |
+|---------|---------|--------|
+| Landing page | `src/app/page.tsx` | ✅ |
+| Login page | `src/app/login/page.tsx` | ✅ |
+| Register page | `src/app/register/page.tsx` | ✅ |
+| API Register | `src/app/api/register/route.ts` | ✅ |
+| Auth config | `src/lib/auth.ts` | ✅ |
+| NextAuth API | `src/app/api/auth/[...nextauth]/route.ts` | ✅ |
+| Middleware | `src/middleware.ts` | ✅ |
+| Dashboard layout | `src/app/(app)/layout.tsx` | ✅ |
 
 ---
 
-## 🚀 Pivot Technique
-
-### Option Rapide: Consult (Recommandée dev)
+## 🚀 Démarrage
 
 ```bash
-# 1 jour pour pivot complet
-./scripts/pivot-to-consult.sh
+# 1. Clone & install
+git clone <repo> booking-saas
+cd booking-saas
+npm install
 
-# Puis manuel:
-# - Modifier seed data
-# - Adapter landing copy
-# - Deploy
+# 2. Env
+cp .env.example .env.local
+# Éditer DATABASE_URL
+
+# 3. Database
+npx prisma migrate dev --name init
+npx prisma generate
+
+# 4. Dev
+npm run dev
 ```
 
-**Avantage**: 100% réutilisation, 0 risque technique, validation 48h possible immédiatement.
+---
 
-### Option Complète: Admin ou FeedBack
+## 📋 Sprint Backlog
 
-Voir [pivot-technical-guide.md](docs/pivot-technical-guide.md) pour détail.
+### J1 — Auth (Aujourd'hui) ✅ DONE
+- [x] Landing page
+- [x] Login / Register
+- [x] NextAuth config
+- [x] Middleware protection
+- [x] Dashboard layout
+
+### J2 — Services (Demain)
+- [ ] CRUD services
+- [ ] UI dashboard
+- [ ] Formulaires
+
+### J3 — Slots (Dimanche)
+- [ ] Disponibilités récurrentes
+- [ ] UI semaine type
+
+### J4 — Page Publique (Lundi)
+- [ ] Route `/[slug]`
+- [ ] Calendrier client
+- [ ] Réservation
+
+### J5 — Bookings + Emails (Mardi)
+- [ ] Création réservation
+- [ ] Emails confirmation
+- [ ] Déploiement prod
 
 ---
 
-## 📁 Documentation Plans B
+## 🎯 MVP Mardi 17/03 20h
 
-| Document | Description |
-|----------|-------------|
-| [Pivot Technical Guide](docs/pivot-technical-guide.md) | Guide réutilisation code |
-| [Comparaison Plans B](docs/nouveau-projet-comparison.md) | Tableau comparatif |
-| [Brief Admin](docs/nouveau-projet-brief.md) | Chief-agent version |
-| [Script Pivot Consult](scripts/pivot-to-consult.sh) | Automatisation 1 jour |
+**Fonctionnel**:
+- Inscription / connexion
+- Création services
+- Définition disponibilités
+- Page publique de réservation
+- Dashboard pro
+- Emails de confirmation
 
----
-
-## ⏰ Timeline Pivot (si ABANDON Dimanche 14h)
-
-| Heure | Action | Plan |
-|-------|--------|------|
-| Dim 14h | Décision ABANDON | - |
-| Dim 18h | Début pivot | Consult: rebranding |
-| Lun 14h | Suite pivot | Consult: landing |
-| Mar 14h | **Fin pivot** | Consult: déployé |
-| Mar 18h | Validation 48h | Consult: prospection |
-
-**Avec Consult**: Projet déployé et en validation en 2 jours seulement.
+**URL**: https://booking-saas.vercel.app
 
 ---
 
-## 🎯 Recommandation
+**Status**: 🏗️ Sprint 0 Jour 1 — Auth complète
 
-| Si priorité... | Choisir... | Pourquoi |
-|----------------|-----------|----------|
-| Temps | Consult | 1 jour |
-| Pain point | Admin | Plus aigu |
-| Marché connu | FeedBack | 175k restaurants |
-| Risque minimal | Consult | 100% réutilisation |
-
----
-
-## Ressources
-
-- [Pivot Technical Guide](docs/pivot-technical-guide.md) — Réutilisation code détaillée
-- [Comparaison Plans B](docs/nouveau-projet-comparison.md) — Analyse comparative
-- [Build Checklist](docs/build-checklist.md) — Si GO Rendez
-- [Post-Mortem Template](docs/post-mortem-template.md) — Si ABANDON
-
----
-
-**Status**: 3 plans B prêts — Décision Dimanche 14h
-
-*Rendez + 3 Plans B — Couverture tous scénarios*
+*Booking-Saas — Build mode, pas de pivot*
