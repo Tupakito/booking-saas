@@ -2,7 +2,7 @@
 
 > **Version** : 1.0.0  
 > **Dernière mise à jour** : 2026-03-13  
-> **Statut** : ✅ Déployé et prêt  
+> **Statut** : ✅ Prêt pour prospection  
 > **Objectif** : 10 pré-inscriptions en 48h
 
 ---
@@ -154,7 +154,7 @@ https://formspree.io/forms/xnqevwdr/submissions
 ### Objectif
 **10 emails collectés en 48h**
 
-### Canaux de prospection
+### Canaux de prospection (voir [prospection-plan.md](./prospection-plan.md))
 - Instagram DMs : 20 coiffeurs
 - Facebook Groups : 3 posts
 - Appels directs : 5 salons

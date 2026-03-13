@@ -2,7 +2,7 @@
 
 > **Version** : 1.0.0  
 > **Dernière mise à jour** : 2026-03-13  
-> **Statut** : 🚀 En cours de validation 48h
+> **Statut** : 🚀 Phase prospection 48h ACTIVE
 
 ---
 
@@ -31,24 +31,16 @@ Rendez n'est pas un logiciel de gestion. C'est une page de réservation simple p
 
 ---
 
-## Validation Sprint 1 (48h)
+## Validation Sprint 1 (48h) — EN COURS
 
-### Hypothèses à valider
-1. Les coiffeurs veulent une solution plus simple que Calendly
-2. Le "sans compte client" est un différenciateur fort
-3. Le prix de 29€/mois est acceptable
-4. Le canal Instagram/Facebook fonctionne pour l'acquisition
+### Plan de prospection
 
-### Plan d'action
-
-| # | Tâche | Deadline |
-|---|-------|----------|
-| V1 | Déployer landing sur Vercel | Ven 13/03 14h |
-| V2 | Connecter formulaire Formspree | Ven 13/03 15h |
-| V3 | 20 DMs Instagram + 3 posts Facebook | Sam 14/03 18h |
-| V4 | 5 appels directs salons | Sam 14/03 18h |
-| V5 | Bilan pré-inscriptions | Dim 15/03 12h |
-| V6 | Décision go/no-go/pivot | Dim 15/03 14h |
+| Canal | Action | Cible |
+|-------|--------|-------|
+| Instagram DMs | 20 coiffeurs locaux | 2 inscriptions |
+| Facebook Groups | 3 posts | 3 inscriptions |
+| Appels directs | 5 salons | 2 inscriptions |
+| **Total** | **28 contacts** | **10 inscriptions** |
 
 ### Critères de décision
 
@@ -57,6 +49,14 @@ Rendez n'est pas un logiciel de gestion. C'est une page de réservation simple p
 | ≥ 10 pré-inscriptions | ✅ GO MVP | Dev-agent démarre Lundi 14h |
 | 5-9 pré-inscriptions | 🟡 AJUSTEMENT | Affiner positionnement, relancer 24h |
 | < 5 pré-inscriptions | 🔴 PIVOT | Changer de cible ou d'angle |
+
+### Timeline
+
+| Jour | Date | Actions clés |
+|------|------|--------------|
+| J1 | Ven 13/03 | 20 DMs + 1 post + 3 appels |
+| J2 | Sam 14/03 | Relances + 2 posts + 2 appels |
+| J3 | Dim 15/03 | Bilan + décision go/no-go |
 
 ---
 
@@ -74,13 +74,8 @@ Rendez n'est pas un logiciel de gestion. C'est une page de réservation simple p
 
 ---
 
-## Pourquoi on valide d'abord
-
-Le risque de construire sans marché (3 semaines de dev potentiellement jetées) est supérieur au coût de 48h de validation. La landing existe, le déploiement prend 2h. C'est un no-brainer.
-
----
-
 ## Ressources liées
 - [Landing Copy](./landing-copy.md)
 - [Naming](./naming.md)
 - [Deployment Instructions](./deployment-instructions.md)
+- [Prospection Plan](./prospection-plan.md) ⬅️ NOUVEAU
