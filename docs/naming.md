@@ -11,9 +11,9 @@ https://rendez-landing-beta.surge.sh
 
 ---
 
-## Documents
+## Confirmation
 
-[SYNTHESE-FINALE.md](./SYNTHESE-FINALE.md)
+[ACHEVEMENT.md](./ACHEVEMENT.md)
 
 ---
 
