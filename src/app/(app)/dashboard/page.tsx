@@ -5,223 +5,82 @@ import { prisma } from "@/lib/prisma";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { BookingCard } from "@/components/booking/booking-card";
-import { 
-  Calendar, 
-  TrendingUp, 
-  Users, 
-  Euro, 
-  Plus, 
-  ArrowRight,
-  Clock
-} from "lucide-react";
-import { formatPrice } from "@/lib/utils";
+import { EmptyState } from "@/components/dashboard/empty-state";
+import { StatsCard } from "@/components/dashboard/stats-card";
+import { QuickActions } from "@/components/dashboard/quick-actions";
+import { BookingListItem } from "@/components/dashboard/booking-list-item";
+import { Calendar, TrendingUp, Users, Clock } from "lucide-react";
 
 export default async function DashboardPage() {
   const session = await getServerSession(authOptions);
+  if (!session) redirect("/login");
 
-  if (!session) {
-    redirect("/login");
-  }
-
-  // Stats
   const today = new Date();
   today.setHours(0, 0, 0, 0);
-  
   const tomorrow = new Date(today);
   tomorrow.setDate(tomorrow.getDate() + 1);
 
-  const [
-    totalBookings,
-    todayBookings,
-    upcomingBookings,
-    totalRevenue
-  ] = await Promise.all([
+  const [todayBookings, upcomingBookings, totalBookings, recentBookings] = await Promise.all([
     prisma.booking.count({
+      where: { businessId: session.user.id, startTime: { gte: today, lt: tomorrow }, status: "CONFIRMED" },
+    }),
+    prisma.booking.count({
+      where: { businessId: session.user.id, startTime: { gte: new Date() }, status: "CONFIRMED" },
+    }),
+    prisma.booking.count({ where: { businessId: session.user.id } }),
+    prisma.booking.findMany({
       where: { businessId: session.user.id },
-    }),
-    prisma.booking.count({
-      where: {
-        businessId: session.user.id,
-        startTime: {
-          gte: today,
-          lt: tomorrow,
-        },
-        status: "CONFIRMED",
-      },
-    }),
-    prisma.booking.count({
-      where: {
-        businessId: session.user.id,
-        startTime: { gte: new Date() },
-        status: "CONFIRMED",
-      },
-    }),
-    prisma.booking.aggregate({
-      where: {
-        businessId: session.user.id,
-        status: "CONFIRMED",
-      },
-      _sum: { amount: true },
+      include: { service: true },
+      orderBy: { createdAt: "desc" },
+      take: 5,
     }),
   ]);
 
-  // Prochains rendez-vous (5)
-  const upcomingBookingsList = await prisma.booking.findMany({
-    where: {
-      businessId: session.user.id,
-      startTime: { gte: new Date() },
-      status: "CONFIRMED",
-    },
-    include: { service: true },
-    orderBy: { startTime: "asc" },
-    take: 5,
-  });
-
-  // Derniers rendez-vous (5)
-  const recentBookings = await prisma.booking.findMany({
-    where: {
-      businessId: session.user.id,
-      startTime: { lt: new Date() },
-      status: "CONFIRMED",
-    },
-    include: { service: true },
-    orderBy: { startTime: "desc" },
-    take: 5,
-  });
-
   return (
-    <div>
-      {/* Header */}
-      <div className="mb-8">
+    <div className="space-y-6">
+      <div>
         <h1 className="text-2xl font-bold text-gray-900">Tableau de bord</h1>
-        <p className="text-gray-600">Vue d'ensemble de votre activité</p>
+        <p className="text-gray-600">Gérez vos réservations et votre activité</p>
       </div>
 
-      {/* Stats Grid */}
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-        <Card className="bg-gradient-to-br from-primary-500 to-primary-600 text-white">
-          <div className="flex items-center justify-between">
-            <div>
-              <p className="text-primary-100 text-sm">Aujourd'hui</p>
-              <p className="text-3xl font-bold">{todayBookings}</p>
-              <p className="text-primary-100 text-xs">rendez-vous</p>
-            </div>
-            <Calendar className="w-8 h-8 text-primary-200" />
-          </div>
-        </Card>
-
-        <Card>
-          <div className="flex items-center justify-between">
-            <div>
-              <p className="text-gray-600 text-sm">À venir</p>
-              <p className="text-3xl font-bold text-gray-900">{upcomingBookings}</p>
-              <p className="text-gray-500 text-xs">rendez-vous</p>
-            </div>
-            <Clock className="w-8 h-8 text-gray-400" />
-          </div>
-        </Card>
-
-        <Card>
-          <div className="flex items-center justify-between">
-            <div>
-              <p className="text-gray-600 text-sm">Total</p>
-              <p className="text-3xl font-bold text-gray-900">{totalBookings}</p>
-              <p className="text-gray-500 text-xs">réservations</p>
-            </div>
-            <Users className="w-8 h-8 text-gray-400" />
-          </div>
-        </Card>
-
-        <Card>
-          <div className="flex items-center justify-between">
-            <div>
-              <p className="text-gray-600 text-sm">Revenus</p>
-              <p className="text-3xl font-bold text-gray-900">
-                {formatPrice(totalRevenue._sum.amount || 0)}
-              </p>
-              <p className="text-gray-500 text-xs">ce mois</p>
-            </div>
-            <Euro className="w-8 h-8 text-gray-400" />
-          </div>
-        </Card>
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+        <StatsCard title="Aujourd'hui" value={todayBookings} icon={Calendar} color="blue" />
+        <StatsCard title="À venir" value={upcomingBookings} icon={Clock} color="green" />
+        <StatsCard title="Total" value={totalBookings} icon={Users} color="purple" />
+        <StatsCard title="Ce mois" value={0} icon={TrendingUp} color="orange" />
       </div>
 
-      {/* Quick Actions */}
-      <div className="flex flex-wrap gap-3 mb-8">
-        <Link href="/dashboard/services/new">
-          <Button>
-            <Plus className="w-4 h-4 mr-2" />
-            Nouveau service
-          </Button>
-        </Link>
-        <Link href={`/${session.user.slug}`} target="_blank">
-          <Button variant="secondary">
-            Voir ma page publique
-          </Button>
-        </Link>
-        <Link href="/dashboard/bookings">
-          <Button variant="secondary">
-            Tous les rendez-vous
-            <ArrowRight className="w-4 h-4 ml-2" />
-          </Button>
-        </Link>
-      </div>
+      <QuickActions slug={session.user.slug} />
 
-      <div className="grid lg:grid-cols-2 gap-8">
-        {/* Prochains rendez-vous */}
-        <div>
-          <div className="flex items-center justify-between mb-4">
-            <h2 className="text-lg font-semibold text-gray-900">
-              Prochains rendez-vous
-            </h2>
-            <Link href="/dashboard/bookings" className="text-sm text-primary-600 hover:underline">
-              Voir tout
+      {totalBookings > 0 ? (
+        <div className="grid lg:grid-cols-3 gap-6">
+          <div className="lg:col-span-2">
+            <Card className="p-6">
+              <div className="flex items-center justify-between mb-4">
+                <h2 className="text-lg font-semibold text-gray-900">Dernières réservations</h2>
+                <Link href="/dashboard/bookings">
+                  <Button variant="ghost" size="sm">Voir tout</Button>
+                </Link>
+              </div>
+              <div className="space-y-3">
+                {recentBookings.map((booking) => (
+                  <BookingListItem key={booking.id} booking={booking} />
+                ))}
+              </div>
+            </Card>
+          </div>
+          <Card className="p-6 bg-primary-50 border-primary-200 h-fit">
+            <h3 className="font-medium text-primary-900 mb-2">Votre page publique</h3>
+            <p className="text-sm text-primary-700 mb-4">Partagez ce lien pour recevoir des réservations</p>
+            <code className="block bg-white px-3 py-2 rounded text-sm text-primary-800 mb-3">/book/{session.user.slug}</code>
+            <Link href={`/book/${session.user.slug}`} target="_blank">
+              <Button size="sm" variant="secondary" className="w-full">Voir ma page</Button>
             </Link>
-          </div>
-          
-          <div className="space-y-3">
-            {upcomingBookingsList.length === 0 ? (
-              <Card className="text-center py-8">
-                <Calendar className="w-12 h-12 mx-auto text-gray-300 mb-3" />
-                <p className="text-gray-600">Aucun rendez-vous à venir</p>
-                <p className="text-sm text-gray-500 mt-1">
-                  Partagez votre page publique pour recevoir des réservations
-                </p>
-              </Card>
-            ) : (
-              upcomingBookingsList.map((booking) => (
-                <BookingCard key={booking.id} booking={booking} />
-              ))
-            )}
-          </div>
+          </Card>
         </div>
-
-        {/* Derniers rendez-vous */}
-        <div>
-          <div className="flex items-center justify-between mb-4">
-            <h2 className="text-lg font-semibold text-gray-900">
-              Derniers rendez-vous
-            </h2>
-            <Link href="/dashboard/bookings?filter=past" className="text-sm text-primary-600 hover:underline">
-              Voir tout
-            </Link>
-          </div>
-          
-          <div className="space-y-3">
-            {recentBookings.length === 0 ? (
-              <Card className="text-center py-8">
-                <TrendingUp className="w-12 h-12 mx-auto text-gray-300 mb-3" />
-                <p className="text-gray-600">Aucun rendez-vous passé</p>
-              </Card>
-            ) : (
-              recentBookings.map((booking) => (
-                <BookingCard key={booking.id} booking={booking} variant="past" />
-              ))
-            )}
-          </div>
-        </div>
-      </div>
+      ) : (
+        <EmptyState slug={session.user.slug} />
+      )}
     </div>
   );
 }
