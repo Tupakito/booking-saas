@@ -2,22 +2,19 @@
 
 ## ✅ Sprint 1 : Fondations - TERMINÉ
 
-- [x] package.json
+- [x] src/app/
+- [x] src/lib/
+- [x] src/components/
+- [x] Config Tailwind
 - [x] tsconfig.json
-- [x] tailwind.config.ts
-- [x] app/layout.tsx
-- [x] next, react, typescript dépendances
-- [x] tailwindcss dépendance
-- [x] @radix-ui via shadcn
-- [x] class-variance-authority
-- [x] clsx
-- [x] tailwind-merge
-- [x] shadcn/ui initialisé
+- [x] package.json avec dépendances
+- [x] .gitignore
+- [x] .env.example
 
 ## Sprint 2 : Auth & Database
 
 - [ ] Setup Prisma migrations
-- [ ] NextAuth v5
+- [ ] NextAuth v5 configuration
 - [ ] API login/register
 
 ## Sprint 3 : Dashboard
