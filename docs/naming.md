@@ -2,24 +2,16 @@
 
 > **Version** : 1.0.0  
 > **Nom** : Rendez  
-> **Statut** : ✅ Validé — 3 cibles
+> **Statut** : ✅ 3 cibles
 
 ---
 
-## Transversalité
-
-| Cible | Tagline | Landing prête |
-|-------|---------|---------------|
-| Coiffeurs | "La réservation simplifiée pour les coiffeurs" | ✅ |
+| Cible | Tagline | Landing |
+|-------|---------|---------|
+| Coiffeurs | "La réservation simplifiée pour les coiffeurs" | 🟡 |
 | Mécaniciens | "L'outil de réservation conçu pour les garages" | ✅ |
 | Ostéopathes | "La réservation simple pour les thérapeutes" | ✅ |
 
 ---
 
-## URLs cibles
-
-| Plan | URL |
-|------|-----|
-| A | rendez.co |
-| B | rendez-mecaniciens.vercel.app |
-| C | rendez-sante.vercel.app |
+**Action maintenant** : [execution-immediate.md](./execution-immediate.md)

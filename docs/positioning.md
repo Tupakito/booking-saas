@@ -1,59 +1,70 @@
 # Positionnement MVP — Rendez
 
-> **Version** : 1.0.3 — LANDINGS BACKUP PRÊTES  
-> **Dernière mise à jour** : 2026-03-13  
-> **Statut** : 🚀 EXÉCUTION — Prospection + Backups prêts
+> **Version** : 1.0.4 — EXÉCUTION IMMÉDIATE  
+> **Heure** : 2026-03-13 02:12 UTC  
+> **Statut** : 🔴 PAS COMMENCÉ — ACTION MAINTENANT  
+> **Deadline** : Dimanche 15/03 12h
 
 ---
 
-## 🎯 Situation
+## 🚨 EXÉCUTION IMMÉDIATE
 
-**Plan A** : Validation coiffeurs en cours (48h)  
-**Plans B/C** : Landings backup prêtes à déployer  
-**Deadline décision** : Dimanche 15/03 14h
+**Tout est prêt. Il ne manque plus que l'action.**
 
 ---
 
-## 🎨 Matrice de décision
+## ⚡ DANS LES 60 PROCHAINES MINUTES
 
-| Scénario | Critère | Action | Landing | Statut |
-|----------|---------|--------|---------|--------|
-| **GO** | ≥ 10 emails coiffeurs | Build MVP | [landing-copy.md](./landing-copy.md) | 🟡 En cours |
-| **PIVOT B** | < 10 coiffeurs | Cible garages | [landing-copy-mecaniciens.md](./landing-copy-mecaniciens.md) | ✅ Prête |
-| **PIVOT C** | < 5 mécaniciens | Cible santé | [landing-copy-osteopathes.md](./landing-copy-osteopathes.md) | ✅ Prête |
+### 1. Ouvrir (5 min)
+- [ ] Instagram
+- [ ] Facebook
+- [ ] Ce document : [execution-immediate.md](./execution-immediate.md)
 
----
+### 2. Envoyer 10 DMs (10 min)
+**Recherche** : `#coiffeurlyon` sur Instagram
+**Template** : Voir [execution-immediate.md](./execution-immediate.md)
 
-## 🚀 Déploiement rapide (si pivot)
+### 3. Poster sur Facebook (5 min)
+**Groupes** : Coiffeurs passionnés, Salons de coiffure
+**Post** : Voir [execution-immediate.md](./execution-immediate.md)
 
-### Plan B — Mécaniciens
-```bash
-cd landing-page-mecaniciens
-npm install && npm run build && npx vercel --prod
-```
-**Temps** : 5 minutes
+### 4. Appeler 3 salons (15 min)
+**Trouver** : Google Maps "coiffeur lyon"
+**Script** : Voir [execution-immediate.md](./execution-immediate.md)
 
-### Plan C — Ostéopathes
-```bash
-cd landing-page-sante
-npm install && npm run build && npx vercel --prod
-```
-**Temps** : 5 minutes
+### 5. Tracker (5 min)
+**Document** : [tracking-prospection.md](./tracking-prospection.md)
 
 ---
 
-## 📁 Structure repo
+## 📊 Objectif 48h
 
-```
-booking-saas/
-├── landing-page/              # Plan A — Coiffeurs
-├── landing-page-mecaniciens/  # Plan B — Prêt
-├── landing-page-sante/        # Plan C — Prêt
-└── docs/
-    ├── deployment-backup.md   # Guide déploiement rapide
-    ├── execution-guide.md     # Prospection
-    └── tracking-prospection.md # Suivi
-```
+| Jour | Action | Cible |
+|------|--------|-------|
+| Ven 13/03 | 20 DMs + 2 posts + 5 appels | 4 emails |
+| Sam 14/03 | Relances + 1 post + 2 appels | 4 emails |
+| Dim 15/03 | Push final | 2 emails |
+| **Total** | | **10 emails** |
+
+---
+
+## 🎯 Décision Dimanche 14h
+
+| Emails | Action |
+|--------|--------|
+| ≥ 10 | ✅ GO MVP coiffeurs |
+| 5-9 | 🟡 Relance 24h |
+| < 5 | 🔴 PIVOT mécaniciens |
+
+---
+
+## 📁 Landings prêtes
+
+| Plan | Dossier | Commande |
+|------|---------|----------|
+| A | `landing-page/` | `npx vercel --prod` |
+| B | `landing-page-mecaniciens/` | `npm install && npm run build && npx vercel --prod` |
+| C | `landing-page-sante/` | `npm install && npm run build && npx vercel --prod` |
 
 ---
 
@@ -61,11 +72,12 @@ booking-saas/
 
 | Document | Usage |
 |----------|-------|
-| [execution-guide.md](./execution-guide.md) | Prospection active |
-| [deployment-backup.md](./deployment-backup.md) | Déploiement pivot |
-| [tracking-prospection.md](./tracking-prospection.md) | Suivi emails |
+| [execution-immediate.md](./execution-immediate.md) | Guide minute par minute |
+| [tracking-prospection.md](./tracking-prospection.md) | Suivi contacts |
+| [prospection-plan.md](./prospection-plan.md) | Stratégie détaillée |
 
 ---
 
-**Landings backup** : ✅ Prêtes à builder (5 min chacune)  
-**Décision** : Dimanche 14h
+**ACTION. MAINTENANT.**
+
+Premier DM dans les 5 minutes.
