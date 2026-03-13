@@ -11,9 +11,9 @@ https://rendez-landing-beta.surge.sh
 
 ---
 
-## Synthèse
+## Rapports
 
-[SYNTHESE-GLOBALE.md](./SYNTHESE-GLOBALE.md)
+[RAPPORT-INTERMEDIAIRE.md](./RAPPORT-INTERMEDIAIRE.md)
 
 ---
 
