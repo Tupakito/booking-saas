@@ -1,44 +1,49 @@
 # Positionnement MVP — Rendez
 
-> **Version** : 1.0.8 — TRACKING À JOUR  
-> **Heure** : 02:22 UTC  
+> **Version** : 1.0.9 — ACTION  
+> **Heure** : 02:25 UTC  
 > **URL** : https://rendez-landing-beta.surge.sh  
-> **Statut** : 🔴 EN ATTENTE DE DONNÉES  
-> **Deadline** : Dimanche 15/03 12h
+> **Statut** : 🔴 ACTION REQUISE  
+> **Temps** : 46h restantes
 
 ---
 
-## ✅ INFRASTRUCTURE
+## 🚨 EXÉCUTION IMMÉDIATE
 
-| Élément | Statut |
-|---------|--------|
-| Landing | ✅ LIVE |
-| Tracking | ✅ Prêt |
-| Prospection | 🔴 Non commencée |
+**Tout est prêt. Il ne manque que l'action.**
 
 ---
 
-## 🎯 RAPPORTS ATTENDUS
+## ⚡ DANS LES 60 MINUTES
 
-| Rapport | Date | Heure |
-|---------|------|-------|
-| Intermédiaire J1 | Ven 13/03 | 20h |
-| Final | Dim 15/03 | 12h |
+[execution-maintenant.md](./execution-maintenant.md)
+
+1. **10 DMs** Instagram (template prêt)
+2. **1 Post** Facebook (template prêt)
+3. **3 Appels** (script prêt)
+4. **10 DMs** supplémentaires
 
 ---
 
-## 📊 TRACKING
+## 🎯 OBJECTIF
 
-**Document** : [tracking-prospection.md](./tracking-prospection.md)
+10 emails en 46h
 
+---
+
+## 📊 SUIVI
+
+**Tracking** : [tracking-prospection.md](./tracking-prospection.md)  
 **Dashboard** : https://formspree.io/forms/xnqevwdr/submissions
 
 ---
 
-## 🚀 ACTION
+## 📅 RAPPORTS
 
-[execution-immediate.md](./execution-immediate.md)
+- Vendredi 20h : Intermédiaire
+- Dimanche 12h : Final
+- Dimanche 14h : Décision
 
 ---
 
-**🔴 PROSPECTION NON COMMENCÉE — 46h restantes**
+**🔴 ACTION. MAINTENANT.**
