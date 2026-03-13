@@ -2,39 +2,53 @@
 
 Plateforme de réservation en ligne pour professionnels.
 
-## ✅ Repo Initialisé
+## ✅ Repo Initialisé avec shadcn/ui
 
-Le projet a été créé avec Next.js 15 (App Router), TypeScript et Tailwind CSS.
-
-## Structure créée
-
-```
-booking-saas/
-├── package.json              ✅ Dépendances Next.js, React, TypeScript
-├── tsconfig.json             ✅ Config TypeScript strict
-├── tailwind.config.ts        ✅ Config Tailwind CSS
-├── next.config.ts            ✅ Config Next.js
-├── src/
-│   └── app/
-│       ├── layout.tsx        ✅ Root layout
-│       ├── page.tsx          ✅ Landing page
-│       ├── login/page.tsx    ✅ Page connexion
-│       ├── register/page.tsx ✅ Page inscription
-│       └── globals.css       ✅ Styles Tailwind
-├── src/lib/
-│   ├── prisma.ts             ✅ Client Prisma
-│   ├── auth.ts               ✅ Config Auth placeholder
-│   └── utils.ts              ✅ Helpers
-└── prisma/
-    └── schema.prisma         ✅ Schéma DB
-```
+Le projet a été créé avec Next.js 15, TypeScript, Tailwind CSS et **shadcn/ui**.
 
 ## Stack technique
 
-- **Next.js 15.3.6** (App Router)
+- **Next.js 15.5.12** (App Router)
 - **TypeScript 5** (strict)
 - **Tailwind CSS 3.4.17**
+- **shadcn/ui** (composants UI)
 - **Prisma 6.5** (ORM)
+- **NextAuth v5** (Auth.js)
+
+## Structure du projet
+
+```
+booking-saas/
+├── src/
+│   ├── app/
+│   │   ├── login/page.tsx      # Page connexion
+│   │   ├── register/page.tsx   # Page inscription
+│   │   ├── layout.tsx          # Root layout
+│   │   ├── page.tsx            # Landing page
+│   │   └── globals.css         # Styles + CSS variables shadcn
+│   ├── components/
+│   │   └── ui/                 # ✅ Composants shadcn/ui
+│   │       ├── button.tsx
+│   │       ├── card.tsx
+│   │       ├── input.tsx
+│   │       └── label.tsx
+│   └── lib/
+│       ├── prisma.ts
+│       ├── auth.ts
+│       └── utils.ts            # cn() helper pour shadcn
+├── prisma/
+│   └── schema.prisma
+├── components.json             # Config shadcn/ui
+├── package.json
+└── ...
+```
+
+## Composants shadcn/ui installés
+
+- `Button` - Boutons avec variants (default, destructive, outline, ghost, link)
+- `Card` - Conteneurs avec header, content, footer
+- `Input` - Champs de saisie
+- `Label` - Étiquettes de formulaire
 
 ## Installation
 
@@ -51,5 +65,6 @@ npm run build  # ✅ Testé et fonctionnel
 
 ## Git
 
-- **Commit** : `2d7274e` - Initial commit: Next.js 15 + TypeScript + Tailwind + Prisma setup
-- **Status** : Working tree clean
+- **Commits** :
+  - `2d7274e` - Initial commit: Next.js + TypeScript + Tailwind + Prisma
+  - `8ff7c1e` - Add shadcn/ui with base components
