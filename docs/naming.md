@@ -11,9 +11,9 @@ https://rendez-landing-beta.surge.sh
 
 ---
 
-## Confirmation
+## Session
 
-[ACHEVEMENT.md](./ACHEVEMENT.md)
+[FIN-SESSION.md](./FIN-SESSION.md)
 
 ---
 
