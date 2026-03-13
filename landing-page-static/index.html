@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rendez — Recevez vos RDV en ligne en 5 minutes</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #1e293b; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        
+        /* Hero */
+        .hero { background: linear-gradient(to bottom, #f8fafc, #fff); padding: 80px 0; text-align: center; }
+        .badge { display: inline-flex; align-items: center; background: #eff6ff; color: #1d4ed8; padding: 8px 16px; border-radius: 20px; font-size: 14px; margin-bottom: 24px; }
+        h1 { font-size: 48px; font-weight: 700; margin-bottom: 24px; line-height: 1.2; }
+        h1 span { color: #2563eb; }
+        .subtitle { font-size: 20px; color: #64748b; max-width: 600px; margin: 0 auto 32px; }
+        .cta-button { display: inline-block; background: #2563eb; color: white; padding: 16px 32px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 18px; }
+        .cta-button:hover { background: #1d4ed8; }
+        .proof { margin-top: 16px; font-size: 14px; color: #64748b; }
+        
+        /* Problem */
+        .problem { padding: 64px 0; background: #fff; }
+        h2 { font-size: 32px; font-weight: 700; text-align: center; margin-bottom: 24px; }
+        .problem p { font-size: 18px; color: #475569; max-width: 700px; margin: 0 auto 16px; text-align: center; }
+        
+        /* Solution */
+        .solution { padding: 64px 0; background: #f8fafc; }
+        .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin: 48px 0; }
+        .step { background: white; padding: 32px; border-radius: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+        .step-number { width: 48px; height: 48px; background: #eff6ff; color: #2563eb; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-weight: 700; margin-bottom: 16px; }
+        .step h3 { font-size: 18px; font-weight: 600; margin-bottom: 8px; }
+        .step p { color: #64748b; }
+        
+        /* Form */
+        .early-access { padding: 80px 0; background: #2563eb; color: white; text-align: center; }
+        .early-access h2 { color: white; margin-bottom: 16px; }
+        .early-access p { font-size: 18px; opacity: 0.9; margin-bottom: 32px; }
+        .form-container { max-width: 400px; margin: 0 auto; }
+        input[type="email"] { width: 100%; padding: 16px; border: none; border-radius: 8px; font-size: 16px; margin-bottom: 12px; }
+        button[type="submit"] { width: 100%; padding: 16px; background: #0f172a; color: white; border: none; border-radius: 8px; font-size: 16px; font-weight: 600; cursor: pointer; }
+        button[type="submit"]:hover { background: #1e293b; }
+        .privacy { margin-top: 16px; font-size: 14px; opacity: 0.8; }
+        
+        /* Pricing */
+        .pricing { padding: 64px 0; background: #fff; }
+        .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; max-width: 800px; margin: 48px auto; }
+        .pricing-card { border: 2px solid #e2e8f0; padding: 32px; border-radius: 16px; }
+        .pricing-card.featured { border-color: #2563eb; position: relative; }
+        .pricing-card.featured::before { content: "Recommandé"; position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: #2563eb; color: white; padding: 4px 16px; border-radius: 20px; font-size: 14px; }
+        .pricing-card h3 { font-size: 20px; font-weight: 600; margin-bottom: 8px; }
+        .pricing-card .price { font-size: 48px; font-weight: 700; margin: 24px 0; }
+        .pricing-card .price span { font-size: 16px; font-weight: 400; color: #64748b; }
+        .pricing-card ul { list-style: none; }
+        .pricing-card li { padding: 8px 0; color: #475569; }
+        .pricing-card li::before { content: "✓"; color: #22c55e; margin-right: 8px; }
+        
+        /* FAQ */
+        .faq { padding: 64px 0; background: #f8fafc; }
+        .faq-item { background: white; padding: 24px; border-radius: 12px; margin-bottom: 16px; max-width: 800px; margin-left: auto; margin-right: auto; }
+        .faq-item h3 { font-size: 16px; font-weight: 600; margin-bottom: 8px; }
+        .faq-item p { color: #64748b; }
+        
+        /* Footer */
+        footer { padding: 32px 0; background: #0f172a; color: #94a3b8; text-align: center; }
+    </style>
+</head>
+<body>
+    <!-- Hero -->
+    <section class="hero">
+        <div class="container">
+            <div class="badge">🎯 Pour les coiffeurs, ongleries & spas</div>
+            <h1>Arrêtez de répondre au téléphone.<br><span>Recevez vos RDV en ligne.</span></h1>
+            <p class="subtitle">Rendez crée votre page de réservation en 5 minutes. Vos clients prennent RDV sans compte, vous recevez une confirmation par email.</p>
+            <a href="#signup" class="cta-button">Créer ma page de réservation — Gratuit</a>
+            <p class="proof">✓ Sans carte bancaire · ✓ Setup en 5 minutes · ✓ Annulation sans frais</p>
+        </div>
+    </section>
+
+    <!-- Problem -->
+    <section class="problem">
+        <div class="container">
+            <h2>Le téléphone vous vole 10 heures par semaine</h2>
+            <p>Entre les appels qui raccrochent, les messages vocaux incompris et les oublis de RDV... Vous passez votre temps à gérer votre agenda au lieu de soigner vos clients.</p>
+            <p><strong>Et vos clients ?</strong> Ils préfèrent réserver en ligne, quand ils veulent, sans attendre que vous décrochiez.</p>
+        </div>
+    </section>
+
+    <!-- Solution -->
+    <section class="solution">
+        <div class="container">
+            <h2>Une page. Vos créneaux. Zero friction.</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Vous créez vos services</h3>
+                    <p>Coupe, couleur, soin... Définissez vos prestations et durées.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Vous définissez vos disponibilités</h3>
+                    <p>Lundi 9h-18h, mardi fermé... Votre planning, vos règles.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Vous partagez votre lien</h3>
+                    <p>rendez.co/votre-salon — vos clients réservent en un clic.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Early Access -->
+    <section class="early-access" id="signup">
+        <div class="container">
+            <h2>Soyez parmi les 10 premiers</h2>
+            <p>3 mois gratuits pour les testeurs. Aidez-nous à construire l'outil parfait pour votre métier.</p>
+            <div class="form-container">
+                <form action="https://formspree.io/f/xnqevwdr" method="POST">
+                    <input type="email" name="email" placeholder="votre@email.com" required>
+                    <input type="hidden" name="source" value="landing-rendez">
+                    <button type="submit">Rejoindre la liste</button>
+                </form>
+                <p class="privacy">🔒 Pas de spam. Uniquement des mises à jour sur le lancement.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section class="pricing">
+        <div class="container">
+            <h2>Un prix simple. Pas de surprise.</h2>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3>Gratuit</h3>
+                    <p>Pour démarrer</p>
+                    <div class="price">0€</div>
+                    <ul>
+                        <li>10 RDV/mois</li>
+                        <li>Email de confirmation</li>
+                    </ul>
+                </div>
+                <div class="pricing-card featured">
+                    <h3>Pro</h3>
+                    <p>Pour les pros</p>
+                    <div class="price">29€<span>/mois</span></div>
+                    <ul>
+                        <li>RDV illimités</li>
+                        <li>+ SMS de rappel</li>
+                        <li>Support prioritaire</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq">
+        <div class="container">
+            <h2>Questions fréquentes</h2>
+            <div class="faq-item">
+                <h3>Mes clients doivent-ils créer un compte ?</h3>
+                <p>Non. Ils choisissent, réservent, reçoivent une confirmation. C'est tout.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Et si je prends aussi des RDV au téléphone ?</h3>
+                <p>Pas de problème. Vous bloquez les créneaux pris au téléphone dans votre dashboard.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Puis-je personnaliser ma page ?</h3>
+                <p>Oui. Logo, couleurs, photos de vos services. Votre page vous ressemble.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>Rendez — La réservation simplifiée pour les artisans du bien-être.</p>
+        </div>
+    </footer>
+</body>
+</html>

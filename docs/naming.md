@@ -2,16 +2,24 @@
 
 > **Version** : 1.0.0  
 > **Nom** : Rendez  
-> **Statut** : ✅ 3 cibles
+> **Statut** : ✅ LIVE
 
 ---
 
-| Cible | Tagline | Landing |
-|-------|---------|---------|
-| Coiffeurs | "La réservation simplifiée pour les coiffeurs" | 🟡 |
-| Mécaniciens | "L'outil de réservation conçu pour les garages" | ✅ |
-| Ostéopathes | "La réservation simple pour les thérapeutes" | ✅ |
+## URL
+
+**Landing** : https://rendez-landing-beta.surge.sh
 
 ---
 
-**Action maintenant** : [execution-immediate.md](./execution-immediate.md)
+## Cibles
+
+| Cible | Tagline | Statut |
+|-------|---------|--------|
+| Coiffeurs | "La réservation simplifiée pour les coiffeurs" | ✅ LIVE |
+| Mécaniciens | "L'outil de réservation conçu pour les garages" | ✅ Backup |
+| Ostéopathes | "La réservation simple pour les thérapeutes" | ✅ Backup |
+
+---
+
+**Action** : [execution-immediate.md](./execution-immediate.md)

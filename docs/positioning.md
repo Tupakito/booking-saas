@@ -1,43 +1,22 @@
 # Positionnement MVP — Rendez
 
-> **Version** : 1.0.4 — EXÉCUTION IMMÉDIATE  
-> **Heure** : 2026-03-13 02:12 UTC  
-> **Statut** : 🔴 PAS COMMENCÉ — ACTION MAINTENANT  
+> **Version** : 1.0.5 — LANDING LIVE ✅  
+> **Heure** : 2026-03-13 02:15 UTC  
+> **URL** : https://rendez-landing-beta.surge.sh  
+> **Statut** : 🚀 PROSPECTION EN COURS  
 > **Deadline** : Dimanche 15/03 12h
 
 ---
 
-## 🚨 EXÉCUTION IMMÉDIATE
+## ✅ LANDING DÉPLOYÉE
 
-**Tout est prêt. Il ne manque plus que l'action.**
-
----
-
-## ⚡ DANS LES 60 PROCHAINES MINUTES
-
-### 1. Ouvrir (5 min)
-- [ ] Instagram
-- [ ] Facebook
-- [ ] Ce document : [execution-immediate.md](./execution-immediate.md)
-
-### 2. Envoyer 10 DMs (10 min)
-**Recherche** : `#coiffeurlyon` sur Instagram
-**Template** : Voir [execution-immediate.md](./execution-immediate.md)
-
-### 3. Poster sur Facebook (5 min)
-**Groupes** : Coiffeurs passionnés, Salons de coiffure
-**Post** : Voir [execution-immediate.md](./execution-immediate.md)
-
-### 4. Appeler 3 salons (15 min)
-**Trouver** : Google Maps "coiffeur lyon"
-**Script** : Voir [execution-immediate.md](./execution-immediate.md)
-
-### 5. Tracker (5 min)
-**Document** : [tracking-prospection.md](./tracking-prospection.md)
+**URL** : https://rendez-landing-beta.surge.sh  
+**Formulaire** : Formspree (xnqevwdr) — Testé ✅  
+**Status** : LIVE et fonctionnel
 
 ---
 
-## 📊 Objectif 48h
+## 🎯 OBJECTIF : 10 PRÉ-INSCRIPTIONS
 
 | Jour | Action | Cible |
 |------|--------|-------|
@@ -48,36 +27,29 @@
 
 ---
 
-## 🎯 Décision Dimanche 14h
+## 🚀 PROSPECTION — ACTION MAINTENANT
 
-| Emails | Action |
-|--------|--------|
-| ≥ 10 | ✅ GO MVP coiffeurs |
-| 5-9 | 🟡 Relance 24h |
-| < 5 | 🔴 PIVOT mécaniciens |
+**Guide** : [execution-immediate.md](./execution-immediate.md)
 
----
+**Templates prêts** : Copier-coller et envoyer
 
-## 📁 Landings prêtes
-
-| Plan | Dossier | Commande |
-|------|---------|----------|
-| A | `landing-page/` | `npx vercel --prod` |
-| B | `landing-page-mecaniciens/` | `npm install && npm run build && npx vercel --prod` |
-| C | `landing-page-sante/` | `npm install && npm run build && npx vercel --prod` |
+**Tracking** : [tracking-prospection.md](./tracking-prospection.md)
 
 ---
 
-## 📞 Ressources
+## 📊 Dashboard
 
-| Document | Usage |
-|----------|-------|
-| [execution-immediate.md](./execution-immediate.md) | Guide minute par minute |
-| [tracking-prospection.md](./tracking-prospection.md) | Suivi contacts |
-| [prospection-plan.md](./prospection-plan.md) | Stratégie détaillée |
+**Formspree** : https://formspree.io/forms/xnqevwdr/submissions
 
 ---
 
-**ACTION. MAINTENANT.**
+## 🎨 Plans backup (si besoin)
 
-Premier DM dans les 5 minutes.
+| Plan | Cible | Dossier | Commande |
+|------|-------|---------|----------|
+| B | Mécaniciens | `landing-page-mecaniciens/` | `npm install && npm run build && npx vercel --prod` |
+| C | Ostéopathes | `landing-page-sante/` | `npm install && npm run build && npx vercel --prod` |
+
+---
+
+**✅ LANDING LIVE — LANCER LA PROSPECTION**
