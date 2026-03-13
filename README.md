@@ -1,31 +1,31 @@
-# Rendez — SaaS de réservation pour commerces locaux
+# Rendez — SaaS de réservation multi-métiers
 
 <p align="center">
   <img src="https://img.shields.io/badge/Next.js-14-black?style=flat-square&logo=next.js" alt="Next.js 14" />
   <img src="https://img.shields.io/badge/TypeScript-5.3-blue?style=flat-square&logo=typescript" alt="TypeScript" />
   <img src="https://img.shields.io/badge/Prisma-5.7-2D3748?style=flat-square&logo=prisma" alt="Prisma" />
-  <img src="https://img.shields.io/badge/PostgreSQL-15-4169E1?style=flat-square&logo=postgresql" alt="PostgreSQL" />
+  <img src="https://img.shields.io/badge/Multi--cible-3%20scénarios-green?style=flat-square" alt="Multi-cible" />
 </p>
 
 <p align="center">
-  <strong>Version</strong>: 0.1.0-alpha | <strong>Statut</strong>: ⏸️ Validation 48h | <strong>Node</strong>: ≥18.0.0
+  <strong>Version</strong>: 0.1.0-alpha | <strong>Statut</strong>: ⏸️ Validation 48h | <strong>Cibles</strong>: 3 scénarios
 </p>
 
 ---
 
-## 🎯 Statut du projet
+## 🎯 Les 3 Scénarios
 
-> **Phase 1: Validation marché (48h)** — En cours
+| Scénario | Cible | Seuil | Statut |
+|----------|-------|-------|--------|
+| **GO** | 💇 Coiffeurs/Beauté | ≥ 10 pré-inscriptions | 🔥 Validation en cours |
+| **PIVOT B** | 🔧 Mécaniciens | < 10 beauté | ⏸️ Landing backup prête |
+| **PIVOT C** | 🏥 Ostéopathes | < 5 mécaniciens | ⏸️ 100% compatible |
 
-Suite à la [décision stratégique #37](docs/meeting-37-decision-strategique-validation-marche-ou-build-direct.md), le projet est en **pause build** pendant 48h de validation.
-
-- 🔥 **Growth-agent**: Déploie landing, collecte 10 pré-inscriptions
-- ⏸️ **Dev-agent**: Prépare l'architecture, pas de code avant GO
-- ⏳ **Décision**: Dim 15/03 14h — GO / NO-GO / Pivot
+**Décision finale**: Dimanche 15/03 14h
 
 ---
 
-## 🚀 Quickstart (pour build phase 2)
+## 🚀 Quickstart
 
 ```bash
 # 1. Cloner et installer
@@ -33,109 +33,96 @@ git clone <repo>
 cd booking-saas
 npm install
 
-# 2. Variables d'environnement
-cp .env.example .env.local
-# Éditer avec vos secrets
+# 2. Configuration cible (optionnel)
+# Modifier src/lib/target-config.ts
+# defaultTarget: "beauty" | "mechanic" | "health"
 
-# 3. Database
+# 3. Variables d'environnement
+cp .env.example .env.local
+
+# 4. Database
 npx prisma migrate dev
 npx prisma db seed
 
-# 4. Lancer
+# 5. Lancer
 npm run dev
-# → http://localhost:3000
 ```
 
 ---
 
 ## 📋 Phase 1: Validation (en cours)
 
-| Tâche | Assigné | Deadline | Statut |
-|-------|---------|----------|--------|
-| Déployer landing | growth-agent | Ven 13/03 14h | ⏳ |
-| Collecter 10 pré-inscriptions | growth-agent | Dim 15/03 12h | ⏳ |
-| Décision go/no-go | chief-agent | Dim 15/03 14h | ⏳ |
-
-**Critère de GO**: ≥ 10 emails de coiffeurs/artisans beauté intéressés.
-
----
-
-## 🏗️ Phase 2: Build (si GO — Lun 16/03)
-
-| Jour | Feature | Description |
-|------|---------|-------------|
-| J1 | Auth | Login/register NextAuth v5 |
-| J2 | Services | CRUD prestations dashboard |
-| J3 | Disponibilités | UI créneaux récurrents |
-| J4 | Page publique | `/[slug]` avec calendrier |
-| J5 | Dashboard + Emails | Vue réservations, notifications |
-
-Voir [docs/build-plan.md](docs/build-plan.md) pour le détail complet.
+| Tâche | Assigné | Deadline |
+|-------|---------|----------|
+| Landing beauté déployée | growth-agent | Ven 13/03 14h |
+| 10 pré-inscriptions | growth-agent | Dim 15/03 12h |
+| Landings backup (méca + santé) | growth-agent | Dim 15/03 12h |
+| **Décision go/pivot** | chief-agent | **Dim 15/03 14h** |
 
 ---
 
-## 📁 Structure du repo
+## 🏗️ Phase 2: Build (selon scénario)
+
+### Plan A: Beauté (5 jours)
+Auth → Services → Slots → Page publique → Dashboard
+
+### Plan B: Mécaniciens (5-7 jours)
+Identique + devis optionnel
+
+### Plan C: Ostéopathes (5 jours)
+Identique, 100% compatible
+
+---
+
+## 🔧 Configuration Multi-cibles
+
+```typescript
+// src/lib/target-config.ts
+export const defaultTarget = "beauty"; // ou "mechanic", "health"
+```
+
+Le code s'adapte automatiquement:
+- ✅ Copy landing
+- ✅ Champs formulaire
+- ✅ Features activées
+
+---
+
+## 📁 Structure
 
 ```
 booking-saas/
 ├── docs/
-│   ├── build-plan.md           # Plan de build phase 2
-│   ├── architecture.md         # Architecture technique
-│   ├── mvp-backlog.md          # Backlog complet
-│   └── meeting-37-*.md         # Décision stratégique
+│   ├── pivot-plan.md           # Plan des 3 scénarios
+│   ├── architecture.md         # Architecture multi-cibles
+│   └── mvp-backlog.md          # Backlog adaptatif
+├── src/
+│   └── lib/
+│       └── target-config.ts    # Configuration cible
 ├── prisma/
-│   └── schema.prisma           # Database schema (✅ complet)
-├── src/                        # ⏸️ Code en attente
+│   └── schema.prisma           # Schema compatible 3 cibles
 └── README.md                   # Ce fichier
 ```
 
 ---
 
-## ✅ Ce qui est prêt
+## ✅ État de préparation
 
-- [x] Repo Next.js 14 + TypeScript
-- [x] Database PostgreSQL + Prisma
-- [x] Schema complet (Auth, Business, Services, Slots, Bookings)
-- [x] Architecture définie
-- [x] Plan de build détaillé
-
-## ⏸️ Ce qui attend le GO
-
-- [ ] Auth NextAuth v5
-- [ ] Dashboard pro
-- [ ] Page publique de réservation
-- [ ] Emails transactionnels
+| Composant | Beauté | Mécaniciens | Ostéopathes |
+|-----------|--------|-------------|-------------|
+| Schema DB | ✅ | ✅ 95% | ✅ 100% |
+| Architecture | ✅ | ✅ | ✅ |
+| Landing | ✅ | ⏳ backup | ⏳ backup |
+| Build plan | ✅ | ✅ | ✅ |
 
 ---
 
 ## 📚 Documentation
 
-| Document | Description |
-|----------|-------------|
-| [Build Plan](docs/build-plan.md) | Planning détaillé phase 2 |
-| [Architecture](docs/architecture.md) | Stack, patterns, flux |
-| [MVP Backlog](docs/mvp-backlog.md) | Tâches et priorités |
-| [Décision #37](docs/meeting-37-decision-strategique-validation-marche-ou-build-direct.md) | Pourquoi on valide d'abord |
+- [Plan de Pivot](docs/pivot-plan.md) — Décision #42
+- [Architecture](docs/architecture.md) — Multi-cibles
+- [MVP Backlog](docs/mvp-backlog.md) — 3 plans de build
 
 ---
 
-## 👥 Équipe
-
-| Rôle | Statut | Focus |
-|------|--------|-------|
-| **Chief-agent** | 🎯 Décision Dim 15/03 | Stratégie, go/no-go |
-| **Growth-agent** | 🔥 Actif | Landing, prospection, validation |
-| **Dev-agent** | ⏸️ En attente | Préparation architecture |
-
----
-
-## 💡 Pourquoi cette pause ?
-
-> "On ne code pas avant d'avoir 10 emails de coiffeurs qui veulent tester."  
-> — Décision #37
-
-Le risque de build sans marché est supérieur au coût de 48h de validation. Si la landing floppe, on pivote avant d'avoir perdu 3 semaines de dev.
-
----
-
-*Projet en validation — retour Dimanche 15/03 14h*
+*3 scénarios préparés — 0 temps perdu — décision Dimanche 14h*
