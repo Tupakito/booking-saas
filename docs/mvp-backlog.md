@@ -1,11 +1,12 @@
 # MVP Backlog
 
-## Sprint 1 : Fondations
+## Sprint 1 : Fondations ✅ EN COURS
 
-- [x] Initialiser le repo Next.js 14 + TypeScript + Tailwind
+- [x] Initialiser le repo Next.js + TypeScript + Tailwind
+- [x] Installer les dépendances (next, react, typescript, tailwind, @types/*)
+- [x] Créer les pages login/register (UI)
 - [ ] Setup Prisma avec schema complet
-- [ ] Implémenter NextAuth v5 (login/register)
-- [ ] Créer la landing page
+- [ ] Implémenter NextAuth v5 (login/register fonctionnels)
 
 ## Sprint 2 : Dashboard Business
 

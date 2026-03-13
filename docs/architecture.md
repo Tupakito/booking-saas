@@ -2,40 +2,42 @@
 
 ## Overview
 
-Booking SaaS est une application monolithique full-stack construite avec Next.js 14.
+Booking SaaS est une application monolithique full-stack construite avec Next.js 15.
+
+## Stack
+
+| Technologie | Version | Usage |
+|-------------|---------|-------|
+| Next.js | 15.5 | Framework React (App Router) |
+| TypeScript | 5.x | Typage strict |
+| Tailwind CSS | 3.4 | Styling utilitaire |
+| Prisma | 6.5 | ORM base de données |
+| Auth.js | 5.0 | Authentification |
+| PostgreSQL | - | Base de données |
 
 ## Architecture des dossiers
 
 ```
 src/
-├── app/                    # App Router Next.js 14
-│   ├── (auth)/            # Route group pour auth
-│   │   ├── login/page.tsx
-│   │   └── register/page.tsx
-│   ├── (dashboard)/       # Route group protégé
-│   │   ├── dashboard/page.tsx
-│   │   ├── services/page.tsx
-│   │   ├── bookings/page.tsx
-│   │   └── settings/page.tsx
-│   ├── api/               # API Routes
-│   │   ├── auth/[...nextauth]/route.ts
-│   │   └── webhooks/
-│   ├── layout.tsx         # Root layout
-│   ├── page.tsx           # Landing page
-│   └── globals.css
-├── components/
-│   ├── ui/                # Composants UI de base
-│   ├── forms/             # Formulaires
-│   └── layout/            # Layout components
+├── app/                    # App Router Next.js 15
+│   ├── login/page.tsx      # Auth - Connexion
+│   ├── register/page.tsx   # Auth - Inscription
+│   ├── layout.tsx          # Root layout
+│   ├── page.tsx            # Landing page
+│   └── globals.css         # Styles globaux
+├── components/             # Composants React
 └── lib/
-    ├── prisma.ts          # Client Prisma singleton
-    ├── auth.ts            # Config NextAuth
-    └── utils.ts           # Fonctions utilitaires
+    ├── prisma.ts           # Client Prisma singleton
+    ├── auth.ts             # Config NextAuth (placeholder)
+    └── utils.ts            # Fonctions utilitaires (cn, etc.)
+
+prisma/
+└── schema.prisma           # Schéma DB complet
 ```
 
 ## Modèle de données
 
-### Relations principales
+### Relations
 
 ```
 User 1-->* Business
@@ -48,27 +50,16 @@ User 1-->* Booking
 
 ### Entités
 
-- **User** : Utilisateur de la plateforme (propriétaire ou client)
-- **Business** : Entreprise/activité (un user peut avoir plusieurs businesses)
-- **Service** : Service proposé (nom, prix, durée)
-- **Availability** : Créneaux disponibles pour un service
-- **Booking** : Réservation (client + service + créneau)
+| Entité | Description |
+|--------|-------------|
+| User | Utilisateur (propriétaire ou client) |
+| Business | Entreprise/activité |
+| Service | Service proposé (nom, prix, durée) |
+| Availability | Créneaux disponibles |
+| Booking | Réservation |
 
-## Flux d'authentification
+## Build
 
-1. **Inscription** : Credentials (email/password) ou OAuth (Google)
-2. **Connexion** : Session JWT gérée par NextAuth
-3. **Protection** : Middleware Next.js pour routes protégées
-
-## API Design
-
-- RESTful API via Next.js API Routes
-- Actions serveur pour les mutations simples
-- Validation avec Zod
-
-## Sécurité
-
-- Authentification via NextAuth v5
-- CSRF protection intégrée
-- Rate limiting sur les API sensibles
-- Validation stricte des inputs (Zod)
+✅ **Build production fonctionnel** - Testé avec `next build`
+- Routes statiques générées : `/`, `/login`, `/register`
+- Zero vulnerability (npm audit)
