@@ -11,11 +11,10 @@ https://rendez-landing-beta.surge.sh
 
 ---
 
-## Session
+## Confirmation
 
-[FIN-SESSION.md](./FIN-SESSION.md)
+[CONFIRMATION.md](./CONFIRMATION.md)
 
 ---
 
-**Tracking** : [tracking-prospection.md](./tracking-prospection.md)  
-**Action** : [execution-maintenant.md](./execution-maintenant.md)
+**Tracking** : [tracking-prospection.md](./tracking-prospection.md)
