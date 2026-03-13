@@ -1,33 +1,25 @@
 # MVP Backlog
 
-## Sprint 1 : Fondations ✅ COMPLET
+## ✅ Sprint 1 : Fondations - TERMINÉ
 
-- [x] Initialiser le repo Next.js + TypeScript + Tailwind
-- [x] Créer la structure src/app/
-- [x] Configurer tsconfig.json, tailwind.config.ts, next.config.ts
-- [x] Installer dépendances (next, react, typescript, tailwind, @types/*)
-- [x] Créer les pages login/register (UI)
-- [x] Pousser sur git
+- [x] package.json
+- [x] tsconfig.json
+- [x] tailwind.config.ts
+- [x] next.config.ts
+- [x] src/app/layout.tsx
+- [x] src/app/page.tsx
+- [x] src/app/login/page.tsx
+- [x] src/app/register/page.tsx
+- [x] Git initial commit
 
-## Sprint 2 : Auth & DB
+## Sprint 2 : Auth & Database
 
-- [ ] Setup Prisma avec migrations
-- [ ] Implémenter NextAuth v5 (fonctionnel)
-- [ ] Connecter formulaires à l'API
+- [ ] Setup Prisma migrations
+- [ ] NextAuth v5 configuration
+- [ ] API login/register fonctionnelle
 
-## Sprint 3 : Dashboard Business
+## Sprint 3 : Dashboard
 
-- [ ] Page dashboard avec stats
+- [ ] Page dashboard
 - [ ] CRUD Services
-- [ ] Gestion des disponibilités (horaires)
-
-## Sprint 4 : Réservations
-
-- [ ] Widget de réservation public
-- [ ] Liste des réservations
-- [ ] Notifications email
-
-## Sprint 5 : Polish & Paiement
-
-- [ ] Intégration Stripe
-- [ ] Export données (CSV)
+- [ ] Gestion disponibilités

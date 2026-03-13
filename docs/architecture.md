@@ -8,61 +8,20 @@
 | TypeScript | 5.x | Typage strict |
 | Tailwind CSS | 3.4.17 | Styling utilitaire |
 | Prisma | 6.5 | ORM base de données |
-| Auth.js | 5.0 | Authentification |
-| PostgreSQL | - | Base de données |
 
-## Structure des dossiers
+## Fichiers créés
 
-```
-src/
-├── app/                    # App Router Next.js 15
-│   ├── login/page.tsx      # Auth - Connexion
-│   ├── register/page.tsx   # Auth - Inscription
-│   ├── layout.tsx          # Root layout
-│   ├── page.tsx            # Landing page
-│   └── globals.css         # Styles globaux
-├── components/             # Composants React réutilisables
-└── lib/
-    ├── prisma.ts           # Client Prisma singleton
-    ├── auth.ts             # Config NextAuth (placeholder)
-    └── utils.ts            # Fonctions utilitaires
+| Fichier | Description |
+|---------|-------------|
+| `package.json` | Dépendances : next, react, typescript, tailwindcss, prisma |
+| `tsconfig.json` | TypeScript strict mode, paths `@/*` |
+| `tailwind.config.ts` | Thème personnalisé avec couleurs primary |
+| `next.config.ts` | Config Next.js avec typedRoutes |
+| `src/app/layout.tsx` | Root layout avec metadata |
+| `src/app/page.tsx` | Landing page avec hero section |
 
-prisma/
-└── schema.prisma           # Schéma DB complet
-```
+## Build
 
-## Modèle de données
-
-### Relations
-
-```
-User 1-->* Business
-Business 1-->* Service
-Service 1-->* Availability
-Business 1-->* Booking
-Service 1-->* Booking
-User 1-->* Booking
-```
-
-### Entités
-
-| Entité | Description |
-|--------|-------------|
-| User | Utilisateur (propriétaire ou client) |
-| Business | Entreprise/activité |
-| Service | Service proposé (nom, prix, durée) |
-| Availability | Créneaux disponibles |
-| Booking | Réservation |
-
-## Build & Déploiement
-
-✅ **Build production fonctionnel**
-- Routes statiques générées : `/`, `/login`, `/register`
-- Zero vulnerability (npm audit)
-- TypedRoutes activé
-
-## Git
-
-- Commit initial : `2d7274e`
-- 30 fichiers trackés
-- Working tree clean
+✅ Production build fonctionnel
+- Routes : `/`, `/login`, `/register`
+- Zero vulnerabilities
