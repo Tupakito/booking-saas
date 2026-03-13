@@ -11,11 +11,11 @@ https://rendez-landing-beta.surge.sh
 
 ---
 
-## Confirmation
+## Livrables
 
-[CONFIRMATION-FINALE.md](./CONFIRMATION-FINALE.md)
+[LIVRABLES-COMPLETS.md](./LIVRABLES-COMPLETS.md)
 
 ---
 
-**Action** : [execution-maintenant.md](./execution-maintenant.md)  
-**Tracking** : [tracking-prospection.md](./tracking-prospection.md)
+**Tracking** : [tracking-prospection.md](./tracking-prospection.md)  
+**Action** : [execution-maintenant.md](./execution-maintenant.md)

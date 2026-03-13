@@ -11,9 +11,9 @@ https://rendez-landing-beta.surge.sh
 
 ---
 
-## Confirmation
+## Livrables
 
-[CONFIRMATION-FINALE.md](./CONFIRMATION-FINALE.md)
+[LIVRABLES-COMPLETS.md](./LIVRABLES-COMPLETS.md)
 
 ---
 
