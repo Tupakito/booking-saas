@@ -21,6 +21,6 @@ https://rendez-landing-beta.surge.sh
 
 ---
 
-**Synthèse** : [SYNTHESE-SESSION.md](./SYNTHESE-SESSION.md)  
+**Tracking** : [tracking-prospection.md](./tracking-prospection.md)  
 **Action** : [execution-maintenant.md](./execution-maintenant.md)  
-**Tracking** : [tracking-prospection.md](./tracking-prospection.md)
+**Status** : [TRACKING-STATUS.md](./TRACKING-STATUS.md)
