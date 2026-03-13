@@ -1,65 +1,71 @@
 # Positionnement MVP — Rendez
 
-> **Version** : 1.0.2 — MODE EXÉCUTION  
+> **Version** : 1.0.3 — LANDINGS BACKUP PRÊTES  
 > **Dernière mise à jour** : 2026-03-13  
-> **Statut** : 🚨 EXÉCUTION — Prospection en cours  
-> **Deadline** : Dimanche 15/03 12h
+> **Statut** : 🚀 EXÉCUTION — Prospection + Backups prêts
 
 ---
 
-## 🎯 MODE EXÉCUTION
+## 🎯 Situation
 
-**Stop planification. Start action.**
+**Plan A** : Validation coiffeurs en cours (48h)  
+**Plans B/C** : Landings backup prêtes à déployer  
+**Deadline décision** : Dimanche 15/03 14h
 
 ---
 
-## ⚡ Ce qu'il faut faire MAINTENANT
+## 🎨 Matrice de décision
 
-### Si landing PAS encore déployée :
+| Scénario | Critère | Action | Landing | Statut |
+|----------|---------|--------|---------|--------|
+| **GO** | ≥ 10 emails coiffeurs | Build MVP | [landing-copy.md](./landing-copy.md) | 🟡 En cours |
+| **PIVOT B** | < 10 coiffeurs | Cible garages | [landing-copy-mecaniciens.md](./landing-copy-mecaniciens.md) | ✅ Prête |
+| **PIVOT C** | < 5 mécaniciens | Cible santé | [landing-copy-osteopathes.md](./landing-copy-osteopathes.md) | ✅ Prête |
+
+---
+
+## 🚀 Déploiement rapide (si pivot)
+
+### Plan B — Mécaniciens
 ```bash
-cd landing-page/
-npx vercel --prod
-# OU
-# https://app.netlify.com/drop (glisser dist/)
+cd landing-page-mecaniciens
+npm install && npm run build && npx vercel --prod
+```
+**Temps** : 5 minutes
+
+### Plan C — Ostéopathes
+```bash
+cd landing-page-sante
+npm install && npm run build && npx vercel --prod
+```
+**Temps** : 5 minutes
+
+---
+
+## 📁 Structure repo
+
+```
+booking-saas/
+├── landing-page/              # Plan A — Coiffeurs
+├── landing-page-mecaniciens/  # Plan B — Prêt
+├── landing-page-sante/        # Plan C — Prêt
+└── docs/
+    ├── deployment-backup.md   # Guide déploiement rapide
+    ├── execution-guide.md     # Prospection
+    └── tracking-prospection.md # Suivi
 ```
 
-### Si landing déployée :
-1. **Ouvrir** [docs/execution-guide.md](./execution-guide.md)
-2. **Copier** les templates DM
-3. **Envoyer** 10 DMs dans l'heure
-4. **Tracker** dans [docs/tracking-prospection.md](./tracking-prospection.md)
-
 ---
 
-## 📊 Objectif 48h
-
-| Jour | Action | Cible |
-|------|--------|-------|
-| Ven 13/03 | 20 DMs + 1 post + 3 appels | 4 emails |
-| Sam 14/03 | Relances + 2 posts + 2 appels | 4 emails |
-| Dim 15/03 | Push final | 2 emails |
-| **Total** | | **10 emails** |
-
----
-
-## 🎯 Décision Dimanche 14h
-
-| Emails | Action |
-|--------|--------|
-| ≥ 10 | ✅ GO MVP |
-| 5-9 | 🟡 Relance 24h |
-| < 5 | 🔴 PIVOT |
-
----
-
-## 📞 Ressources exécution
+## 📞 Ressources
 
 | Document | Usage |
 |----------|-------|
-| [execution-guide.md](./execution-guide.md) | Templates + plan jour par jour |
-| [tracking-prospection.md](./tracking-prospection.md) | Tableau de bord temps réel |
-| [prospection-plan.md](./prospection-plan.md) | Stratégie détaillée |
+| [execution-guide.md](./execution-guide.md) | Prospection active |
+| [deployment-backup.md](./deployment-backup.md) | Déploiement pivot |
+| [tracking-prospection.md](./tracking-prospection.md) | Suivi emails |
 
 ---
 
-**ACTION. MAINTENANT.**
+**Landings backup** : ✅ Prêtes à builder (5 min chacune)  
+**Décision** : Dimanche 14h
