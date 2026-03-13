@@ -11,16 +11,11 @@ https://rendez-landing-beta.surge.sh
 
 ---
 
-## Landings
+## Confirmation
 
-| Cible | Statut |
-|-------|--------|
-| Coiffeurs | ✅ LIVE |
-| Mécaniciens | ✅ Backup |
-| Ostéopathes | ✅ Backup |
+[CONFIRMATION-FINALE.md](./CONFIRMATION-FINALE.md)
 
 ---
 
-**Tracking** : [tracking-prospection.md](./tracking-prospection.md)  
 **Action** : [execution-maintenant.md](./execution-maintenant.md)  
-**Status** : [TRACKING-STATUS.md](./TRACKING-STATUS.md)
+**Tracking** : [tracking-prospection.md](./tracking-prospection.md)

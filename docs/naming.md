@@ -11,13 +11,9 @@ https://rendez-landing-beta.surge.sh
 
 ---
 
-## Cibles
+## Confirmation
 
-| Cible | Statut |
-|-------|--------|
-| Coiffeurs | ✅ LIVE |
-| Mécaniciens | ✅ Backup |
-| Ostéopathes | ✅ Backup |
+[CONFIRMATION-FINALE.md](./CONFIRMATION-FINALE.md)
 
 ---
 
