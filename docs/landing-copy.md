@@ -11,10 +11,10 @@ https://rendez-landing-beta.surge.sh
 
 ---
 
-## README
+## Check-in J1
 
-[CONFIRMATION-README.md](./CONFIRMATION-README.md)
+[CONFIRMATION-CHECKIN-J1.md](./CONFIRMATION-CHECKIN-J1.md)
 
 ---
 
-**Build Mode** : Mardi 17/03 20h
+**Vendredi 20h** — 7 objectifs Auth
