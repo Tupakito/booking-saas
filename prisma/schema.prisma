@@ -1,6 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -11,7 +8,7 @@ datasource db {
 }
 
 // ============================================
-// AUTH & USERS
+// AUTH & USERS (NextAuth.js)
 // ============================================
 
 model Account {
@@ -62,7 +59,6 @@ model User {
   createdAt     DateTime  @default(now()) @map("created_at")
   updatedAt     DateTime  @updatedAt @map("updated_at")
 
-  // Relations
   accounts  Account[]
   sessions  Session[]
   business  Business?
@@ -77,28 +73,25 @@ model User {
 model Business {
   id                String   @id @default(cuid())
   userId            String   @unique @map("user_id")
-  slug              String   @unique // URL publique: rendez.co/[slug]
-  name              String // Nom affiché publiquement
+  slug              String   @unique
+  name              String
   description       String?  @db.Text
   phone             String?
   address           String?
   city              String?
   zipCode           String?  @map("zip_code")
-  country           String   @default("FR")
   logoUrl           String?  @map("logo_url")
   isActive          Boolean  @default(true) @map("is_active")
-  stripeAccountId   String?  @unique @map("stripe_account_id") // S2: Connect account
-  stripeOnboarding  Boolean  @default(false) @map("stripe_onboarding") // S1: lien généré
+  stripeAccountId   String?  @unique @map("stripe_account_id")
+  stripeOnboarding  Boolean  @default(false) @map("stripe_onboarding")
   createdAt         DateTime @default(now()) @map("created_at")
   updatedAt         DateTime @updatedAt @map("updated_at")
 
-  // Relations
   user     User      @relation(fields: [userId], references: [id], onDelete: Cascade)
   services Service[]
   bookings Booking[]
 
   @@index([slug])
-  @@index([isActive])
   @@map("businesses")
 }
 
@@ -109,23 +102,21 @@ model Business {
 model Service {
   id          String   @id @default(cuid())
   businessId  String   @map("business_id")
-  name        String // Ex: "Coupe homme"
+  name        String
   description String?  @db.Text
-  duration    Int // Durée en minutes (ex: 30)
-  price       Int // Prix en centimes (ex: 2500 = 25€)
+  duration    Int
+  price       Int
   currency    String   @default("EUR")
-  color       String?  // Couleur pour le calendrier (hex)
+  color       String?
   isActive    Boolean  @default(true) @map("is_active")
   createdAt   DateTime @default(now()) @map("created_at")
   updatedAt   DateTime @updatedAt @map("updated_at")
 
-  // Relations
   business Business @relation(fields: [businessId], references: [id], onDelete: Cascade)
   slots    Slot[]
   bookings Booking[]
 
   @@index([businessId])
-  @@index([isActive])
   @@map("services")
 }
 
@@ -133,21 +124,16 @@ model Service {
 // SLOTS (Disponibilités récurrentes)
 // ============================================
 
-// Définit les créneaux récurrents par service
-// Ex: Lundi 9h-12h et 14h-18h pour "Coupe homme"
-
 model Slot {
   id        String @id @default(cuid())
   serviceId String @map("service_id")
-  dayOfWeek Int    @map("day_of_week") // 0 = Dimanche, 1 = Lundi, ..., 6 = Samedi
-  startTime String @map("start_time") // Format "HH:MM" (ex: "09:00")
-  endTime   String @map("end_time") // Format "HH:MM" (ex: "12:00")
+  dayOfWeek Int    @map("day_of_week")
+  startTime String @map("start_time")
+  endTime   String @map("end_time")
 
-  // Relations
   service Service @relation(fields: [serviceId], references: [id], onDelete: Cascade)
 
   @@index([serviceId])
-  @@index([dayOfWeek])
   @@map("slots")
 }
 
@@ -162,25 +148,19 @@ model Booking {
   customerName  String        @map("customer_name")
   customerEmail String        @map("customer_email")
   customerPhone String?       @map("customer_phone")
-  startTime     DateTime      @map("start_time") // Date + heure début
-  endTime       DateTime      @map("end_time") // Date + heure fin (calculé)
+  startTime     DateTime      @map("start_time")
+  endTime       DateTime      @map("end_time")
   status        BookingStatus @default(CONFIRMED)
-  notes         String?       @db.Text // Notes du client
-  // S2: Paiement
+  notes         String?       @db.Text
   paymentStatus PaymentStatus @default(PENDING) @map("payment_status")
-  stripePaymentIntentId String? @map("stripe_payment_intent_id")
-  amountPaid    Int?          @map("amount_paid") // En centimes
   createdAt     DateTime      @default(now()) @map("created_at")
   updatedAt     DateTime      @updatedAt @map("updated_at")
 
-  // Relations
   business Business @relation(fields: [businessId], references: [id], onDelete: Cascade)
   service  Service  @relation(fields: [serviceId], references: [id], onDelete: Cascade)
 
   @@index([businessId])
-  @@index([serviceId])
   @@index([startTime])
-  @@index([status])
   @@map("bookings")
 }
 
@@ -191,8 +171,8 @@ enum BookingStatus {
 }
 
 enum PaymentStatus {
-  PENDING // S1: Toujours pending (mode démo)
-  PAID // S2: Après confirmation Stripe
+  PENDING
+  PAID
   REFUNDED
   FAILED
 }
