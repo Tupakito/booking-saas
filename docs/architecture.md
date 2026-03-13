@@ -1,21 +1,17 @@
 # Architecture Technique
 
-## Overview
-
-Booking SaaS est une application monolithique full-stack construite avec Next.js 15.
-
 ## Stack
 
 | Technologie | Version | Usage |
 |-------------|---------|-------|
-| Next.js | 15.5 | Framework React (App Router) |
+| Next.js | 15.3.6 | Framework React (App Router) |
 | TypeScript | 5.x | Typage strict |
-| Tailwind CSS | 3.4 | Styling utilitaire |
+| Tailwind CSS | 3.4.17 | Styling utilitaire |
 | Prisma | 6.5 | ORM base de données |
 | Auth.js | 5.0 | Authentification |
 | PostgreSQL | - | Base de données |
 
-## Architecture des dossiers
+## Structure des dossiers
 
 ```
 src/
@@ -25,11 +21,11 @@ src/
 │   ├── layout.tsx          # Root layout
 │   ├── page.tsx            # Landing page
 │   └── globals.css         # Styles globaux
-├── components/             # Composants React
+├── components/             # Composants React réutilisables
 └── lib/
     ├── prisma.ts           # Client Prisma singleton
     ├── auth.ts             # Config NextAuth (placeholder)
-    └── utils.ts            # Fonctions utilitaires (cn, etc.)
+    └── utils.ts            # Fonctions utilitaires
 
 prisma/
 └── schema.prisma           # Schéma DB complet
@@ -58,8 +54,9 @@ User 1-->* Booking
 | Availability | Créneaux disponibles |
 | Booking | Réservation |
 
-## Build
+## Build & Déploiement
 
-✅ **Build production fonctionnel** - Testé avec `next build`
+✅ **Build production fonctionnel**
 - Routes statiques générées : `/`, `/login`, `/register`
 - Zero vulnerability (npm audit)
+- TypedRoutes activé

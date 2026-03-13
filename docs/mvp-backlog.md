@@ -1,12 +1,14 @@
 # MVP Backlog
 
-## Sprint 1 : Fondations ✅ EN COURS
+## Sprint 1 : Fondations ✅
 
 - [x] Initialiser le repo Next.js + TypeScript + Tailwind
-- [x] Installer les dépendances (next, react, typescript, tailwind, @types/*)
+- [x] Créer la structure src/app/
+- [x] Configurer tsconfig.json, tailwind.config.ts, next.config.ts
+- [x] Installer dépendances (next, react, typescript, tailwind, @types/*)
 - [x] Créer les pages login/register (UI)
-- [ ] Setup Prisma avec schema complet
-- [ ] Implémenter NextAuth v5 (login/register fonctionnels)
+- [ ] Setup Prisma avec migrations
+- [ ] Implémenter NextAuth v5 (fonctionnel)
 
 ## Sprint 2 : Dashboard Business
 
@@ -25,14 +27,13 @@
 ## Sprint 4 : Polish & Paiement
 
 - [ ] Design system cohérent
-- [ ] Intégration Stripe (paiement à la réservation)
+- [ ] Intégration Stripe
 - [ ] Page de confirmation réservation
 - [ ] Export données (CSV)
 
 ## Nice to have (post-MVP)
 
-- [ ] Calendrier interactif (vue semaine/mois)
+- [ ] Calendrier interactif
 - [ ] Rappels SMS
 - [ ] Application mobile
 - [ ] Multi-employés par business
-- [ ] Analytics avancées
