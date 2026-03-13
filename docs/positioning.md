@@ -1,55 +1,60 @@
 # Positionnement MVP — Rendez
 
-> **Version** : 1.0.5 — LANDING LIVE ✅  
+> **Version** : 1.0.6 — TRACKING PRÊT  
 > **Heure** : 2026-03-13 02:15 UTC  
 > **URL** : https://rendez-landing-beta.surge.sh  
-> **Statut** : 🚀 PROSPECTION EN COURS  
+> **Statut** : 🚀 PROSPECTION + TRACKING EN COURS  
 > **Deadline** : Dimanche 15/03 12h
 
 ---
 
-## ✅ LANDING DÉPLOYÉE
+## ✅ INFRASTRUCTURE COMPLÈTE
 
-**URL** : https://rendez-landing-beta.surge.sh  
-**Formulaire** : Formspree (xnqevwdr) — Testé ✅  
-**Status** : LIVE et fonctionnel
+| Élément | Statut | Lien/Fichier |
+|---------|--------|--------------|
+| **Landing** | ✅ LIVE | https://rendez-landing-beta.surge.sh |
+| **Formulaire** | ✅ Testé | Formspree xnqevwdr |
+| **Tracking** | ✅ Prêt | [tracking-prospection.md](./tracking-prospection.md) |
+| **Templates** | ✅ Prêts | [execution-immediate.md](./execution-immediate.md) |
+| **Rapports** | ⏳ En attente | Vendredi 20h + Dimanche 12h |
 
 ---
 
 ## 🎯 OBJECTIF : 10 PRÉ-INSCRIPTIONS
 
-| Jour | Action | Cible |
-|------|--------|-------|
-| Ven 13/03 | 20 DMs + 2 posts + 5 appels | 4 emails |
-| Sam 14/03 | Relances + 1 post + 2 appels | 4 emails |
-| Dim 15/03 | Push final | 2 emails |
-| **Total** | | **10 emails** |
+**Progression** : 0 / 10 (0%)
+
+**Timeline** :
+- Ven 13/03 : 4 emails
+- Sam 14/03 : 4 emails  
+- Dim 15/03 : 2 emails
 
 ---
 
-## 🚀 PROSPECTION — ACTION MAINTENANT
+## 📊 RAPPORTS À PRODUIRE
 
-**Guide** : [execution-immediate.md](./execution-immediate.md)
-
-**Templates prêts** : Copier-coller et envoyer
-
-**Tracking** : [tracking-prospection.md](./tracking-prospection.md)
-
----
-
-## 📊 Dashboard
-
-**Formspree** : https://formspree.io/forms/xnqevwdr/submissions
+| Rapport | Date | Heure | Document |
+|---------|------|-------|----------|
+| Intermédiaire J1 | Ven 13/03 | 20h | [tracking-prospection.md](./tracking-prospection.md) |
+| Final | Dim 15/03 | 12h | [tracking-prospection.md](./tracking-prospection.md) |
+| Décision | Dim 15/03 | 14h | Chief-agent |
 
 ---
 
-## 🎨 Plans backup (si besoin)
+## 📋 TRACKING EN TEMPS RÉEL
 
-| Plan | Cible | Dossier | Commande |
-|------|-------|---------|----------|
-| B | Mécaniciens | `landing-page-mecaniciens/` | `npm install && npm run build && npx vercel --prod` |
-| C | Ostéopathes | `landing-page-sante/` | `npm install && npm run build && npx vercel --prod` |
+**Tableau** : [tracking-prospection.md](./tracking-prospection.md)
+
+**Dashboard** : https://formspree.io/forms/xnqevwdr/submissions
 
 ---
 
-**✅ LANDING LIVE — LANCER LA PROSPECTION**
+## 🚀 ACTION IMMÉDIATE
+
+1. **Prospection** : [execution-immediate.md](./execution-immediate.md)
+2. **Tracker** : [tracking-prospection.md](./tracking-prospection.md)
+3. **Rapport** : Vendredi 20h
+
+---
+
+**✅ TOUT EST PRÊT — EXÉCUTER ET TRACKER**
