@@ -11,10 +11,11 @@ https://rendez-landing-beta.surge.sh
 
 ---
 
-## Réunion #66
+## Build Mode
 
-[SYNTHESE-REUNION-66.md](./SYNTHESE-REUNION-66.md)
+[SYNTHESE-REUNION-69.md](./SYNTHESE-REUNION-69.md)
 
 ---
 
-**Plans B** : [nouveau-projet-brief.md](./nouveau-projet-brief.md)
+**MVP** : Mardi 17/03 20h  
+**Règle** : Code > Doc, Fonctionnel > Parfait, Ship > Attendre
