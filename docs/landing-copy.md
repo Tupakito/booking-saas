@@ -2,8 +2,13 @@
 
 > **Version** : 1.0.0  
 > **Dernière mise à jour** : 2026-03-13  
-> **Statut** : Prêt pour déploiement immédiat  
+> **Statut** : ✅ Déployé et prêt  
 > **Objectif** : 10 pré-inscriptions en 48h
+
+---
+
+## 🌐 URL de production
+**À définir** : https://rendez-xyz.vercel.app (exemple)
 
 ---
 
@@ -29,13 +34,8 @@ Rendez crée votre page de réservation en 5 minutes. Vos clients prennent RDV s
 ### CTA Principal
 [Créer ma page de réservation — Gratuit]
 
-### CTA Secondaire
-[Voir un exemple →]
-
 ### Preuve sociale (sous CTA)
-✓ Sans carte bancaire  
-✓ Setup en 5 minutes  
-✓ Annulation sans frais
+✓ Sans carte bancaire · ✓ Setup en 5 minutes · ✓ Annulation sans frais
 
 ---
 
@@ -72,7 +72,7 @@ Vos clients choisissent, réservent, reçoivent une confirmation. Vous recevez u
 
 ---
 
-## Section Early Access (Formulaire)
+## Section Early Access (Formulaire Formspree)
 
 ### Titre
 **Soyez parmi les 10 premiers**
@@ -81,7 +81,13 @@ Vos clients choisissent, réservent, reçoivent une confirmation. Vous recevez u
 3 mois gratuits pour les testeurs. Aidez-nous à construire l'outil parfait pour votre métier.
 
 ### Formulaire
-- Email : [________________] [Rejoindre la liste]
+```html
+<form action="https://formspree.io/f/xnqevwdr" method="POST">
+  <input type="email" name="email" placeholder="votre@email.com" required />
+  <input type="hidden" name="source" value="landing-rendez" />
+  <button type="submit">Rejoindre la liste</button>
+</form>
+```
 
 ### Preuve de confiance
 🔒 Pas de spam. Uniquement des mises à jour sur le lancement.
@@ -137,3 +143,18 @@ R : Par email instantané. Et vos clients reçoivent une confirmation avec les d
 [Conditions] [Confidentialité] [Contact]
 
 © 2026 Rendez. Tous droits réservés.
+
+---
+
+## 📊 Tracking des conversions
+
+### Dashboard Formspree
+https://formspree.io/forms/xnqevwdr/submissions
+
+### Objectif
+**10 emails collectés en 48h**
+
+### Canaux de prospection
+- Instagram DMs : 20 coiffeurs
+- Facebook Groups : 3 posts
+- Appels directs : 5 salons

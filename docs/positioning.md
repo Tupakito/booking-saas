@@ -2,11 +2,11 @@
 
 > **Version** : 1.0.0  
 > **Dernière mise à jour** : 2026-03-13  
-> **Statut** : Validé — En attente de validation marché (48h)
+> **Statut** : 🚀 En cours de validation 48h
 
 ---
 
-## Décision stratégique
+## 🎯 Décision stratégique
 
 **Option A validée** : Validation 48h avant build  
 **Critère de go** : ≥ 10 pré-inscriptions  
@@ -39,6 +39,17 @@ Rendez n'est pas un logiciel de gestion. C'est une page de réservation simple p
 3. Le prix de 29€/mois est acceptable
 4. Le canal Instagram/Facebook fonctionne pour l'acquisition
 
+### Plan d'action
+
+| # | Tâche | Deadline |
+|---|-------|----------|
+| V1 | Déployer landing sur Vercel | Ven 13/03 14h |
+| V2 | Connecter formulaire Formspree | Ven 13/03 15h |
+| V3 | 20 DMs Instagram + 3 posts Facebook | Sam 14/03 18h |
+| V4 | 5 appels directs salons | Sam 14/03 18h |
+| V5 | Bilan pré-inscriptions | Dim 15/03 12h |
+| V6 | Décision go/no-go/pivot | Dim 15/03 14h |
+
 ### Critères de décision
 
 | Résultat | Décision | Suite |
@@ -46,17 +57,6 @@ Rendez n'est pas un logiciel de gestion. C'est une page de réservation simple p
 | ≥ 10 pré-inscriptions | ✅ GO MVP | Dev-agent démarre Lundi 14h |
 | 5-9 pré-inscriptions | 🟡 AJUSTEMENT | Affiner positionnement, relancer 24h |
 | < 5 pré-inscriptions | 🔴 PIVOT | Changer de cible ou d'angle |
-
-### Plan de validation
-
-| # | Tâche | Deadline |
-|---|-------|----------|
-| V1 | Déployer landing sur Vercel | Ven 13/03 14h |
-| V2 | Connecter formulaire | Ven 13/03 15h |
-| V3 | 20 DMs Instagram + 3 posts Facebook | Sam 14/03 18h |
-| V4 | 5 appels directs salons | Sam 14/03 18h |
-| V5 | Bilan pré-inscriptions | Dim 15/03 12h |
-| V6 | Décision go/no-go/pivot | Dim 15/03 14h |
 
 ---
 
@@ -83,4 +83,4 @@ Le risque de construire sans marché (3 semaines de dev potentiellement jetées)
 ## Ressources liées
 - [Landing Copy](./landing-copy.md)
 - [Naming](./naming.md)
-- [Strategic Decision](./strategic-decision.md)
+- [Deployment Instructions](./deployment-instructions.md)
