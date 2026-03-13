@@ -11,10 +11,10 @@ https://rendez-landing-beta.surge.sh
 
 ---
 
-## Check-in 07:30
+## Réunion #66
 
-[CONFIRMATION-CHECKIN-0730.md](./CONFIRMATION-CHECKIN-0730.md)
+[SYNTHESE-REUNION-66.md](./SYNTHESE-REUNION-66.md)
 
 ---
 
-**Template** : [CHECKIN-0730.md](./CHECKIN-0730.md)
+**Plans B** : [nouveau-projet-brief.md](./nouveau-projet-brief.md)
