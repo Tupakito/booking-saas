@@ -1,89 +1,65 @@
 # Positionnement MVP — Rendez
 
-> **Version** : 1.0.1  
+> **Version** : 1.0.2 — MODE EXÉCUTION  
 > **Dernière mise à jour** : 2026-03-13  
-> **Statut** : 🚨 EN COURS — Déploiement + Prospection
+> **Statut** : 🚨 EXÉCUTION — Prospection en cours  
+> **Deadline** : Dimanche 15/03 12h
 
 ---
 
-## 🎯 Situation actuelle
+## 🎯 MODE EXÉCUTION
 
-**Phase** : Validation 48h en cours  
-**Deadline** : Dimanche 15/03 12h (bilan) / 14h (décision)  
-**Objectif** : 10 pré-inscriptions
-
-### Statut immédiat
-
-| Élément | Statut | Action requise |
-|---------|--------|----------------|
-| Landing page | ✅ Build prêt | Déploiement Vercel/Netlify |
-| Formulaire | ✅ Formspree configuré | Test après déploiement |
-| Prospection | 🔴 Pas commencée | Lancer IMMÉDIATEMENT |
-| Tracking | ✅ Tableau prêt | [tracking-prospection.md](./tracking-prospection.md) |
+**Stop planification. Start action.**
 
 ---
 
-## 🚀 Plan d'action immédiat (Vendredi 13/03)
+## ⚡ Ce qu'il faut faire MAINTENANT
 
-### 14h — Déploiement (15 min)
-Option A : Vercel
+### Si landing PAS encore déployée :
 ```bash
 cd landing-page/
-npx vercel login
 npx vercel --prod
+# OU
+# https://app.netlify.com/drop (glisser dist/)
 ```
 
-Option B : Netlify Drop (plus rapide)
-- Aller sur https://app.netlify.com/drop
-- Glisser-déposer le dossier `landing-page/dist/`
-- Récupérer l'URL (ex: rendez-landing-abc123.netlify.app)
-
-### 14h15 — Test (5 min)
-- [ ] Landing accessible
-- [ ] Formulaire fonctionnel
-- [ ] Email reçu sur Formspree
-
-### 15h — Lancement prospection (3h)
-- [ ] 10 DMs Instagram (coiffeurs Lyon/Marseille)
-- [ ] 1 post Facebook groupes coiffeurs
-- [ ] 3 appels salons locaux
-
-### 20h — Premier bilan
-- Combien d'emails collectés ?
-- Quels feedbacks reçus ?
+### Si landing déployée :
+1. **Ouvrir** [docs/execution-guide.md](./execution-guide.md)
+2. **Copier** les templates DM
+3. **Envoyer** 10 DMs dans l'heure
+4. **Tracker** dans [docs/tracking-prospection.md](./tracking-prospection.md)
 
 ---
 
-## 🎨 Plan de pivot (si besoin Dimanche)
+## 📊 Objectif 48h
 
-| Scénario | Critère | Action | Landing prête |
-|----------|---------|--------|---------------|
-| **GO beauté** | ≥ 10 pré-inscriptions | Build MVP | ✅ |
-| **PIVOT mécaniciens** | < 10 beauté | Nouvelle cible | ✅ [landing-copy-mecaniciens.md](./landing-copy-mecaniciens.md) |
-| **PIVOT ostéopathes** | < 5 mécaniciens | Santé | ✅ [landing-copy-osteopathes.md](./landing-copy-osteopathes.md) |
-
----
-
-## 📊 North Star Metric
-**"RDV pris via la plateforme"** — mais d'abord : **10 emails collectés**
+| Jour | Action | Cible |
+|------|--------|-------|
+| Ven 13/03 | 20 DMs + 1 post + 3 appels | 4 emails |
+| Sam 14/03 | Relances + 2 posts + 2 appels | 4 emails |
+| Dim 15/03 | Push final | 2 emails |
+| **Total** | | **10 emails** |
 
 ---
 
-## 📞 Contacts et ressources
+## 🎯 Décision Dimanche 14h
 
-### Dashboard
-- **Formspree** : https://formspree.io/forms/xnqevwdr/submissions
-- **Tracking** : [tracking-prospection.md](./tracking-prospection.md)
-
-### Templates prospection
-- [Prospection Plan](./prospection-plan.md)
-
-### Landings
-- [Coiffeurs](./landing-copy.md)
-- [Mécaniciens](./landing-copy-mecaniciens.md)
-- [Ostéopathes](./landing-copy-osteopathes.md)
+| Emails | Action |
+|--------|--------|
+| ≥ 10 | ✅ GO MVP |
+| 5-9 | 🟡 Relance 24h |
+| < 5 | 🔴 PIVOT |
 
 ---
 
-**⚠️ URGENCE** : Chaque heure perdue = -2% de chances d'atteindre 10 pré-inscriptions.  
-**Action immédiate** : Déployer maintenant, prospection dans l'heure qui suit.
+## 📞 Ressources exécution
+
+| Document | Usage |
+|----------|-------|
+| [execution-guide.md](./execution-guide.md) | Templates + plan jour par jour |
+| [tracking-prospection.md](./tracking-prospection.md) | Tableau de bord temps réel |
+| [prospection-plan.md](./prospection-plan.md) | Stratégie détaillée |
+
+---
+
+**ACTION. MAINTENANT.**
