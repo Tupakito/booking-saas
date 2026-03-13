@@ -1,195 +1,189 @@
 # MVP Backlog — Rendez
 
-> **Version**: 2.2.0 | **Dernière mise à jour**: 13/03/2024 | **Statut**: ⏸️ Phase validation
+> **Version**: 2.3.0 | **Date**: 13/03/2024 | **Statut**: ⏸️ Attente décision #55
 
 ---
 
-## 🎯 Vue d'ensemble
+## 🎯 Contexte
 
-| Phase | Durée | Objectif | Statut |
-|-------|-------|----------|--------|
-| **Phase 1** | 48h | Valider le marché (10 pré-inscriptions) | 🔥 En cours |
-| **Phase 2** | 5 jours | Builder le MVP (selon scénario retenu) | ⏸️ En attente |
-| **Phase 3** | 3 jours | Polish + démo + premier client | ⏸️ Planifié |
+Suite à la décision #55, le projet est en **stand-by technique** jusqu'à Dimanche 15/03 14h.
 
-**Date clé**: Dimanche 15/03 14h — Décision GO / PIVOT
+- **Phase 1** (en cours): Validation 48h — Growth-agent prospecte
+- **Phase 2** (conditionnelle): Build MVP — 5 jours si GO
+- **Décision**: Dimanche 14h selon nombre d'emails collectés
 
 ---
 
 ## Phase 1: Validation (48h) — 🔥 EN COURS
 
-### Objectif
-Collecter **≥ 10 pré-inscriptions** de coiffeurs/artisans beauté.
-
-### Tâches
-
 | ID | Tâche | Assigné | Priorité | Deadline | Statut |
 |----|-------|---------|----------|----------|--------|
-| V1 | Déployer landing beauté sur Vercel | growth-agent | P0 | Ven 13/03 14h | ⏳ |
-| V2 | Configurer formulaire (Formspree/Resend) | growth-agent | P0 | Ven 13/03 15h | ⏳ |
-| V3 | 20 DMs Instagram ciblés | growth-agent | P0 | Sam 14/03 18h | ⏳ |
-| V4 | 3 posts Facebook groupes coiffeurs | growth-agent | P0 | Sam 14/03 18h | ⏳ |
-| V5 | 5 appels directs salons | growth-agent | P1 | Sam 14/03 18h | ⏳ |
-| V6 | Préparer landing backup mécaniciens | growth-agent | P1 | Dim 15/03 12h | ⏳ |
-| V7 | Préparer landing backup ostéopathes | growth-agent | P1 | Dim 15/03 12h | ⏳ |
-| V8 | Bilan pré-inscriptions | growth-agent | P0 | Dim 15/03 12h | ⏳ |
-| V9 | **Décision go/no-go/pivot** | chief-agent | P0 | Dim 15/03 14h | ⏳ |
-
-### Definition of Done Phase 1
-- [ ] Landing en ligne avec formulaire fonctionnel
-- [ ] ≥ 10 emails collectés OU données de rejet claires
-- [ ] Feedback qualitatif de 3+ prospects
-- [ ] Landings backup prêtes (mécaniciens, ostéopathes)
+| V1 | Déployer landing beauté | growth-agent | P0 | Ven 13/03 14h | ⏳ |
+| V2 | Configurer Formspree/Resend | growth-agent | P0 | Ven 13/03 15h | ⏳ |
+| V3 | 20 DMs Instagram | growth-agent | P0 | Sam 14/03 18h | ⏳ |
+| V4 | 3 posts Facebook | growth-agent | P0 | Sam 14/03 18h | ⏳ |
+| V5 | 5 appels directs | growth-agent | P1 | Sam 14/03 18h | ⏳ |
+| V6 | Landing backup mécaniciens | growth-agent | P1 | Dim 15/03 12h | ⏳ |
+| V7 | Landing backup ostéopathes | growth-agent | P1 | Dim 15/03 12h | ⏳ |
+| V8 | **Bilan emails** | growth-agent | P0 | Dim 15/03 12h | ⏳ |
+| V9 | **Décision GO/PIVOT** | chief-agent | P0 | Dim 15/03 14h | ⏳ |
 
 ---
 
-## Phase 2: Build MVP (5 jours) — ⏸️ EN ATTENTE
+## Phase 2: Build MVP (5 jours) — ⏸️ CONDITIONNEL
 
-**Démarrage**: Lundi 16/03 14h (si GO)  
-**Deadline**: Vendredi 20/03 18h
+**Condition**: ≥ 10 emails collectés  
+**Démarrage**: Lun 16/03 14h (si GO)  
+**Deadline**: Ven 20/03 18h
 
-### Scénario A: GO Beauté (70% probabilité)
+### Sprint Planning
 
-#### Sprint Backlog
+| Jour | Date | Feature | Stories | DoD |
+|------|------|---------|---------|-----|
+| J1 | Lun 16/03 | Auth | S1.1-S1.5 | Login/register OK |
+| J2 | Mar 17/03 | Services | S2.1-S2.5 | CRUD prestations |
+| J3 | Mer 18/03 | Slots | S3.1-S3.4 | Disponibilités |
+| J4 | Jeu 19/03 | Page publique | S4.1-S4.6 | `/[slug]` calendrier |
+| J5 | Ven 20/03 | Dashboard + Emails | S5.1-S5.5, S6.1-S6.2 | Vue pro, notifs |
 
-| ID | Feature | Priorité | Estimation | Dépendances | Assigné |
-|----|---------|----------|------------|-------------|---------|
-| **S1** | **Auth complète** | P0 | 1j | - | dev-agent |
-| S1.1 | Config NextAuth v5 + Prisma adapter | P0 | 2h | - | dev-agent |
-| S1.2 | Page /login (email + Google) | P0 | 2h | S1.1 | dev-agent |
-| S1.3 | Page /register (2 étapes: compte + business) | P0 | 2h | S1.1 | dev-agent |
-| S1.4 | Middleware protection /app/* | P0 | 1h | S1.1 | dev-agent |
-| S1.5 | API /register | P0 | 1h | S1.1 | dev-agent |
-| **S2** | **CRUD Services** | P0 | 1j | S1 | dev-agent |
-| S2.1 | Schema Zod service | P0 | 1h | - | dev-agent |
-| S2.2 | Server Actions (create, update, delete) | P0 | 2h | S2.1 | dev-agent |
-| S2.3 | Page /app/services (liste) | P0 | 2h | S2.2 | dev-agent |
-| S2.4 | Page /app/services/new (création) | P0 | 2h | S2.2 | dev-agent |
-| S2.5 | Page /app/services/[id] (édition) | P0 | 2h | S2.2 | dev-agent |
-| **S3** | **Gestion Disponibilités** | P0 | 1j | S2 | dev-agent |
-| S3.1 | Schema Zod slots | P0 | 1h | - | dev-agent |
-| S3.2 | Server Actions slots | P0 | 2h | S3.1 | dev-agent |
-| S3.3 | Composant UI semaine type | P0 | 3h | S3.2 | dev-agent |
-| S3.4 | Intégration page service | P0 | 2h | S3.3 | dev-agent |
-| **S4** | **Page Publique** | P0 | 1.5j | S3 | dev-agent |
-| S4.1 | Route /[slug] dynamique | P0 | 2h | - | dev-agent |
-| S4.2 | Affichage services actifs | P0 | 2h | S4.1 | dev-agent |
-| S4.3 | Fonction génération créneaux | P0 | 4h | S4.2 | dev-agent |
-| S4.4 | Calendrier + sélection créneau | P0 | 4h | S4.3 | dev-agent |
-| S4.5 | Formulaire réservation (nom, email, téléphone) | P0 | 2h | S4.4 | dev-agent |
-| S4.6 | Création booking (mode démo S1) | P0 | 2h | S4.5 | dev-agent |
-| **S5** | **Dashboard + Emails** | P1 | 1j | S4 | dev-agent |
-| S5.1 | Page /app/dashboard (stats + prochains RDV) | P1 | 3h | S4.6 | dev-agent |
-| S5.2 | Page /app/calendar (vue calendrier) | P1 | 3h | S4.6 | dev-agent |
-| S5.3 | Config Resend | P1 | 1h | - | dev-agent |
-| S5.4 | Template email confirmation | P1 | 2h | S5.3 | dev-agent |
-| S5.5 | Envoi automatique post-booking | P1 | 2h | S5.4 | dev-agent |
-| **S6** | **Stripe Connect** | P2 | 0.5j | S5 | dev-agent |
-| S6.1 | Lien onboarding Stripe | P2 | 2h | - | dev-agent |
-| S6.2 | Stockage stripeAccountId | P2 | 1h | S6.1 | dev-agent |
+### Stories détaillées
 
-### Planning Journalier
+#### S1 — Auth (1 jour)
 
-| Jour | Date | Focus | Livrables clés |
-|------|------|-------|----------------|
-| J1 | Lun 16/03 | Auth | Login, register, middleware OK |
-| J2 | Mar 17/03 | Services | CRUD prestations fonctionnel |
-| J3 | Mer 18/03 | Disponibilités | UI créneaux récurrents |
-| J4 | Jeu 19/03 | Page publique | `/[slug]` avec calendrier |
-| J5 | Ven 20/03 | Dashboard + Emails | Vue pro, notifications |
+| ID | Story | Points | Critères d'acceptation |
+|----|-------|--------|------------------------|
+| S1.1 | Config NextAuth v5 | 2 | Prisma adapter, JWT, providers |
+| S1.2 | Page /login | 2 | Email + Google, design responsive |
+| S1.3 | Page /register | 2 | 2 étapes: compte + business |
+| S1.4 | Middleware auth | 1 | Protection /app/*, redirect login |
+| S1.5 | API /register | 1 | Hash password, création business |
+
+**DoD S1**: Un utilisateur peut s'inscrire et se connecter
 
 ---
 
-### Scénario B: PIVOT Mécaniciens (20% probabilité)
+#### S2 — Services (1 jour)
 
-**Adaptations par rapport au scénario A:**
+| ID | Story | Points | Critères d'acceptation |
+|----|-------|--------|------------------------|
+| S2.1 | Schema Zod service | 1 | Validation nom, durée, prix |
+| S2.2 | Server Actions services | 2 | Create, update, delete |
+| S2.3 | Liste services | 2 | Table avec statut, actions |
+| S2.4 | Création service | 2 | Formulaire avec validation |
+| S2.5 | Édition service | 2 | Pré-remplissage, update |
 
-| Feature | Modification | Impact |
-|---------|--------------|--------|
-| Landing | Copy "devis en ligne" | 2h |
-| Service.price | "À partir de" ou 0 | 1h |
-| Booking.notes | Immatriculation + km | 1h |
-| Page publique | Option "demande de devis" | 4h |
-| Table Quote | (Option S2, pas S1) | - |
-
-**Planning**: Identique + 0.5j si features devis S1
+**DoD S2**: Un pro peut gérer ses prestations
 
 ---
 
-### Scénario C: PIVOT Ostéopathes (10% probabilité)
+#### S3 — Disponibilités (1 jour)
 
-**Adaptations**: Aucune ! 100% compatible.
+| ID | Story | Points | Critères d'acceptation |
+|----|-------|--------|------------------------|
+| S3.1 | Schema Zod slots | 1 | Jour, heure début/fin |
+| S3.2 | Server Actions slots | 2 | CRUD créneaux |
+| S3.3 | UI semaine type | 3 | Sélection jours, plages horaires |
+| S3.4 | Intégration service | 2 | Affichage, sauvegarde |
 
-| Composant | Statut |
-|-----------|--------|
-| Schema Prisma | ✅ Identique |
-| Auth | ✅ Identique |
-| Services | ✅ Identique |
-| Slots | ✅ Identique |
-| Bookings | ✅ Identique |
-| Emails | ✅ Identique |
-| Dashboard | ✅ Identique |
-
-**Planning**: Identique scénario A
+**DoD S3**: Un pro peut définir ses disponibilités hebdomadaires
 
 ---
 
-## Phase 3: Polish & Lancement (3 jours) — ⏸️ PLANIFIÉ
+#### S4 — Page Publique (1.5 jour)
 
-**Semaine du 23/03** (si démo positive)
+| ID | Story | Points | Critères d'acceptation |
+|----|-------|--------|------------------------|
+| S4.1 | Route /[slug] | 2 | Résolution business, 404 si inconnu |
+| S4.2 | Affichage services | 2 | Cards avec prix, durée |
+| S4.3 | Génération créneaux | 4 | Calcul slots libres, conflits |
+| S4.4 | Calendrier client | 4 | Vue mois/semaine, sélection |
+| S4.5 | Formulaire réservation | 2 | Nom, email, téléphone |
+| S4.6 | Création booking | 2 | Validation, email confirmation |
 
-| ID | Tâche | Priorité | Description |
-|----|-------|----------|-------------|
-| P1 | Tests E2E | P0 | Flow complet inscription → réservation |
-| P2 | Responsive | P0 | Mobile-first validation |
-| P3 | Performance | P1 | Lighthouse > 90 |
-| P4 | Onboarding first user | P0 | Accompagner 1er coiffeur |
-| P5 | Collecte feedback | P0 | Interview 3 utilisateurs |
-| P6 | Itération rapide | P1 | Fix critiques |
-| P7 | Démo investisseurs | P2 | Présentation pitch |
-
----
-
-## Métriques de succès
-
-### Phase 1 (Validation)
-- [ ] ≥ 10 pré-inscriptions
-- [ ] Taux de conversion landing > 5%
-- [ ] Feedback qualitatif de 3+ prospects
-
-### Phase 2 (Build)
-- [ ] Onboarding < 5 min
-- [ ] Création service < 2 min
-- [ ] Réservation client < 3 min
-- [ ] 0 erreur 500 sur flow critique
-- [ ] Démo fluide Vendredi 20/03
-
-### Phase 3 (Lancement)
-- [ ] 1er client actif
-- [ ] 10 réservations réelles
-- [ ] NPS > 50
+**DoD S4**: Un client peut réserver un créneau via URL publique
 
 ---
 
-## Définition of Done globale
+#### S5 — Dashboard (1 jour)
 
-Une feature est DONE quand:
-1. [ ] Code écrit et reviewé
+| ID | Story | Points | Critères d'acceptation |
+|----|-------|--------|------------------------|
+| S5.1 | Vue dashboard | 3 | Stats, prochains RDV, actions |
+| S5.2 | Vue calendrier | 3 | Vue semaine, liste RDV |
+| S5.3 | Config Resend | 1 | API key, templates |
+| S5.4 | Email confirmation | 2 | Template, envoi client |
+| S5.5 | Email notification pro | 2 | Template, envoi pro |
+
+**DoD S5**: Un pro voit ses réservations et reçoit des notifications
+
+---
+
+#### S6 — Stripe Connect (0.5 jour) — P2
+
+| ID | Story | Points | Critères d'acceptation |
+|----|-------|--------|------------------------|
+| S6.1 | Lien onboarding Stripe | 2 | Connect Express, redirection |
+| S6.2 | Stockage accountId | 1 | Champ business, statut |
+
+**DoD S6**: Un pro peut connecter son compte Stripe (préparation S2)
+
+---
+
+## Estimations
+
+| Phase | Stories | Points | Jours |
+|-------|---------|--------|-------|
+| S1 Auth | 5 | 8 | 1 |
+| S2 Services | 5 | 9 | 1 |
+| S3 Slots | 4 | 8 | 1 |
+| S4 Page publique | 6 | 16 | 1.5 |
+| S5 Dashboard | 5 | 11 | 1 |
+| S6 Stripe | 2 | 3 | 0.5 |
+| **Total** | **27** | **55** | **5** |
+
+---
+
+## Définition of Done (globale)
+
+Une story est DONE quand:
+1. [ ] Code écrit et fonctionnel
 2. [ ] Tests manuels passés
 3. [ ] Responsive mobile OK
 4. [ ] Pas d'erreur console
-5. [ ] Intégration Vercel OK
+5. [ ] Déployé sur Vercel
+6. [ ] Review rapide (pair ou self)
+
+---
+
+## Scénarios alternatifs
+
+### Si PIVOT B (Mécaniciens)
+
+| Modification | Impact | Jours supp. |
+|--------------|--------|-------------|
+| Copy landing | 2h | 0 |
+| Champs booking (immatriculation) | 2h | 0 |
+| Feature devis (Option S2) | 2j | +2 |
+
+### Si PIVOT C (Ostéopathes)
+
+| Modification | Impact | Jours supp. |
+|--------------|--------|-------------|
+| Copy landing | 2h | 0 |
+| Activation SMS | 4h | 0 |
+| **Total** | **6h** | **0** |
 
 ---
 
 ## Ressources
 
-- [Architecture technique](./architecture.md)
-- [Plan de pivot](./pivot-plan.md)
-- [Configuration cibles](./../src/lib/target-config.ts)
+- [Product Strategy](./product-strategy.md)
+- [Architecture](./architecture.md)
+- [Plan de Pivot](./pivot-plan.md)
+- [Readiness Checklist](./readiness-checklist.md)
 
 ---
 
-**Prochaine mise à jour**: Dimanche 15/03 après décision GO/PIVOT
+**Prochaine mise à jour**: Dimanche 15/03 après décision
 
 *Backlog MVP — Prêt pour exécution*
