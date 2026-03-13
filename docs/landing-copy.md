@@ -11,9 +11,9 @@ https://rendez-landing-beta.surge.sh
 
 ---
 
-## Livrables
+## Mission
 
-[LIVRABLES-COMPLETS.md](./LIVRABLES-COMPLETS.md)
+[MISSION-ACCOMPLIE.md](./MISSION-ACCOMPLIE.md)
 
 ---
 
