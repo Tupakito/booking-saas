@@ -2,7 +2,7 @@
 
 Plateforme de réservation en ligne pour professionnels.
 
-## ✅ Repo Initialisé
+## ✅ Repo Initialisé et poussé sur Git
 
 Le projet a été créé avec Next.js 15 (App Router), TypeScript et Tailwind CSS.
 
@@ -66,6 +66,12 @@ npm run build  # ✅ Build production testé et fonctionnel
 - `npm run build` - Build production
 - `npm run db:migrate` - Migrations Prisma
 - `npm run db:studio` - Prisma Studio
+
+## Git
+
+- **Commit initial** : `2d7274e` - Initial commit: Next.js 15 + TypeScript + Tailwind + Prisma setup
+- **Branche** : master
+- **Status** : Working tree clean
 
 ## Prochaines étapes
 

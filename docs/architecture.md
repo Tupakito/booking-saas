@@ -60,3 +60,9 @@ User 1-->* Booking
 - Routes statiques générées : `/`, `/login`, `/register`
 - Zero vulnerability (npm audit)
 - TypedRoutes activé
+
+## Git
+
+- Commit initial : `2d7274e`
+- 30 fichiers trackés
+- Working tree clean
