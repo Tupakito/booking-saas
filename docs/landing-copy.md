@@ -5,7 +5,7 @@
 
 ---
 
-## 🌐 URL
+## URL
 
 https://rendez-landing-beta.surge.sh
 
@@ -13,11 +13,11 @@ https://rendez-landing-beta.surge.sh
 
 ## Landings
 
-| Cible | Fichier | Statut |
-|-------|---------|--------|
-| Coiffeurs | [landing-copy.md](./landing-copy.md) | ✅ LIVE |
-| Mécaniciens | [landing-copy-mecaniciens.md](./landing-copy-mecaniciens.md) | ✅ Backup |
-| Ostéopathes | [landing-copy-osteopathes.md](./landing-copy-osteopathes.md) | ✅ Backup |
+| Cible | Statut |
+|-------|--------|
+| Coiffeurs | ✅ LIVE |
+| Mécaniciens | ✅ Backup |
+| Ostéopathes | ✅ Backup |
 
 ---
 

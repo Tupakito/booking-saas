@@ -1,29 +1,36 @@
 # Positionnement MVP — Rendez
 
-> **Version** : 1.0.7 — DÉPLOYÉ ✅  
+> **Version** : 1.0.8 — TRACKING À JOUR  
+> **Heure** : 02:22 UTC  
 > **URL** : https://rendez-landing-beta.surge.sh  
-> **Statut** : 🚀 LIVE — PROSPECTION EN COURS  
+> **Statut** : 🔴 EN ATTENTE DE DONNÉES  
 > **Deadline** : Dimanche 15/03 12h
 
 ---
 
-## ✅ DÉPLOIEMENT
+## ✅ INFRASTRUCTURE
 
-**URL** : https://rendez-landing-beta.surge.sh  
-**Méthode** : Surge.sh (rapide, fiable)  
-**Alternative** : Vercel disponible ([deployment-vercel.md](./deployment-vercel.md))
+| Élément | Statut |
+|---------|--------|
+| Landing | ✅ LIVE |
+| Tracking | ✅ Prêt |
+| Prospection | 🔴 Non commencée |
 
 ---
 
-## 🎯 OBJECTIF
+## 🎯 RAPPORTS ATTENDUS
 
-10 pré-inscriptions d'ici Dimanche 12h
+| Rapport | Date | Heure |
+|---------|------|-------|
+| Intermédiaire J1 | Ven 13/03 | 20h |
+| Final | Dim 15/03 | 12h |
 
 ---
 
 ## 📊 TRACKING
 
-**Tableau** : [tracking-prospection.md](./tracking-prospection.md)  
+**Document** : [tracking-prospection.md](./tracking-prospection.md)
+
 **Dashboard** : https://formspree.io/forms/xnqevwdr/submissions
 
 ---
@@ -34,4 +41,4 @@
 
 ---
 
-**✅ DÉPLOYÉ — EXÉCUTER**
+**🔴 PROSPECTION NON COMMENCÉE — 46h restantes**
