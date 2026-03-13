@@ -7,7 +7,7 @@
 
 ## 🌐 URL
 
-**Production** : https://rendez-landing-beta.surge.sh
+https://rendez-landing-beta.surge.sh
 
 ---
 
@@ -21,11 +21,4 @@
 
 ---
 
-## Tracking
-
-**Tableau** : [tracking-prospection.md](./tracking-prospection.md)  
-**Dashboard** : https://formspree.io/forms/xnqevwdr/submissions
-
----
-
-**Action** : [execution-immediate.md](./execution-immediate.md)
+**Tracking** : [tracking-prospection.md](./tracking-prospection.md)
