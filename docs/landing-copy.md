@@ -11,9 +11,9 @@ https://rendez-landing-beta.surge.sh
 
 ---
 
-## Mission
+## Documents
 
-[MISSION-ACCOMPLIE.md](./MISSION-ACCOMPLIE.md)
+[SYNTHESE-FINALE.md](./SYNTHESE-FINALE.md)
 
 ---
 
