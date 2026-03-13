@@ -3,78 +3,59 @@
 > **Version** : 1.0.0  
 > **Dernière mise à jour** : 2026-03-13  
 > **Nom retenu** : Rendez  
-> **Statut** : ✅ Validé
+> **Statut** : ✅ Validé — Transversal aux 3 cibles
 
 ---
 
-## Pourquoi "Rendez"
+## Pourquoi "Rendez" (transversal)
 
-### 1. Action directe
-"Rendez" = prenez rendez-vous. C'est ce que fait le produit, immédiatement compréhensible.
+Le nom fonctionne pour les 3 cibles :
+- **Coiffeurs** : "Rendez-vous beauté"
+- **Mécaniciens** : "Rendez-vous garage"  
+- **Ostéopathes** : "Rendez-vous santé"
 
-### 2. Double sens élégant
-- **Rendez-vous** : le rendez-vous pris
-- **Rendez** (service) : on rend service aux commerçants
-
-### 3. Ancrage français
-- Français pur, rassurant pour les commerces de proximité
-- Pas d'anglais à épeler ou prononcer
-- Identité locale forte
-
-### 4. Simplicité mémorielle
-- 6 lettres
-- 2 syllabes
-- Facile à épeler : R-E-N-D-E-Z
-
-### 5. Déclinabilité
-- "Rendez-vous" (marque + action)
-- "Rendez facile" (campagne)
-- "Rendez pro" (version pro)
+### Avantages du nom
+- **Action directe** : "Rendez" = prenez rendez-vous
+- **Double sens** : Rendez-vous + rendre service
+- **Ancrage français** : rassurant, local
+- **Déclinable** : "Rendez facile", "Rendez pro"
 
 ---
 
-## Alternatives écartées
+## Adaptations par cible
 
-| Nom | Pourquoi écarté |
-|-----|-----------------|
-| **Slotly** | Trop anglais, pas d'ancrage local |
-| **Hazza** | Trop inventé, pas de sens |
-| **Minuto** | Trop générique, pas mémorable |
-| **Plic** | Trop court, risque de confusion |
-| **Creneau** | Mot commun, difficile à protéger |
+| Cible | Tagline | URL suggérée |
+|-------|---------|--------------|
+| Coiffeurs | "La réservation simplifiée pour les coiffeurs" | rendez.co |
+| Mécaniciens | "L'outil de réservation conçu pour les garages" | rendez-mecaniciens.co |
+| Ostéopathes | "La réservation simple pour les thérapeutes" | rendez-sante.co |
 
 ---
 
 ## Vérification domaines
 
-### Prioritaires
-| Domaine | Statut | Action |
-|---------|--------|--------|
-| rendez.co | 🔍 À vérifier | Priorité #1 |
-| rendez.io | 🔍 À vérifier | Alternative tech |
-| rendez.fr | 🔍 À vérifier | Alternative locale |
-
-### Fallbacks
-| Domaine | Statut | Action |
-|---------|--------|--------|
-| prendre-rendez.fr | 🔍 À vérifier | Descriptif |
-| mon-rendez.fr | 🔍 À vérifier | Possessif |
+### Prioritaires (à acheter selon cible retenue)
+| Domaine | Usage |
+|---------|-------|
+| rendez.co | Principal (toutes cibles) |
+| rendez-mecaniciens.fr | Si pivot mécaniciens |
+| rendez-sante.fr | Si pivot santé |
 
 ---
 
-## Réseaux sociaux
+## Réseaux sociaux (à créer)
 
-| Plateforme | Handle idéal | Fallback |
-|------------|--------------|----------|
-| Instagram | @rendez | @rendez.app |
-| Facebook | /rendez | /rendezapp |
-| TikTok | @rendez | @rendezapp |
+| Plateforme | Handle |
+|------------|--------|
+| Instagram | @rendez.app |
+| Facebook | /rendezapp |
+| LinkedIn | /company/rendez |
 
 ---
 
-## Checklist validation
+## Checklist
 
-- [ ] Domaine .co ou .fr acheté
+- [ ] Domaine principal acheté
 - [ ] Vérification INPI faite
-- [ ] Comptes Instagram/TikTok créés
-- [ ] Logo validé
+- [ ] Comptes sociaux créés
+- [ ] Logo adapté par cible si nécessaire

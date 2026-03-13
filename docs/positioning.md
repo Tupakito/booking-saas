@@ -2,7 +2,7 @@
 
 > **Version** : 1.0.0  
 > **Dernière mise à jour** : 2026-03-13  
-> **Statut** : 🚀 Phase prospection 48h ACTIVE
+> **Statut** : 🚀 Phase validation 48h + Plans B/C prêts
 
 ---
 
@@ -15,7 +15,17 @@
 
 ---
 
-## Élément de langage
+## 🎨 Plan de pivot à 3 branches
+
+| Scénario | Critère | Action | Cible | Landing prête |
+|----------|---------|--------|-------|---------------|
+| **GO beauté** | ≥ 10 pré-inscriptions | Build MVP | Coiffeurs/beauté | ✅ [landing-copy.md](./landing-copy.md) |
+| **PIVOT mécaniciens** | < 10 pré-inscriptions beauté | Même produit, cible garages | Mécaniciens auto | ✅ [landing-copy-mecaniciens.md](./landing-copy-mecaniciens.md) |
+| **PIVOST ostéopathes** | < 5 pré-inscriptions mécaniciens | Adaptation légère, cible santé | Ostéopathes/kinés | ✅ [landing-copy-osteopathes.md](./landing-copy-osteopathes.md) |
+
+---
+
+## Élément de langage (Cible actuelle : Coiffeurs)
 
 ### Promise
 **"Votre premier RDV en ligne en 5 minutes."**
@@ -42,21 +52,13 @@ Rendez n'est pas un logiciel de gestion. C'est une page de réservation simple p
 | Appels directs | 5 salons | 2 inscriptions |
 | **Total** | **28 contacts** | **10 inscriptions** |
 
-### Critères de décision
-
-| Résultat | Décision | Suite |
-|----------|----------|-------|
-| ≥ 10 pré-inscriptions | ✅ GO MVP | Dev-agent démarre Lundi 14h |
-| 5-9 pré-inscriptions | 🟡 AJUSTEMENT | Affiner positionnement, relancer 24h |
-| < 5 pré-inscriptions | 🔴 PIVOT | Changer de cible ou d'angle |
-
 ### Timeline
 
 | Jour | Date | Actions clés |
 |------|------|--------------|
 | J1 | Ven 13/03 | 20 DMs + 1 post + 3 appels |
 | J2 | Sam 14/03 | Relances + 2 posts + 2 appels |
-| J3 | Dim 15/03 | Bilan + décision go/no-go |
+| J3 | Dim 15/03 | Bilan + décision go/pivot/pivot2 |
 
 ---
 
@@ -65,17 +67,15 @@ Rendez n'est pas un logiciel de gestion. C'est une page de réservation simple p
 
 ---
 
-## Mots-clés
-- Simplicité
-- Premier RDV
-- Sans compte
-- En 5 minutes
-- Pour les coiffeurs
-
----
-
 ## Ressources liées
-- [Landing Copy](./landing-copy.md)
+
+### Landings prêtes
+- [Coiffeurs (Plan A)](./landing-copy.md)
+- [Mécaniciens (Plan B)](./landing-copy-mecaniciens.md) ⬅️ NOUVEAU
+- [Ostéopathes (Plan C)](./landing-copy-osteopathes.md) ⬅️ NOUVEAU
+
+### Plans & Stratégies
 - [Naming](./naming.md)
+- [Prospection Plan](./prospection-plan.md)
+- [Pivot Plan](./pivot-plan.md)
 - [Deployment Instructions](./deployment-instructions.md)
-- [Prospection Plan](./prospection-plan.md) ⬅️ NOUVEAU
