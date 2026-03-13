@@ -5,16 +5,27 @@
   <img src="https://img.shields.io/badge/TypeScript-5.3-blue?style=flat-square&logo=typescript" alt="TypeScript" />
   <img src="https://img.shields.io/badge/Prisma-5.7-2D3748?style=flat-square&logo=prisma" alt="Prisma" />
   <img src="https://img.shields.io/badge/PostgreSQL-15-4169E1?style=flat-square&logo=postgresql" alt="PostgreSQL" />
-  <img src="https://img.shields.io/badge/NextAuth-v5-green?style=flat-square" alt="NextAuth" />
 </p>
 
 <p align="center">
-  <strong>Version</strong>: 0.1.0-alpha | <strong>Statut</strong>: 🔧 Sprint 1 en cours | <strong>Node</strong>: ≥18.0.0
+  <strong>Version</strong>: 0.1.0-alpha | <strong>Statut</strong>: ⏸️ Validation 48h | <strong>Node</strong>: ≥18.0.0
 </p>
 
 ---
 
-## 🚀 Quickstart
+## 🎯 Statut du projet
+
+> **Phase 1: Validation marché (48h)** — En cours
+
+Suite à la [décision stratégique #37](docs/meeting-37-decision-strategique-validation-marche-ou-build-direct.md), le projet est en **pause build** pendant 48h de validation.
+
+- 🔥 **Growth-agent**: Déploie landing, collecte 10 pré-inscriptions
+- ⏸️ **Dev-agent**: Prépare l'architecture, pas de code avant GO
+- ⏳ **Décision**: Dim 15/03 14h — GO / NO-GO / Pivot
+
+---
+
+## 🚀 Quickstart (pour build phase 2)
 
 ```bash
 # 1. Cloner et installer
@@ -24,7 +35,7 @@ npm install
 
 # 2. Variables d'environnement
 cp .env.example .env.local
-# Éditer avec vos secrets (voir ci-dessous)
+# Éditer avec vos secrets
 
 # 3. Database
 npx prisma migrate dev
@@ -37,61 +48,94 @@ npm run dev
 
 ---
 
-## ⚙️ Configuration
+## 📋 Phase 1: Validation (en cours)
 
-### Variables d'environnement
+| Tâche | Assigné | Deadline | Statut |
+|-------|---------|----------|--------|
+| Déployer landing | growth-agent | Ven 13/03 14h | ⏳ |
+| Collecter 10 pré-inscriptions | growth-agent | Dim 15/03 12h | ⏳ |
+| Décision go/no-go | chief-agent | Dim 15/03 14h | ⏳ |
 
-```bash
-# Obligatoires
-DATABASE_URL="postgresql://..."
-NEXTAUTH_SECRET="openssl rand -base64 32"
-NEXTAUTH_URL="http://localhost:3000"
+**Critère de GO**: ≥ 10 emails de coiffeurs/artisans beauté intéressés.
 
-# Optionnel (Google OAuth)
-GOOGLE_CLIENT_ID="..."
-GOOGLE_CLIENT_SECRET="..."
+---
+
+## 🏗️ Phase 2: Build (si GO — Lun 16/03)
+
+| Jour | Feature | Description |
+|------|---------|-------------|
+| J1 | Auth | Login/register NextAuth v5 |
+| J2 | Services | CRUD prestations dashboard |
+| J3 | Disponibilités | UI créneaux récurrents |
+| J4 | Page publique | `/[slug]` avec calendrier |
+| J5 | Dashboard + Emails | Vue réservations, notifications |
+
+Voir [docs/build-plan.md](docs/build-plan.md) pour le détail complet.
+
+---
+
+## 📁 Structure du repo
+
+```
+booking-saas/
+├── docs/
+│   ├── build-plan.md           # Plan de build phase 2
+│   ├── architecture.md         # Architecture technique
+│   ├── mvp-backlog.md          # Backlog complet
+│   └── meeting-37-*.md         # Décision stratégique
+├── prisma/
+│   └── schema.prisma           # Database schema (✅ complet)
+├── src/                        # ⏸️ Code en attente
+└── README.md                   # Ce fichier
 ```
 
 ---
 
-## ✅ Features implémentées
+## ✅ Ce qui est prêt
 
-| Feature | Statut | Description |
-|---------|--------|-------------|
-| Auth | ✅ | Login/register email + Google OAuth |
-| Database | ✅ | Schema complet avec Prisma |
-| Dashboard | ✅ | Vue protégée avec navigation |
-| Services | 🔄 | CRUD en cours |
-| Disponibilités | ⏳ | À implémenter |
-| Page publique | ⏳ | À implémenter |
+- [x] Repo Next.js 14 + TypeScript
+- [x] Database PostgreSQL + Prisma
+- [x] Schema complet (Auth, Business, Services, Slots, Bookings)
+- [x] Architecture définie
+- [x] Plan de build détaillé
 
----
+## ⏸️ Ce qui attend le GO
 
-## 📁 Structure
-
-```
-src/
-├── app/
-│   ├── (app)/           # Dashboard protégé
-│   ├── login/           # Page login
-│   ├── register/        # Page register
-│   └── api/
-│       ├── auth/        # NextAuth API
-│       └── register/    # API inscription
-├── lib/
-│   ├── auth.ts          # Config auth
-│   ├── prisma.ts        # Database client
-│   └── password.ts      # Hashing
-└── middleware.ts        # Protection routes
-```
+- [ ] Auth NextAuth v5
+- [ ] Dashboard pro
+- [ ] Page publique de réservation
+- [ ] Emails transactionnels
 
 ---
 
 ## 📚 Documentation
 
-- [MVP Backlog](./docs/mvp-backlog.md)
-- [Architecture](./docs/architecture.md)
+| Document | Description |
+|----------|-------------|
+| [Build Plan](docs/build-plan.md) | Planning détaillé phase 2 |
+| [Architecture](docs/architecture.md) | Stack, patterns, flux |
+| [MVP Backlog](docs/mvp-backlog.md) | Tâches et priorités |
+| [Décision #37](docs/meeting-37-decision-strategique-validation-marche-ou-build-direct.md) | Pourquoi on valide d'abord |
 
 ---
 
-*Projet en développement actif*
+## 👥 Équipe
+
+| Rôle | Statut | Focus |
+|------|--------|-------|
+| **Chief-agent** | 🎯 Décision Dim 15/03 | Stratégie, go/no-go |
+| **Growth-agent** | 🔥 Actif | Landing, prospection, validation |
+| **Dev-agent** | ⏸️ En attente | Préparation architecture |
+
+---
+
+## 💡 Pourquoi cette pause ?
+
+> "On ne code pas avant d'avoir 10 emails de coiffeurs qui veulent tester."  
+> — Décision #37
+
+Le risque de build sans marché est supérieur au coût de 48h de validation. Si la landing floppe, on pivote avant d'avoir perdu 3 semaines de dev.
+
+---
+
+*Projet en validation — retour Dimanche 15/03 14h*

@@ -1,6 +1,15 @@
 # Architecture MVP — Rendez
 
-> **Version**: 1.0.0 | **Dernière mise à jour**: 2024-03-13 | **Statut**: Validé
+> **Version**: 1.1.0 | **Statut**: 🏗️ Prêt pour build | **Mise à jour**: 13/03/2024
+
+---
+
+## 🎯 Contexte
+
+Suite à la décision #37, l'architecture est **prête pour implémentation** mais le build est **en attente de validation marché** (48h).
+
+- **Si validation GO** (≥10 pré-inscriptions) → Build démarre Lun 16/03
+- **Si validation NO-GO** → Pivot ou ajustement avant build
 
 ---
 
@@ -9,13 +18,13 @@
 ```mermaid
 ┌─────────────────────────────────────────┐
 │           Landing (marketing)           │
-│    Pré-inscription, pricing, contact    │
+│    🔍 VALIDATION EN COURS (48h)         │
 └─────────────────────────────────────────┘
                     │
-                    ▼
+                    ▼ (si GO)
 ┌─────────────────────────────────────────┐
 │           Auth (NextAuth v5)            │
-│    Email + Google OAuth + Credentials   │
+│    ⏸️ PRÊT — Implémentation Lun 16/03   │
 └─────────────────────────────────────────┘
                     │
                     ▼
@@ -25,453 +34,159 @@
 │  │ Services│ │Calendar │ │ Settings │ │
 │  │   CRUD  │ │  View   │ │ + Stripe │ │
 │  └─────────┘ └─────────┘ └──────────┘ │
+│         ⏸️ PRÊT — J2-J5                │
 └─────────────────────────────────────────┘
                     │
                     ▼
 ┌─────────────────────────────────────────┐
 │      Page Publique Réservation          │
 │   /[slug] → Calendrier → Confirmation   │
-│   (Paiement en mode démo S1)            │
+│         ⏸️ PRÊT — J4                   │
 └─────────────────────────────────────────┘
 ```
 
 ---
 
-## Principes directeurs
+## Stack confirmée
 
-1. **Server-First** : Server Components par défaut, Client Components uniquement pour l'interactivité
-2. **Type Safety** : TypeScript strict + Zod pour toutes les validations
-3. **Database-First** : Prisma comme source de vérité, migrations versionnées
-4. **Progressive Enhancement** : Fonctionnel sans JS, enrichi avec JS
-5. **Mobile-First** : Design responsive, touch-friendly
-
----
-
-## Stack détaillée
-
-### Frontend
-
-| Technologie | Version | Usage |
-|-------------|---------|-------|
-| Next.js | 14.x | App Router, SSR, API Routes |
-| React | 18.x | UI Components |
-| TypeScript | 5.3.x | Type safety |
-| Tailwind CSS | 3.4.x | Styling utility-first |
-| shadcn/ui | latest | Composants accessibles |
-| Lucide React | latest | Icônes |
-
-### Backend
-
-| Technologie | Version | Usage |
-|-------------|---------|-------|
-| Next.js Server Actions | 14.x | Mutations serveur |
-| Auth.js (NextAuth) | 5.0.0-beta | Authentification |
-| Zod | 3.22.x | Validation schémas |
-| date-fns | 3.x | Manipulation dates |
-
-### Database
-
-| Technologie | Version | Usage |
-|-------------|---------|-------|
-| PostgreSQL | 15.x | Données relationnelles |
-| Prisma | 5.7.x | ORM, migrations, client |
-| Neon | - | PostgreSQL serverless |
-
-### External Services
-
-| Service | Usage | Sprint |
-|---------|-------|--------|
-| **Vercel** | Hosting, CI/CD, Analytics | S1 |
-| **Neon** | PostgreSQL serverless | S1 |
-| **Resend** | Emails transactionnels | S1 |
-| **Stripe Connect** | Onboarding marchands | S1 |
-| **Stripe Checkout** | Paiement client | S2 |
-| **Twilio** | SMS rappels | S2 |
-
----
-
-## Architecture des dossiers
-
-```
-src/
-├── 📁 app/                          # Next.js App Router
-│   ├── 📁 (marketing)/              # Groupe: pages publiques sans auth
-│   │   ├── layout.tsx               # Layout marketing (header/footer)
-│   │   ├── page.tsx                 # Landing page
-│   │   └── pricing/
-│   │
-│   ├── 📁 (auth)/                   # Groupe: auth pages
-│   │   ├── layout.tsx               # Layout minimal (sans sidebar)
-│   │   ├── login/
-│   │   └── register/
-│   │
-│   ├── 📁 (app)/                    # Groupe: dashboard (auth requis)
-│   │   ├── layout.tsx               # Layout avec sidebar + auth check
-│   │   ├── dashboard/               # Vue d'ensemble
-│   │   ├── services/                # CRUD prestations
-│   │   ├── calendar/                # Vue calendrier
-│   │   └── settings/                # Profil + Stripe
-│   │
-│   ├── 📁 (public)/                 # Groupe: booking public
-│   │   └── [slug]/                  # Page réservation par business
-│   │
-│   ├── 📁 api/                      # API Routes (webhooks uniquement)
-│   │   └── webhooks/
-│   │       └── stripe/
-│   │
-│   ├── globals.css                  # Variables CSS + Tailwind
-│   └── layout.tsx                   # Root layout
-│
-├── 📁 components/
-│   ├── 📁 ui/                       # shadcn/ui components
-│   │   ├── button.tsx
-│   │   ├── input.tsx
-│   │   ├── calendar.tsx
-│   │   └── ...
-│   │
-│   ├── 📁 forms/                    # Formulaires métier
-│   │   ├── service-form.tsx
-│   │   ├── slot-form.tsx
-│   │   └── booking-form.tsx
-│   │
-│   └── 📁 calendar/                 # Composants calendrier
-│       ├── week-view.tsx
-│       └── slot-picker.tsx
-│
-├── 📁 lib/                          # Utilitaires et configs
-│   ├── prisma.ts                    # Singleton Prisma client
-│   ├── auth.ts                      # Config Auth.js
-│   ├── db.ts                        # Queries complexes
-│   └── utils.ts                     # Helpers (cn, formatters)
-│
-├── 📁 server/                       # Code serveur uniquement
-│   ├── 📁 actions/                  # Server Actions
-│   │   ├── auth.ts
-│   │   ├── services.ts
-│   │   ├── slots.ts
-│   │   └── bookings.ts
-│   │
-│   ├── 📁 schemas/                  # Zod validations
-│   │   ├── service.ts
-│   │   ├── slot.ts
-│   │   └── booking.ts
-│   │
-│   └── 📁 queries/                  # Requêtes complexes (optionnel)
-│
-└── 📁 types/                        # Types globaux TypeScript
-    └── index.ts
-```
+| Couche | Technologie | Statut |
+|--------|-------------|--------|
+| Frontend | Next.js 14 App Router | ✅ Prêt |
+| Styling | Tailwind CSS + shadcn/ui | ✅ Prêt |
+| Backend | Next.js Server Actions | ✅ Prêt |
+| Database | PostgreSQL (Neon) | ✅ Prêt |
+| ORM | Prisma | ✅ Prêt |
+| Auth | Auth.js v5 | ⏸️ Implémentation J1 |
+| Email | Resend | ⏸️ Implémentation J5 |
+| Payment | Stripe Connect | ⏸️ S2 uniquement |
+| Hosting | Vercel | ✅ Prêt |
 
 ---
 
 ## Modèle de données
 
-### Diagramme ER
+### Schéma Prisma — ✅ COMPLET
+
+Le schéma est finalisé et prêt :
 
 ```
-┌─────────────┐       ┌─────────────┐       ┌─────────────┐
-│    User     │◄──────┤  Business   │◄──────┤   Service   │
-│  (NextAuth) │   1:1 │  (Profil)   │   1:n │(Prestation) │
-└─────────────┘       └─────────────┘       └──────┬──────┘
-                                                   │
-                          ┌─────────────┐         │
-                          │    Slot     │◄────────┘
-                          │(Disponibilité)   1:n
-                          └─────────────┘
-                                   │
-                                   ▼
-                          ┌─────────────┐
-                          │   Booking   │
-                          │(Réservation)│
-                          └─────────────┘
+✅ users, accounts, sessions, verificationtokens (Auth)
+✅ businesses (Profil pro avec slug unique)
+✅ services (Prestations)
+✅ slots (Disponibilités récurrentes)
+✅ bookings (Réservations)
+✅ enums: BookingStatus, PaymentStatus
 ```
 
-### Détails des entités
-
-#### User (Auth)
-- Géré par NextAuth.js
-- Email + OAuth Google
-- Relation 1:1 avec Business
-
-#### Business (Profil pro)
-- `slug`: URL publique unique (`rendez.co/salon-marie`)
-- `stripeAccountId`: Compte Connect Stripe (S2)
-- Relations: User (1:1), Services (1:n), Bookings (1:n)
-
-#### Service (Prestation)
-- `duration`: Minutes (ex: 30)
-- `price`: Centimes (ex: 2500 = 25€)
-- `color`: Hex pour calendrier
-- Relations: Business (n:1), Slots (1:n), Bookings (1:n)
-
-#### Slot (Disponibilité récurrente)
-- `dayOfWeek`: 0 (Dim) à 6 (Sam)
-- `startTime`/`endTime`: Format "HH:MM"
-- Relation: Service (n:1)
-
-#### Booking (Réservation)
-- `startTime`/`endTime`: DateTime complet
-- `status`: CONFIRMED | CANCELLED | NO_SHOW
-- `paymentStatus`: PENDING | PAID | REFUNDED | FAILED
-- Relations: Business (n:1), Service (n:1)
+Voir [prisma/schema.prisma](../prisma/schema.prisma)
 
 ---
 
-## Flux utilisateurs
+## Flux utilisateurs (spécifications)
 
-### 1. Onboarding Pro (5 min objectif)
+### 1. Onboarding Pro (objectif: < 5 min)
 
-```mermaid
-sequenceDiagram
-    participant U as User
-    participant L as Landing
-    participant A as Auth
-    participant D as Dashboard
-    
-    U->>L: CTA "Créer mon compte"
-    L->>A: Redirection /register
-    A->>U: Formulaire email/password
-    U->>A: Submit
-    A->>D: Création compte + redirect
-    D->>U: Formulaire Business (nom, slug)
-    U->>D: Submit
-    D->>U: Dashboard ready
+```
+Landing → Register (email/password) → Création Business (nom, slug)
+→ Dashboard → Ajouter Service → Définir Disponibilités
+→ Page publique prête
 ```
 
-### 2. Configuration Service (2 min objectif)
+### 2. Réservation Client (objectif: < 3 min)
 
-```mermaid
-sequenceDiagram
-    participant P as Pro
-    participant D as Dashboard
-    participant S as Server Action
-    participant DB as Database
-    
-    P->>D: CTA "Nouveau service"
-    D->>P: Formulaire (nom, durée, prix)
-    P->>D: Submit
-    D->>S: createServiceAction
-    S->>S: Validation Zod
-    S->>DB: INSERT service
-    DB-->>S: Service créé
-    S-->>D: Revalidate + success
-    D->>P: Affichage service + slots
-    P->>D: Ajout créneaux (Lun 9h-12h)
-    D->>S: saveSlotsAction
-    S->>DB: INSERT slots
-    S-->>D: Success
 ```
-
-### 3. Réservation Client (3 min objectif, S1 mode démo)
-
-```mermaid
-sequenceDiagram
-    participant C as Client
-    participant P as Page /[slug]
-    participant S as Server
-    participant DB as Database
-    participant E as Email (Resend)
-    
-    C->>P: Accès URL publique
-    P->>S: getBusinessBySlug
-    S->>DB: SELECT business + services
-    DB-->>S: Data
-    S-->>P: Render
-    P->>C: Affichage services
-    
-    C->>P: Sélection service
-    P->>S: getAvailableSlots
-    S->>DB: Calcul créneaux libres
-    DB-->>S: Slots disponibles
-    S-->>P: Render calendrier
-    
-    C->>P: Sélection créneau
-    P->>C: Formulaire (nom, email)
-    C->>P: Submit
-    
-    P->>S: createBookingAction
-    S->>S: Validation + check conflit
-    S->>DB: INSERT booking
-    DB-->>S: Booking créé
-    S->>E: Envoi email confirmation
-    S-->>P: Success
-    
-    P->>C: Page confirmation
+Accès /[slug] → Sélection Service → Choix date
+→ Calendrier avec créneaux disponibles → Sélection créneau
+→ Formulaire (nom, email) → Confirmation + email
 ```
 
 ---
 
-## Conventions de code
+## Structure des fichiers (prévue)
+
+```
+src/
+├── app/
+│   ├── (app)/                    # Dashboard (auth requis)
+│   │   ├── layout.tsx            # Layout avec sidebar
+│   │   ├── dashboard/            # Vue d'ensemble
+│   │   ├── services/             # CRUD prestations
+│   │   └── calendar/             # Vue calendrier
+│   │
+│   ├── (public)/                 # Pages publiques
+│   │   └── [slug]/               # Page réservation
+│   │
+│   ├── login/                    # Page login
+│   ├── register/                 # Page register
+│   └── api/                      # API routes
+│       ├── auth/[...nextauth]/   # NextAuth
+│       └── register/             # API inscription
+│
+├── components/                   # Composants React
+├── lib/                          # Configs
+├── server/                       # Server Actions + schemas
+└── middleware.ts                 # Protection routes
+```
+
+---
+
+## Conventions de code (à suivre)
 
 ### Naming
+- Fichiers: `kebab-case.tsx`
+- Composants: `PascalCase`
+- Server Actions: suffixe `Action`
+- Fonctions: `camelCase`
 
-| Élément | Convention | Exemple |
-|---------|------------|---------|
-| Fichiers | `kebab-case` | `service-form.tsx` |
-| Composants | `PascalCase` | `ServiceForm` |
-| Fonctions | `camelCase` | `createService` |
-| Server Actions | suffixe `Action` | `createServiceAction` |
-| Types/Interfaces | `PascalCase` | `ServiceInput` |
-| Enums | `PascalCase` | `BookingStatus` |
-| Constants | `SCREAMING_SNAKE` | `MAX_SERVICES` |
-
-### Imports
-
-```typescript
-// Ordre recommandé
-1. React/Next imports
-2. External libraries (date-fns, zod, etc.)
-3. Internal aliases (@/components, @/lib, etc.)
-4. Relative imports (./, ../)
-5. Types
-```
-
-### Server Actions Pattern
-
-```typescript
-// server/actions/services.ts
-"use server";
-
-import { z } from "zod";
-import { prisma } from "@/lib/prisma";
-import { revalidatePath } from "next/cache";
-
-const createServiceSchema = z.object({
-  name: z.string().min(2),
-  duration: z.number().min(15),
-  price: z.number().min(0),
-});
-
-export async function createServiceAction(
-  input: z.infer<typeof createServiceSchema>
-) {
-  // 1. Auth check
-  const session = await auth();
-  if (!session) throw new Error("Unauthorized");
-
-  // 2. Validation
-  const data = createServiceSchema.parse(input);
-
-  // 3. Business logic
-  const service = await prisma.service.create({
-    data: { ...data, businessId: session.user.businessId },
-  });
-
-  // 4. Revalidation
-  revalidatePath("/services");
-
-  return { success: true, data: service };
-}
-```
+### Patterns
+1. **Server Components par défaut**
+2. **Server Actions pour mutations**
+3. **Zod pour validation**
+4. **Colocation** (fichiers liés proches)
 
 ---
 
-## Sécurité
+## Planning implémentation
 
-| Risque | Mitigation |
-|--------|------------|
-| **Auth** | NextAuth.js + middleware sur routes `/app/*` |
-| **CSRF** | Server Actions gèrent automatiquement les tokens |
-| **SQL Injection** | Prisma query builder (paramétré) |
-| **XSS** | React escape + validation Zod |
-| **IDOR** | Vérification ownership dans chaque Server Action |
-| **Secrets** | Variables d'environnement, jamais dans le client |
-
----
-
-## Performance
-
-| Optimisation | Implémentation |
-|--------------|----------------|
-| **Database** | Indexes sur `slug`, `startTime`, `businessId` |
-| **Rendering** | Server Components par défaut |
-| **Caching** | `revalidatePath` après mutations |
-| **Images** | Next.js Image component |
-| **Fonts** | `next/font` pour optimisation |
+| Jour | Date | Focus | Livrable |
+|------|------|-------|----------|
+| J1 | Lun 16/03 | Auth | Login/register fonctionnels |
+| J2 | Mar 17/03 | Services | CRUD prestations |
+| J3 | Mer 18/03 | Disponibilités | UI créneaux |
+| J4 | Jeu 19/03 | Page publique | `/[slug]`, calendrier |
+| J5 | Ven 20/03 | Dashboard + Emails | Vue réservations, notifications |
 
 ---
 
-## ADRs (Architecture Decision Records)
+## Risques techniques
 
-### ADR-001: Server Actions vs API Routes
-
-**Contexte**: Comment gérer les mutations serveur ?
-
-**Décision**: Server Actions pour tout sauf webhooks
-
-**Rationale**:
-- Moins de boilerplate (pas de routes API)
-- Type safety end-to-end
-- CSRF automatique
-- Progressive enhancement
-
-**Conséquences**: Nécessite Next.js 14+, pas compatible avec API externe
+| Risque | Probabilité | Mitigation |
+|--------|-------------|------------|
+| NextAuth v5 instable (beta) | Moyenne | Tests exhaustifs J1, fallback v4 si bloquant |
+| Conflits réservation (race) | Faible | Transactions Prisma, row locking |
+| Performance calendrier | Faible | Indexes DB, pagination si besoin |
+| Complexité slots | Moyenne | Librairie date-fns, pas de custom complexe |
 
 ---
 
-### ADR-002: Prisma vs Drizzle
+## Décisions reportées (S2+)
 
-**Contexte**: Quel ORM choisir ?
-
-**Décision**: Prisma
-
-**Rationale**:
-- Mature et documenté
-- Excellent DX (autocomplétion, migrations)
-- Intégration NextAuth.js native
-- Prisma Studio pour debug
-
-**Conséquences**: Bundle size plus important, cold start potentiel
+| Feature | Raison |
+|---------|--------|
+| Paiement Stripe | Complexité Connect, mode démo suffisant S1 |
+| SMS | Coût, email prioritaire |
+| Multi-employés | MVP cible indépendants solo |
+| Analytics | Pas critique pour démo |
 
 ---
 
-### ADR-003: Auth.js vs Clerk
+## Prochaines étapes
 
-**Contexte**: Quelle solution d'auth ?
-
-**Décision**: Auth.js (NextAuth v5)
-
-**Rationale**:
-- Open source, pas de vendor lock-in
-- Intégration Prisma native
-- Flexible (credentials + OAuth)
-- Gratuit
-
-**Conséquences**: Plus de configuration manuelle, docs parfois floues sur v5
+1. **Attendre validation** (Dim 15/03 14h)
+2. **Si GO** → Démarrage build Lun 16/03 14h
+3. **Daily check-ins** → 18h chaque jour
+4. **Démo finale** → Ven 20/03 16h
 
 ---
 
-### ADR-004: PostgreSQL vs MySQL
-
-**Contexte**: Quelle base de données ?
-
-**Décision**: PostgreSQL (Neon)
-
-**Rationale**:
-- Relations complexes (slots, bookings)
-- JSON support si besoin futur
-- Neon = serverless, scaling automatique
-- Prisma optimise mieux PostgreSQL
-
-**Conséquences**: Coût à volume élevé, vendor Neon
-
----
-
-## Roadmap technique
-
-| Sprint | Focus | Livrables | Date cible |
-|--------|-------|-----------|------------|
-| S1 | MVP Core | Auth, services, dispos, page publique, emails | 21/03 |
-| S2 | Monétisation | Stripe Connect, Checkout, vrai paiement | 04/04 |
-| S3 | Fidélisation | SMS, rappels, sync calendriers | 18/04 |
-| S4 | Scale | Analytics, multi-employés, API | 02/05 |
-
----
-
-## Ressources
-
-- [Next.js Docs](https://nextjs.org/docs)
-- [Auth.js Docs](https://authjs.dev)
-- [Prisma Docs](https://prisma.io/docs)
-- [shadcn/ui Docs](https://ui.shadcn.com)
-- [Tailwind Docs](https://tailwindcss.com/docs)
+*Architecture prête — en attente du feu vert pour construction*
