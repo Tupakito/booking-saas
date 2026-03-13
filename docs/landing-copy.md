@@ -11,10 +11,11 @@ https://rendez-landing-beta.surge.sh
 
 ---
 
-## Check-in J1
+## Versions
 
-[CONFIRMATION-CHECKIN-J1.md](./CONFIRMATION-CHECKIN-J1.md)
+**V1** : [landing-copy.md](./landing-copy.md)  
+**V2** : [landing-copy-v2.md](./landing-copy-v2.md) ⬅️ Améliorée
 
 ---
 
-**Vendredi 20h** — 7 objectifs Auth
+**Changements** : Headline émotionnelle, CTA visualisation, FAQ réduite, témoignage réel
