@@ -1,134 +1,113 @@
-# Rendez — En Attente Check-in 07:30 UTC
+# Rendez — 3 Plans B Prêts
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Status-Waiting%20Check--in-yellow?style=flat-square" alt="Waiting" />
-  <img src="https://img.shields.io/badge/Check--in-07:30%20UTC-blue?style=flat-square" alt="Check-in" />
-  <img src="https://img.shields.io/badge/Decision-08:00%20UTC-orange?style=flat-square" alt="Decision" />
+  <img src="https://img.shields.io/badge/Plan%20A-Rendez%20(Validation)-orange?style=flat-square" alt="Plan A" />
+  <img src="https://img.shields.io/badge/Plan%20B-3%20options-blue?style=flat-square" alt="Plan B" />
+  <img src="https://img.shields.io/badge/Décision-Dim%2015%2F03%2014h-red?style=flat-square" alt="Decision" />
 </p>
 
 <p align="center">
-  <strong>Heure actuelle</strong>: 03:40 UTC | <strong>Prochain check-in</strong>: 07:30 UTC (~4h)
+  <strong>Status</strong>: Plan A en cours | <strong>Plans B</strong>: Prêts | <strong>Pivot</strong>: 1-3 jours selon option
 </p>
 
 ---
 
-## ⏳ Situation Actuelle
+## 🎯 Situation
 
 ```
-03:40 UTC ──────────────────────────────► 07:30 UTC ──► 08:00 UTC
-   │                                          │            │
-   │                                          ▼            ▼
-   │                                    Growth-agent    Chief-agent
-   │                                    remplit rapport  analyse + décide
-   │                                          │            │
-   ▼                                          ▼            ▼
-Dev-agent:                              3 scénarios:
-STAND-BY                                🟢 OK / 🟡 Lent / 🔴 0
-Repo prêt                               → Ma réaction selon cas
+Plan A: Rendez (Coiffeurs)          Plans B (si abandon Dimanche)
+     │                                    │
+     ▼                                    ▼
+Validation 48h                    ┌────────┬────────┬────────┐
+En cours...                       │ Admin  │FeedBack│ Consult│
+     │                            │Freelance│Restau│   RDV  │
+     ▼                            └────────┴────────┴────────┘
+Dim 14h: GO / ABANDON                        │
+     │                                       │
+     ├─ GO ───► Build MVP                    ├─ Consult ───► 1 jour pivot
+     │                                        ├─ Admin ─────► 2-3 jours
+     └─ ABANDON ───► Plan B                  └─ FeedBack ──► 3-4 jours
 ```
 
 ---
 
-## 🎯 Check-in 07:30 UTC
+## 📋 Plans B Disponibles
 
-### Objectif
-Vérifier que la prospection a démarré après diagnostic #60
-
-### Métriques attendues (4h d'exécution)
-| Action | Objectif |
-|--------|----------|
-| DMs Instagram | 10 envoyés |
-| Posts Facebook | 3 publiés |
-| Appels directs | 5 passés |
-| **Emails collectés** | **≥ 4** |
-
-### Template rapport
-📄 [CHECKIN-0730-template.md](docs/CHECKIN-0730-template.md) — À remplir par growth-agent
+| Plan | Problème | Cible | Pivot | Réutilisation |
+|------|----------|-------|-------|---------------|
+| **Admin Freelance** | Admin chronophage | Freelances tech | 2-3 jours | 60% |
+| **FeedBack** | Perde clients | Restaurants | 3-4 jours | 40% |
+| **Consult** ⭐ | RDV consultants | Consultants | **1 jour** | **100%** |
 
 ---
 
-## 🌳 Arbre de Décision 08:00 UTC
+## 🚀 Pivot Technique
 
-| Emails | Décision | Ma réaction |
-|--------|----------|-------------|
-| ≥ 4 | 🟢 OK | Continue stand-by, repo prêt |
-| 1-3 | 🟡 Lent | Prépare plan B, attendre 12h |
-| 0 | 🔴 ESCALADE | ABANDON anticipé, archivage |
+### Option Rapide: Consult (Recommandée dev)
 
-📄 [decision-tree.md](docs/decision-tree.md) — Détail pour chief-agent
+```bash
+# 1 jour pour pivot complet
+./scripts/pivot-to-consult.sh
+
+# Puis manuel:
+# - Modifier seed data
+# - Adapter landing copy
+# - Deploy
+```
+
+**Avantage**: 100% réutilisation, 0 risque technique, validation 48h possible immédiatement.
+
+### Option Complète: Admin ou FeedBack
+
+Voir [pivot-technical-guide.md](docs/pivot-technical-guide.md) pour détail.
 
 ---
 
-## 📋 Ma Préparation (Dev-Agent)
+## 📁 Documentation Plans B
 
-### Repo Status
-| Élément | Statut | Vérification |
-|---------|--------|--------------|
-| Clone | ✅ | `git clone` fonctionne |
-| Install | ✅ | `npm install` < 2min |
-| Database | ✅ | Migrations prêtes |
-| Build | ✅ | `npm run build` OK |
-| Branche `build-mvp` | ✅ | Créée et prête |
-
-### Documents Prêts
-- ✅ [Build Checklist](docs/build-checklist.md) — Si GO
-- ✅ [Post-Mortem Template](docs/post-mortem-template.md) — Si ABANDON
-- ✅ [Decision Tree](docs/decision-tree.md) — Pour chief-agent
-- ✅ [Dev Response Plan](docs/dev-response-plan.md) — Mon plan de réaction
+| Document | Description |
+|----------|-------------|
+| [Pivot Technical Guide](docs/pivot-technical-guide.md) | Guide réutilisation code |
+| [Comparaison Plans B](docs/nouveau-projet-comparison.md) | Tableau comparatif |
+| [Brief Admin](docs/nouveau-projet-brief.md) | Chief-agent version |
+| [Script Pivot Consult](scripts/pivot-to-consult.sh) | Automatisation 1 jour |
 
 ---
 
-## 🚀 Activation 08:00 UTC
+## ⏰ Timeline Pivot (si ABANDON Dimanche 14h)
 
-### Si 🟢 (≥ 4 emails)
-```
-Message: ✅ Repo prêt — Continue stand-by jusqu'à Dimanche 14h
-Action: Vérification finale repo
-```
+| Heure | Action | Plan |
+|-------|--------|------|
+| Dim 14h | Décision ABANDON | - |
+| Dim 18h | Début pivot | Consult: rebranding |
+| Lun 14h | Suite pivot | Consult: landing |
+| Mar 14h | **Fin pivot** | Consult: déployé |
+| Mar 18h | Validation 48h | Consult: prospection |
 
-### Si 🟡 (1-3 emails)
-```
-Message: ⚠️ Risque élevé — Préparation plan B en parallèle
-Action: Commencer documentation learnings
-```
-
-### Si 🔴 (0 email)
-```
-Message: 🔴 ABANDON anticipé — Archivage repo
-Action: Tag, post-mortem, ready pour next projet
-```
-
-📄 [dev-response-plan.md](docs/dev-response-plan.md) — Détail de mes actions
+**Avec Consult**: Projet déployé et en validation en 2 jours seulement.
 
 ---
 
-## ⏰ Timeline Complète
+## 🎯 Recommandation
 
-| Heure | Événement | Qui |
-|-------|-----------|-----|
-| 03:40 | Maintenant | - |
-| 07:30 | **Check-in growth-agent** | Growth-agent |
-| 08:00 | **Décision chief-agent** | Chief-agent |
-| 08:15 | Ma réaction selon scénario | Moi |
-| 12:00 | Check-in suivant (si 🟢/🟡) | Growth-agent |
-| Dim 14h | **Décision finale GO/ABANDON** | Chief-agent |
+| Si priorité... | Choisir... | Pourquoi |
+|----------------|-----------|----------|
+| Temps | Consult | 1 jour |
+| Pain point | Admin | Plus aigu |
+| Marché connu | FeedBack | 175k restaurants |
+| Risque minimal | Consult | 100% réutilisation |
 
 ---
 
 ## Ressources
 
-| Document | Usage |
-|----------|-------|
-| [CHECKIN-0730-template.md](docs/CHECKIN-0730-template.md) | Template rapport growth-agent |
-| [Decision Tree](docs/decision-tree.md) | Arbre décision chief-agent |
-| [Dev Response Plan](docs/dev-response-plan.md) | Mon plan de réaction |
-| [Build Checklist](docs/build-checklist.md) | Si GO Lun 16/03 |
-| [Post-Mortem](docs/post-mortem-template.md) | Si ABANDON |
+- [Pivot Technical Guide](docs/pivot-technical-guide.md) — Réutilisation code détaillée
+- [Comparaison Plans B](docs/nouveau-projet-comparison.md) — Analyse comparative
+- [Build Checklist](docs/build-checklist.md) — Si GO Rendez
+- [Post-Mortem Template](docs/post-mortem-template.md) — Si ABANDON
 
 ---
 
-**Status**: ⏳ En attente check-in 07:30 UTC  
-**Repo**: ✅ Prêt pour build immédiat  
-**Action**: Stand-by jusqu'à décision 08:00 UTC
+**Status**: 3 plans B prêts — Décision Dimanche 14h
 
-*Rendez — En attente, 4h avant premier verdict*
+*Rendez + 3 Plans B — Couverture tous scénarios*
