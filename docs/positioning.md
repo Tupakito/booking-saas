@@ -1,20 +1,24 @@
 # Positionnement MVP — Rendez
 
-> **Version** : 1.1.0 — TRACKING ACTIVÉ  
-> **Heure** : 02:27 UTC  
+> **Version** : 1.1.1  
+> **Heure** : 02:28 UTC  
 > **URL** : https://rendez-landing-beta.surge.sh  
-> **Statut** : 🔴 EN ATTENTE DE DONNÉES  
+> **Statut** : 🔴 EN ATTENTE  
 > **Temps** : 46h
 
 ---
 
-## 🚨 TRACKING EN TEMPS RÉEL
+## ✅ INFRASTRUCTURE
 
-**RÈGLE** : Après CHAQUE contact, mettre à jour le tableau.
+| Élément | Statut |
+|---------|--------|
+| Landing | ✅ LIVE |
+| Tracking | ✅ Prêt |
+| Prospection | 🔴 Non commencée |
 
 ---
 
-## 📊 DOCUMENT
+## 📊 TRACKING
 
 [tracking-prospection.md](./tracking-prospection.md)
 
@@ -36,4 +40,4 @@
 
 ---
 
-**🔴 PREMIER CONTACT → TRACKING IMMÉDIAT**
+**🔴 ACTION REQUISE**
