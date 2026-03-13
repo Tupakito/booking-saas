@@ -2,9 +2,9 @@
 
 Plateforme de réservation en ligne pour professionnels.
 
-## ✅ Repo Initialisé avec shadcn/ui
+## ✅ Repo Initialisé et Fonctionnel
 
-Le projet a été créé avec Next.js 15, TypeScript, Tailwind CSS et **shadcn/ui**.
+Le projet est créé avec Next.js 15, TypeScript, Tailwind CSS et shadcn/ui.
 
 ## Stack technique
 
@@ -13,21 +13,24 @@ Le projet a été créé avec Next.js 15, TypeScript, Tailwind CSS et **shadcn/u
 - **Tailwind CSS 3.4.17**
 - **shadcn/ui** (composants UI)
 - **Prisma 6.5** (ORM)
-- **NextAuth v5** (Auth.js)
 
-## Structure du projet
+## Structure complète
 
 ```
 booking-saas/
+├── next.config.ts              ✅
+├── tsconfig.json               ✅
+├── tailwind.config.ts          ✅
+├── components.json             ✅ Config shadcn/ui
 ├── src/
 │   ├── app/
-│   │   ├── login/page.tsx      # Page connexion
-│   │   ├── register/page.tsx   # Page inscription
-│   │   ├── layout.tsx          # Root layout
-│   │   ├── page.tsx            # Landing page
-│   │   └── globals.css         # Styles + CSS variables shadcn
+│   │   ├── layout.tsx          ✅ Root layout
+│   │   ├── page.tsx            ✅ Landing page
+│   │   ├── login/page.tsx      ✅ Page connexion
+│   │   ├── register/page.tsx   ✅ Page inscription
+│   │   └── globals.css         ✅ Styles + CSS variables
 │   ├── components/
-│   │   └── ui/                 # ✅ Composants shadcn/ui
+│   │   └── ui/                 ✅ Composants shadcn/ui
 │   │       ├── button.tsx
 │   │       ├── card.tsx
 │   │       ├── input.tsx
@@ -35,33 +38,32 @@ booking-saas/
 │   └── lib/
 │       ├── prisma.ts
 │       ├── auth.ts
-│       └── utils.ts            # cn() helper pour shadcn
-├── prisma/
-│   └── schema.prisma
-├── components.json             # Config shadcn/ui
-├── package.json
-└── ...
+│       └── utils.ts
+└── prisma/
+    └── schema.prisma
 ```
 
-## Composants shadcn/ui installés
-
-- `Button` - Boutons avec variants (default, destructive, outline, ghost, link)
-- `Card` - Conteneurs avec header, content, footer
-- `Input` - Champs de saisie
-- `Label` - Étiquettes de formulaire
-
-## Installation
+## Démarrage rapide
 
 ```bash
 npm install
-npm run dev
+npm run dev     # ✅ Fonctionnel - http://localhost:3000
 ```
 
-## Build
+## Pages disponibles
 
-```bash
-npm run build  # ✅ Testé et fonctionnel
-```
+| Route | Description |
+|-------|-------------|
+| `/` | Landing page |
+| `/login` | Formulaire connexion |
+| `/register` | Formulaire inscription |
+
+## Composants shadcn/ui
+
+- **Button** - Variants: default, outline, ghost, destructive, link
+- **Card** - Card, CardHeader, CardContent, CardFooter
+- **Input** - Champs de saisie
+- **Label** - Étiquettes accessibles
 
 ## Git
 
