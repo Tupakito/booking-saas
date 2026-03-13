@@ -1,95 +1,160 @@
-# Booking-Saas — Dashboard Complet ✅
+# Booking-Saas — Schéma Prisma Complet ✅
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Dashboard-Complet-brightgreen?style=flat-square" alt="Dashboard" />
-  <img src="https://img.shields.io/badge/Bookings-Gestion%20active-blue?style=flat-square" alt="Bookings" />
-  <img src="https://img.shields.io/badge/Sprint-1%20Core-orange?style=flat-square" alt="Sprint 1" />
+  <img src="https://img.shields.io/badge/Schema-Complet-brightgreen?style=flat-square" alt="Schema" />
+  <img src="https://img.shields.io/badge/Database-PostgreSQL-blue?style=flat-square" alt="PostgreSQL" />
+  <img src="https://img.shields.io/badge/ORM-Prisma-2D3748?style=flat-square" alt="Prisma" />
 </p>
 
 ---
 
-## ✅ Dashboard Livré
+## ✅ Schéma Prisma Finalisé
 
-### Pages Dashboard
+### Tables
 
-| Page | Route | Fonctionnalités |
-|------|-------|-----------------|
-| **Dashboard Home** | `/dashboard` | Stats, prochains RDV, actions rapides |
-| **Liste RDV** | `/dashboard/bookings` | Filtres, pagination, recherche |
-| **Détail RDV** | `/dashboard/bookings/[id]` | (à venir) |
+| Table | Description | Relations |
+|-------|-------------|-----------|
+| **Business** | Profil professionnel | services, bookings, settings |
+| **BusinessSettings** | Préférences et config | business (1:1) |
+| **Service** | Prestations proposées | business, slots, bookings |
+| **Slot** | Disponibilités récurrentes | service |
+| **Booking** | Réservations clients | business, service |
 
-### Composants Booking
+### Enums
 
-| Composant | Fichier | Usage |
-|-----------|---------|-------|
-| **BookingCard** | `src/components/booking/booking-card.tsx` | Affichage carte réservation |
-| **BookingStatusBadge** | `src/components/booking/booking-status-badge.tsx` | Badge statut (confirmé, annulé, no-show) |
-
-### Server Actions
-
-| Action | Fichier | Fonction |
-|--------|---------|----------|
-| **createBooking** | `src/server/actions/bookings.ts` | Création avec vérification conflits |
-| **cancelBooking** | `src/server/actions/bookings.ts` | Annulation réservation |
-| **confirmNoShow** | `src/server/actions/bookings.ts` | Marquer no-show |
-| **getBookingsByBusiness** | `src/server/actions/bookings.ts` | Récupération liste |
+| Enum | Valeurs |
+|------|---------|
+| **BookingStatus** | CONFIRMED, CANCELLED, NO_SHOW, COMPLETED |
+| **PaymentStatus** | PENDING, PAID, REFUNDED, FAILED |
 
 ---
 
-## 🎯 Fonctionnalités Dashboard
+## 🗂️ Structure Détaillée
 
-### Stats en temps réel
-- Rendez-vous aujourd'hui
-- Rendez-vous à venir
-- Total réservations
-- Revenus du mois
-
-### Gestion des réservations
-- Vue liste complète
-- Filtres (à venir / passés / annulés)
-- Recherche client
-- Pagination
-- Actions (voir détails, annuler)
-
-### Prochains rendez-vous
-- Affichage prioritaire
-- Carte visuelle avec couleur service
-- Accès rapide détails
-
----
-
-## 📊 Structure Base de Données (Mise à jour)
-
+### Business
 ```prisma
-model Booking {
-  id            String
-  businessId    String
-  serviceId     String
-  customerName  String
-  customerEmail String
-  customerPhone String?
-  startTime     DateTime
-  endTime       DateTime
-  status        BookingStatus
-  amount        Int           // ← NOUVEAU
-  notes         String?
-  createdAt     DateTime
-}
+- id, slug, name, email, password
+- description, phone, address, city, logo, website
+- stripeAccountId, stripeOnboarding (S2)
+- services[], bookings[], settings?
+```
+
+### BusinessSettings
+```prisma
+- notification preferences (email, SMS)
+- booking rules (min notice, max advance, same-day)
+- cancellation policy
+```
+
+### Service
+```prisma
+- id, businessId, name, description
+- duration (minutes), price (cents), currency, color
+- bufferTime (minutes between appointments)
+- slots[], bookings[]
+```
+
+### Slot
+```prisma
+- id, serviceId, dayOfWeek (0-6)
+- startTime, endTime (format "HH:MM")
+- specificDate (optional override)
+- isAvailable (boolean)
+```
+
+### Booking
+```prisma
+- id, businessId, serviceId
+- customerName, customerEmail, customerPhone
+- startTime, endTime, status
+- amount (cents), currency, paymentStatus
+- stripePaymentIntentId (S2)
+- notes, internalNotes, cancelReason
+- reminderSent, cancelledAt
 ```
 
 ---
 
-## 🚀 Prochaines Étapes Sprint 1
+## 🔗 Relations
 
-| # | Feature | Jour | Statut |
-|---|---------|------|--------|
-| 1 | Dashboard complet | ✅ Ven | Done |
-| 2 | Réservation client | ⏳ Lun | Next |
-| 3 | Emails confirmation | ⏳ Mar | Planned |
-| 4 | Deploy production | ⏳ Mar | Planned |
+```
+Business 1:1 BusinessSettings
+Business 1:n Service
+Business 1:n Booking
+
+Service 1:n Slot
+Service 1:n Booking
+
+Slot n:1 Service
+
+Booking n:1 Business
+Booking n:1 Service
+```
 
 ---
 
-**Dashboard prêt — Foundation complète ✅**
+## 📊 Indexes Optimisés
 
-*Booking-Saas — Sprint 1 Core en cours*
+| Table | Index | Usage |
+|-------|-------|-------|
+| businesses | slug | Recherche par URL |
+| businesses | isActive | Filtrage actifs |
+| services | businessId | Liste par business |
+| services | isActive | Filtrage actifs |
+| slots | serviceId + dayOfWeek | Disponibilités |
+| slots | specificDate | Overrides |
+| bookings | businessId + startTime | Dashboard |
+| bookings | serviceId + startTime | Conflits |
+| bookings | customerEmail | Recherche client |
+
+---
+
+## 🚀 Fonctionnalités Supportées
+
+### ✅ Actuellement
+- Inscription business
+- CRUD services
+- Gestion créneaux récurrents
+- Création réservations
+- Annulation / no-show
+- Stats dashboard
+
+### ⏳ Stripe S2
+- Paiement en ligne
+- Facturation automatique
+- Remboursements
+
+---
+
+## 📝 Migration
+
+```bash
+# Appliquer la migration complète
+npx prisma migrate dev --name complete_schema
+
+# Générer le client
+npx prisma generate
+
+# Vérifier la structure
+npx prisma db pull
+```
+
+---
+
+## 📚 Requêtes Complexes
+
+Fichier: `src/lib/db-queries.ts`
+
+| Fonction | Description |
+|----------|-------------|
+| `getAvailableSlots()` | Créneaux libres pour une date |
+| `isTimeSlotAvailable()` | Vérification conflit |
+| `getBusinessBookings()` | Liste avec filtres |
+| `getBusinessStats()` | Stats dashboard |
+| `getServiceWithAvailability()` | Service + dispos |
+
+---
+
+**Schéma Prisma complet — Prêt pour production ✅**
+
+*Booking-Saas — Database layer finalisé*
