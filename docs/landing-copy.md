@@ -1,6 +1,6 @@
 # Landing Page Copy — Rendez
 
-> **Version** : 1.0.0  
+> **Version** : 2.0.0  
 > **Statut** : ✅ LIVE
 
 ---
@@ -11,11 +11,10 @@ https://rendez-landing-beta.surge.sh
 
 ---
 
-## Versions
+## Priorité Sprint
 
-**V1** : [landing-copy.md](./landing-copy.md)  
-**V2** : [landing-copy-v2.md](./landing-copy-v2.md) ⬅️ Améliorée
+**P0** : Intégration landing V2 (Jour 1)  \n**Métrique** : Temps to First RDV < 10 min
 
 ---
 
-**Changements** : Headline émotionnelle, CTA visualisation, FAQ réduite, témoignage réel
+**Input réunion** : Landing V2 prête à intégrer

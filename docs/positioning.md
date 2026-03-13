@@ -1,43 +1,31 @@
 # Positionnement MVP — Rendez
 
-> **Version** : 1.5.0  
-> **Heure** : 14:33 UTC  
-> **Mission** : Landing copy améliorée  
-> **Focus** : Clarté + Impact
+> **Version** : 1.5.2  
+> **Heure** : 14:39 UTC  
+> **Input** : Réunion #79 priorités sprint
 
 ---
 
-## 🎯 Proposition de valeur affinée
+## 🎯 Input Growth-Agent
 
-**Avant** : "Votre premier RDV en ligne en 5 minutes"  
-**Après** : "Vos clients réservent sans vous appeler — vous récupérez 10h par semaine"
+### Priorités Sprint
 
----
+| Priorité | Jour | Focus |
+|----------|------|-------|
+| P0 | 1 | Conversion landing V2 |
+| P1 | 2-3 | Activation premier utilisateur |
+| P2 | 4-5 | Matériel acquisition |
 
-## 🚀 Changements clés
+### Non-priorités
 
-| Élément | Avant | Après | Pourquoi |
-|---------|-------|-------|----------|
-| **Headline** | "Arrêtez de répondre au téléphone" | "Vos clients réservent la nuit, vous dormez tranquille" | Bénéfice émotionnel |
-| **Sous-headline** | Setup en 5 minutes | "Pas de compte client, pas d'app à installer, juste votre lien" | Zéro friction |
-| **CTA** | "Créer ma page" | "Voir ma page de réservation" | Visualisation |
-| **Pricing** | Gratuit/Pro | "Essai gratuit 14 jours, sans carte" | Réduction friction |
+- Blog / SEO
+- Paiement
+- Analytics complexes
 
----
+### Métrique Nord
 
-## 💡 Principes appliqués
-
-1. **Bénéfice > Feature** — "10h par semaine" pas "formulaire en ligne"
-2. **Émotion > Fonction** — "Dormez tranquille" pas "automatisation"
-3. **Simplicité > Complet** — 3 avantages, pas 10
-4. **Action > Description** — Verbes d'action, pas adjectifs
+**"Temps to First RDV" < 10 minutes**
 
 ---
 
-## 📋 Livrable
-
-[landing-copy-v2.md](./landing-copy-v2.md) — Version améliorée
-
----
-
-**Amélioration** : Clarté + Impact + Conversion
+**Input réunion #79** — Priorités marketing pour sprint
