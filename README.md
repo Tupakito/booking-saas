@@ -9,6 +9,9 @@ Plateforme de réservation en ligne pour professionnels.
 # Installation des dépendances
 npm install
 
+# Générer le client Prisma
+npx prisma generate
+
 # Lancer le serveur de développement
 npm run dev
 ```
@@ -31,18 +34,21 @@ booking-saas/
 ├── src/
 │   ├── app/                    # App Router Next.js
 │   │   ├── api/               # Routes API
-│   │   ├── dashboard/         # Espace connecté
-│   │   ├── login/             # Page de connexion
-│   │   ├── register/          # Page d'inscription
+│   │   ├── dashboard/         # Espace connecté (protégé)
+│   │   ├── login/             # Page de connexion (public)
+│   │   ├── register/          # Page d'inscription (public)
 │   │   ├── globals.css        # Styles globaux
 │   │   ├── layout.tsx         # Layout racine
-│   │   └── page.tsx           # Landing page
+│   │   └── page.tsx           # Landing page (public)
 │   ├── components/
-│   │   └── ui/                # Composants shadcn/ui
-│   └── lib/
-│       ├── auth.ts            # Config NextAuth
-│       ├── prisma.ts          # Client Prisma
-│       └── utils.ts           # Utilitaires
+│   │   ├── ui/                # Composants shadcn/ui
+│   │   └── dashboard/         # Composants dashboard
+│   ├── lib/
+│   │   ├── auth.ts            # Config NextAuth
+│   │   ├── prisma.ts          # Client Prisma
+│   │   └── utils.ts           # Utilitaires
+│   └── types/
+│       └── next-auth.d.ts     # Types étendus
 ├── prisma/
 │   └── schema.prisma          # Schéma de base de données
 ├── .env.example               # Variables d'environnement
@@ -87,6 +93,18 @@ booking-saas/
    npm run dev
    ```
 
+## 🗄 Prisma Schema
+
+Le projet utilise Prisma avec PostgreSQL. Les modèles principaux sont :
+
+- **User** - Utilisateurs (authentification)
+- **Account** - Comptes OAuth
+- **Session** - Sessions utilisateur
+- **Business** - Établissements
+- **Service** - Services proposés
+- **Booking** - Réservations
+- **Availability** - Disponibilités
+
 ## 🎨 shadcn/ui
 
 Le projet utilise shadcn/ui pour les composants UI. Pour ajouter un composant :
@@ -100,17 +118,6 @@ Composants déjà installés :
 - `card`
 - `input`
 - `label`
-
-## 📦 Dépendances principales
-
-- `next` - Framework React
-- `react`, `react-dom` - React
-- `typescript` - TypeScript
-- `tailwindcss` - CSS framework
-- `@base-ui/react` - Composants headless (via shadcn)
-- `class-variance-authority` - Gestion des variants
-- `clsx` - Concaténation de classes
-- `tailwind-merge` - Merge des classes Tailwind
 
 ## 🔒 Authentification
 
