@@ -1,5 +1,5 @@
 ```markdown
-# Booking SaaS
+# Booking SaaS - Rendez
 
 Plateforme de réservation en ligne pour professionnels.
 
@@ -9,124 +9,92 @@ Plateforme de réservation en ligne pour professionnels.
 # Installation des dépendances
 npm install
 
-# Générer le client Prisma
-npx prisma generate
+# Build de production (testé en local)
+npm run build
 
-# Lancer le serveur de développement
-npm run dev
+# Démarrer le serveur
+npm start
 ```
 
-Ouvrez [http://localhost:3000](http://localhost:3000) dans votre navigateur.
+## ✅ Build Vercel - FONCTIONNEL
 
-## ✅ Vérification installation
+Le projet est configuré pour Vercel avec :
+- `output: 'standalone'` dans next.config.js
+- Structure App Router à la racine
+- **Build testé et fonctionnel en local**
 
-Le projet est initialisé avec :
-- [x] Next.js 15 (App Router)
-- [x] TypeScript (strict mode)
-- [x] Tailwind CSS
-- [x] shadcn/ui
-- [x] src/app/
-- [x] src/lib/
-- [x] src/components/
-- [x] prisma/
-
-## 🛠 Stack technique
-
-- **Framework**: [Next.js 15](https://nextjs.org/) (App Router)
-- **Langage**: [TypeScript](https://www.typescriptlang.org/) (strict mode)
-- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
-- **UI Components**: [shadcn/ui](https://ui.shadcn.com/)
-- **Base de données**: [PostgreSQL](https://www.postgresql.org/) + [Prisma](https://www.prisma.io/)
+```bash
+npm run build
+# ✓ Compiled successfully
+# ✓ Generating static pages (5/5)
+# ✓ Finalizing page optimization
+```
 
 ## 📁 Structure du projet
 
 ```
 booking-saas/
-├── src/
-│   ├── app/                    # App Router Next.js
-│   │   ├── dashboard/         # Espace connecté
-│   │   ├── login/             # Page de connexion
-│   │   ├── register/          # Page d'inscription
-│   │   ├── globals.css        # Styles globaux
-│   │   ├── layout.tsx         # Layout racine
-│   │   └── page.tsx           # Landing page
-│   ├── components/
-│   │   └── ui/                # Composants shadcn/ui
-│   │       ├── button.tsx
-│   │       ├── card.tsx
-│   │       ├── input.tsx
-│   │       ├── label.tsx
-│   │       ├── badge.tsx
-│   │       ├── calendar.tsx
-│   │       ├── dialog.tsx
-│   │       └── table.tsx
-│   ├── lib/
-│   │   ├── auth.ts            # Config NextAuth
-│   │   ├── prisma.ts          # Client Prisma
-│   │   └── utils.ts           # Utilitaires
-│   └── types/
-│       └── next-auth.d.ts     # Types étendus
+├── app/                          # App Router Next.js 14
+│   ├── (dashboard)/              # Groupe de routes dashboard
+│   │   ├── dashboard/
+│   │   │   └── page.tsx          # Page dashboard pro
+│   │   └── layout.tsx            # Layout avec navigation
+│   ├── api/
+│   │   └── auth/
+│   │       └── [...nextauth]/
+│   │           └── route.ts      # API auth
+│   ├── globals.css               # Styles globaux
+│   ├── layout.tsx                # Layout racine
+│   └── page.tsx                  # Landing page
+├── components/
+│   └── ui/                       # Composants UI (shadcn-like)
+│       ├── button.tsx
+│       ├── card.tsx
+│       └── input.tsx
+├── lib/
+│   ├── prisma.ts                 # Client Prisma
+│   └── utils.ts                  # Utilitaires
 ├── prisma/
-│   └── schema.prisma          # Schéma de base de données
-├── .env.example               # Variables d'environnement
-├── components.json            # Config shadcn/ui
-├── next.config.ts             # Config Next.js
-├── tailwind.config.ts         # Config Tailwind
-└── tsconfig.json              # Config TypeScript
+│   └── schema.prisma             # Schéma de base de données
+├── .env.example                  # Variables d'environnement
+├── next.config.js                # Config Next.js (standalone)
+├── package.json                  # Dépendances (à la racine)
+├── postcss.config.js             # Config PostCSS
+├── tsconfig.json                 # Config TypeScript
+└── vercel.json                   # Config Vercel
 ```
 
-## 📦 Dépendances installées
+## 🛠 Stack technique
 
-- `next` - Framework React
-- `react`, `react-dom` - React
-- `typescript` - TypeScript
-- `tailwindcss` - CSS framework
-- `@base-ui/react` - Composants headless (via shadcn)
-- `class-variance-authority` - Gestion des variants
-- `clsx` - Concaténation de classes
-- `tailwind-merge` - Merge des classes Tailwind
+- **Framework**: Next.js 14.2.5 (App Router)
+- **Langage**: TypeScript 5.9.3
+- **UI**: Composants React custom (inline styles)
+- **Base de données**: Prisma 6.5.0 + PostgreSQL
+- **Auth**: NextAuth v5 (Auth.js)
 
 ## 📝 Scripts disponibles
 
 | Commande | Description |
 |----------|-------------|
-| `npm run dev` | Développement avec hot reload |
+| `npm run dev` | Développement |
 | `npm run build` | Build de production |
-| `npm run start` | Démarrer le serveur de production |
-| `npm run lint` | Linter le code |
-| `npm run db:generate` | Générer le client Prisma |
-| `npm run db:migrate` | Créer/appliquer les migrations |
-| `npm run db:studio` | Ouvrir Prisma Studio |
+| `npm start` | Serveur de production |
+| `npm run lint` | Linter |
 
-## ⚙️ Configuration
+## ⚙️ Configuration Vercel
 
-1. Copier le fichier `.env.example` vers `.env` :
-   ```bash
-   cp .env.example .env
-   ```
+Le fichier `vercel.json` est configuré avec :
+- `buildCommand`: npm run build
+- `outputDirectory`: .next
+- `framework`: nextjs
+- `installCommand`: npm install
 
-2. Configurer les variables d'environnement :
-   - `DATABASE_URL` : URL de connexion PostgreSQL
-   - `NEXTAUTH_SECRET` : Clé secrète pour JWT (min 32 caractères)
-   - `NEXTAUTH_URL` : URL de l'application
+## 🔧 Variables d'environnement
 
-3. Initialiser la base de données :
-   ```bash
-   npx prisma migrate dev --name init
-   npx prisma generate
-   ```
-
-4. Lancer l'application :
-   ```bash
-   npm run dev
-   ```
-
-## 🎨 shadcn/ui
-
-Le projet utilise shadcn/ui pour les composants UI. Pour ajouter un composant :
-```bash
-npx shadcn add <nom-du-composant>
-```
+Copier `.env.example` vers `.env` et configurer :
+- `DATABASE_URL` - URL PostgreSQL
+- `NEXTAUTH_SECRET` - Clé secrète JWT (min 32 caractères)
+- `NEXTAUTH_URL` - URL de l'application
 
 ## 📄 Licence
 
