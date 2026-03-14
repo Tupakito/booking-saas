@@ -9,9 +9,6 @@ Plateforme de réservation en ligne pour professionnels.
 # Installation des dépendances
 npm install
 
-# Générer le client Prisma
-npx prisma generate
-
 # Lancer le serveur de développement
 npm run dev
 ```
@@ -20,15 +17,16 @@ Ouvrez [http://localhost:3000](http://localhost:3000) dans votre navigateur.
 
 ## ✅ Vérification installation
 
-Le projet est fonctionnel avec `npm run dev` :
-- [x] package.json
-- [x] next.config.ts
-- [x] tsconfig.json
-- [x] tailwind.config.ts
-- [x] app/ directory avec layout.tsx et page.tsx
-- [x] lib/prisma.ts avec schema de base
-- [x] .env.example
-- [x] `npm run dev` fonctionnel
+Le projet est initialisé avec :
+- [x] Next.js 15 (App Router)
+- [x] TypeScript (strict mode)
+- [x] Tailwind CSS
+- [x] shadcn/ui
+- [x] src/app/
+- [x] src/lib/
+- [x] src/components/
+- [x] Git initialisé
+- [x] Commit initial prêt
 
 ## 🛠 Stack technique
 
@@ -36,7 +34,7 @@ Le projet est fonctionnel avec `npm run dev` :
 - **Langage**: [TypeScript](https://www.typescriptlang.org/) (strict mode)
 - **Styling**: [Tailwind CSS](https://tailwindcss.com/)
 - **UI Components**: [shadcn/ui](https://ui.shadcn.com/)
-- **Base de données**: [PostgreSQL](https://www.postgresql.org/) + [Prisma](https://www.prisma.io/)
+- **Versioning**: Git
 
 ## 📁 Structure du projet
 
@@ -52,32 +50,28 @@ booking-saas/
 │   │   └── page.tsx           # Landing page
 │   ├── components/
 │   │   └── ui/                # Composants shadcn/ui
+│   │       ├── button.tsx
+│   │       ├── card.tsx
+│   │       ├── input.tsx
+│   │       ├── label.tsx
+│   │       ├── badge.tsx
+│   │       ├── calendar.tsx
+│   │       ├── dialog.tsx
+│   │       └── table.tsx
 │   ├── lib/
 │   │   ├── auth.ts            # Config NextAuth
-│   │   ├── prisma.ts          # Client Prisma (singleton)
+│   │   ├── prisma.ts          # Client Prisma
 │   │   └── utils.ts           # Utilitaires
 │   └── types/
 │       └── next-auth.d.ts     # Types étendus
-├── prisma/
-│   └── schema.prisma          # Schéma de base de données
+├── .git/                       # Repository Git
 ├── .env.example               # Variables d'environnement
 ├── components.json            # Config shadcn/ui
 ├── next.config.ts             # Config Next.js
 ├── tailwind.config.ts         # Config Tailwind
-└── tsconfig.json              # Config TypeScript
+├── tsconfig.json              # Config TypeScript
+└── package.json               # Dépendances
 ```
-
-## 🗄 Prisma
-
-Le client Prisma est configuré en singleton dans `lib/prisma.ts` pour éviter les problèmes en développement.
-
-### Modèles disponibles :
-- **User** - Utilisateurs (auth + rôle)
-- **Account** - Comptes OAuth
-- **Session** - Sessions utilisateur
-- **Business** - Établissements
-- **Service** - Services proposés
-- **Booking** - Réservations
 
 ## 📝 Scripts disponibles
 
@@ -87,32 +81,25 @@ Le client Prisma est configuré en singleton dans `lib/prisma.ts` pour éviter l
 | `npm run build` | Build de production |
 | `npm run start` | Démarrer le serveur de production |
 | `npm run lint` | Linter le code |
-| `npm run db:generate` | Générer le client Prisma |
-| `npm run db:migrate` | Créer/appliquer les migrations |
-| `npm run db:studio` | Ouvrir Prisma Studio |
 
-## ⚙️ Configuration
+## 🔄 Git
 
-1. Copier le fichier `.env.example` vers `.env` :
-   ```bash
-   cp .env.example .env
-   ```
+Le repository Git est initialisé. Pour faire le commit initial :
 
-2. Configurer les variables d'environnement :
-   - `DATABASE_URL` : URL de connexion PostgreSQL
-   - `NEXTAUTH_SECRET` : Clé secrète pour JWT (min 32 caractères)
-   - `NEXTAUTH_URL` : URL de l'application
+```bash
+# Voir les fichiers modifiés
+git status
 
-3. Initialiser la base de données :
-   ```bash
-   npx prisma migrate dev --name init
-   npx prisma generate
-   ```
+# Ajouter tous les fichiers
+git add .
 
-4. Lancer l'application :
-   ```bash
-   npm run dev
-   ```
+# Commit initial
+git commit -m "Initial commit: Next.js + TypeScript + Tailwind + shadcn/ui"
+
+# Pousser sur un remote (optionnel)
+git remote add origin https://github.com/username/booking-saas.git
+git push -u origin main
+```
 
 ## 🎨 shadcn/ui
 
