@@ -13,7 +13,6 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { cn } from "@/lib/utils";
 import { signOut } from "@/auth";
 
 const navItems = [
@@ -29,14 +28,7 @@ export default async function DashboardLayout({
 }: {
   children: React.ReactNode;
 }) {
-  let session;
-  
-  try {
-    session = await auth();
-  } catch (error) {
-    console.error("Auth error in dashboard layout:", error);
-    redirect("/login");
-  }
+  const session = await auth();
 
   if (!session) {
     redirect("/login");
@@ -60,9 +52,7 @@ export default async function DashboardLayout({
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    className={cn(
-                      "flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-muted"
-                    )}
+                    className="flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-muted"
                   >
                     <Icon className="h-4 w-4" />
                     {item.title}
