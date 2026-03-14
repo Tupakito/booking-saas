@@ -9,9 +9,6 @@ Plateforme de réservation en ligne pour professionnels.
 # Installation des dépendances
 npm install
 
-# Générer le client Prisma
-npx prisma generate
-
 # Lancer le serveur de développement
 npm run dev
 ```
@@ -24,14 +21,10 @@ Le projet est initialisé avec :
 - [x] Next.js 15 (App Router)
 - [x] TypeScript (strict mode)
 - [x] Tailwind CSS
-- [x] shadcn/ui
-- [x] Prisma avec modèles User/Business/Service/Booking
-- [x] next.config.ts
-- [x] tsconfig.json
-- [x] tailwind.config.ts
-- [x] src/app/layout.tsx
-- [x] src/app/page.tsx
-- [x] .env.example
+- [x] shadcn/ui (CLI)
+- [x] Structure src/app/
+- [x] Structure src/components/
+- [x] Git initialisé
 
 ## 🛠 Stack technique
 
@@ -39,8 +32,7 @@ Le projet est initialisé avec :
 - **Langage**: [TypeScript](https://www.typescriptlang.org/) (strict mode)
 - **Styling**: [Tailwind CSS](https://tailwindcss.com/)
 - **UI Components**: [shadcn/ui](https://ui.shadcn.com/)
-- **Authentification**: [NextAuth v5](https://authjs.dev/) (Auth.js)
-- **Base de données**: [PostgreSQL](https://www.postgresql.org/) + [Prisma](https://www.prisma.io/)
+- **Versioning**: Git
 
 ## 📁 Structure du projet
 
@@ -48,7 +40,6 @@ Le projet est initialisé avec :
 booking-saas/
 ├── src/
 │   ├── app/                    # App Router Next.js
-│   │   ├── api/               # Routes API
 │   │   ├── dashboard/         # Espace connecté
 │   │   ├── login/             # Page de connexion
 │   │   ├── register/          # Page d'inscription
@@ -57,30 +48,35 @@ booking-saas/
 │   │   └── page.tsx           # Landing page
 │   ├── components/
 │   │   └── ui/                # Composants shadcn/ui
+│   │       ├── button.tsx
+│   │       ├── card.tsx
+│   │       ├── input.tsx
+│   │       ├── label.tsx
+│   │       ├── calendar.tsx
+│   │       ├── table.tsx
+│   │       ├── dialog.tsx
+│   │       └── badge.tsx
 │   └── lib/
-│       ├── auth.ts            # Config NextAuth
-│       ├── prisma.ts          # Client Prisma
 │       └── utils.ts           # Utilitaires
-├── prisma/
-│   └── schema.prisma          # Schéma de base de données
-├── .env.example               # Variables d'environnement
+├── .git/                       # Repository Git
 ├── components.json            # Config shadcn/ui
 ├── next.config.ts             # Config Next.js
 ├── tailwind.config.ts         # Config Tailwind
-└── tsconfig.json              # Config TypeScript
+├── tsconfig.json              # Config TypeScript
+└── package.json               # Dépendances
 ```
 
-## 🗄 Modèles Prisma
+## 🎨 shadcn/ui
 
-Le schema Prisma inclut les modèles suivants :
+Le projet utilise shadcn/ui initialisé avec le CLI :
+```bash
+npx shadcn@latest init
+```
 
-- **User** - Utilisateurs (authentification)
-- **Account** - Comptes OAuth
-- **Session** - Sessions utilisateur
-- **Business** - Établissements
-- **Service** - Services proposés
-- **Booking** - Réservations
-- **Availability** - Disponibilités
+Pour ajouter un composant :
+```bash
+npx shadcn add <nom-du-composant>
+```
 
 ## 📝 Scripts disponibles
 
@@ -90,31 +86,20 @@ Le schema Prisma inclut les modèles suivants :
 | `npm run build` | Build de production |
 | `npm run start` | Démarrer le serveur de production |
 | `npm run lint` | Linter le code |
-| `npm run db:generate` | Générer le client Prisma |
-| `npm run db:migrate` | Créer/appliquer les migrations |
-| `npm run db:studio` | Ouvrir Prisma Studio |
 
-## ⚙️ Configuration
+## 🔄 Git
 
-1. Copier le fichier `.env.example` vers `.env` :
-   ```bash
-   cp .env.example .env
-   ```
+Le repository Git est initialisé. Pour pousser sur un remote :
 
-2. Configurer les variables d'environnement :
-   - `DATABASE_URL` : URL de connexion PostgreSQL
-   - `NEXTAUTH_SECRET` : Clé secrète pour JWT (min 32 caractères)
-   - `NEXTAUTH_URL` : URL de l'application
+```bash
+# Ajouter un remote (exemple GitHub)
+git remote add origin https://github.com/username/booking-saas.git
 
-3. Initialiser la base de données :
-   ```bash
-   npx prisma migrate dev --name init
-   ```
-
-4. Lancer l'application :
-   ```bash
-   npm run dev
-   ```
+# Pousser le code
+git add .
+git commit -m "Initial commit: Next.js + TypeScript + Tailwind + shadcn/ui"
+git push -u origin main
+```
 
 ## 📄 Licence
 
