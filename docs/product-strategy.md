@@ -1,100 +1,146 @@
 # Product Strategy — Rendez
 
 > **Version** : 2.0.0  
-> **Date** : 2026-03-14  
-> **Heure** : 00:20 UTC  
-> **Statut** : 🚀 BUILD MODE — Jour 2 en cours  
+> **Dernière mise à jour** : 2026-03-14 01:21 UTC  
+> **Statut** : 🚀 BUILD MODE — Sprint Jour 2  
 > **Deadline** : Mardi 17/03 20h
 
 ---
 
-## 📊 État réel du build
+## 📊 État actuel du build
 
-### Ce qui existe (worktrees/dev-agent/)
+### ✅ Livré (Jour 1 — Ven 13/03)
 
 | Composant | Fichier | Statut |
 |-----------|---------|--------|
-| Auth (NextAuth v5) | `src/auth.ts`, `src/lib/auth.ts` | ✅ |
-| Login page | `src/app/login/page.tsx` | ✅ |
-| Register page | `src/app/register/page.tsx` | ✅ |
-| Dashboard layout | `src/app/(app)/layout.tsx` | ✅ |
-| Dashboard page | `src/app/(app)/dashboard/page.tsx` | ✅ |
-| Services CRUD | `src/app/(app)/services/*` | ✅ |
-| Slots management | `src/app/(app)/services/[id]/slots/*` | ✅ |
 | Schema Prisma | `prisma/schema.prisma` | ✅ Complet |
-| API routes | `src/app/api/*` | ✅ Auth, bookings, availability, business, slots |
-| Page publique | `src/app/(public)/book/[slug]/page.tsx` | ✅ Wizard 5 étapes |
+| Auth NextAuth v5 | `src/auth.ts`, `src/lib/auth.ts` | ✅ Fonctionnel |
+| Login page | `src/app/login/page.tsx` | ✅ UI + auth |
+| Register page | `src/app/register/page.tsx` | ✅ UI + auth |
+| Dashboard layout | `src/app/dashboard/layout.tsx` | ✅ Sidebar responsive |
+| Dashboard home | `src/app/dashboard/page.tsx` | ✅ Stats + état vide |
+| Server Actions services | `src/server/actions/services.ts` | ✅ CRUD complet |
+| Page publique booking | `src/app/(public)/book/[slug]/page.tsx` | ✅ Wizard 5 étapes |
+| Composants booking | `src/components/booking/*` | ✅ 6 composants |
+| API routes | `src/app/api/*` | ✅ Business, availability, bookings |
 
-### 🔴 Manquants bloquants
+### ⏳ En cours / Manquant critique (Jour 2 — Sam 14/03)
 
-| Composant | Impact | Priorité |
-|-----------|--------|----------|
-| `components/booking/service-selector.tsx` | Wizard étape 1 — sélection service | HIGH |
-| `components/booking/date-picker.tsx` | Wizard étape 2 — choix date | HIGH |
-| `components/booking/time-slot-picker.tsx` | Wizard étape 3 — choix horaire | HIGH |
-| `components/booking/customer-form.tsx` | Wizard étape 4 — infos client | HIGH |
-| `components/booking/booking-summary.tsx` | Récapitulatif réservation | HIGH |
-| Migration workspace-chief | Versionnement + déploiement | HIGH |
-
----
-
-## 🎯 Objectifs J2 (Samedi 14/03)
-
-| Heure | Tâche | Livrable |
-|-------|-------|----------|
-| 00:30-04:00 | Créer les 5 composants booking | UI wizard fonctionnelle |
-| 04:00-08:00 | Tester le flow complet | /book/[slug] testable localement |
-| 08:00-12:00 | Migrer vers workspace-chief | Repo propre, commit, push |
-| 12:00-16:00 | Déployer sur Vercel | URL live testable |
-| 16:00-20:00 | Polish + bugfix | App stable |
+| Composant | Fichier | Priorité | Blocage |
+|-----------|---------|----------|---------|
+| Liste services | `/dashboard/services/page.tsx` | 🔴 Haute | Lien nav 404 |
+| Edit service | `/dashboard/services/[id]/edit/page.tsx` | 🔴 Haute | Impossible modifier |
+| Business ID dynamique | `server/actions/services.ts` | 🔴 Haute | Hardcodé "temp-business-id" |
+| Nouvelle réservation | `/dashboard/bookings/new/page.tsx` | 🟡 Moyenne | Bouton sans action |
+| Calendrier vue | `/dashboard/calendar/page.tsx` | 🟡 Moyenne | Nav présente |
+| Settings | `/dashboard/settings/page.tsx` | 🟢 Basse | Non critique MVP |
 
 ---
 
-## 🏗️ Architecture validée
+## 🎯 Objectif Jour 2 (Sam 14/03)
+
+**Focus** : Rendre le CRUD services fonctionnel bout-en-bout
+
+### Critère de succès
+- [ ] Pro peut créer un service → le voir dans la liste
+- [ ] Pro peut modifier un service existant
+- [ ] Pro peut désactiver (soft delete) un service
+- [ ] Business ID récupéré dynamiquement depuis la session
+
+### Tâches dev-agent prioritaires
+
+1. **Créer `/dashboard/services/page.tsx`**
+   - Liste des services du business connecté
+   - Bouton "Nouveau service" → `/services/new`
+   - Actions : Modifier, Désactiver
+   - État vide si aucun service
+
+2. **Créer `/dashboard/services/[id]/edit/page.tsx`**
+   - Formulaire pré-rempli avec données existantes
+   - Même UI que `/services/new`
+   - Action `updateService` déjà prête
+
+3. **Corriger `createService` et `getServicesByBusiness`**
+   - Récupérer `businessId` depuis la session user
+   - Supprimer le hardcode "temp-business-id"
+
+4. **Créer `/dashboard/bookings/new/page.tsx` (si temps)**
+   - Formulaire création réservation manuelle
+   - Sélection service + date + client
+
+---
+
+## 🏗️ Architecture repo
+
+**Localisation actuelle** : `/opt/ai-startup/worktrees/dev-agent/`
+**Cible** : Synchroniser vers `workspace-chief/` pour unification
 
 ```
-src/
-├── app/
-│   ├── (app)/           # Espace protégé (dashboard)
-│   │   ├── dashboard/
-│   │   └── services/
-│   ├── (public)/        # Espace public
-│   │   └── book/[slug]/ # Page réservation client
-│   ├── api/             # Server actions + API routes
-│   ├── login/
-│   └── register/
-├── components/
-│   ├── ui/              # shadcn/ui
-│   └── booking/         # Wizard components (À CRÉER)
-├── lib/
-│   ├── auth.ts
-│   ├── prisma.ts
-│   └── utils.ts
-└── server/
-    ├── actions/         # Server actions (services, slots, bookings)
-    └── schemas/         # Zod schemas
+booking-saas/
+├── src/
+│   ├── app/
+│   │   ├── login/              ✅
+│   │   ├── register/           ✅
+│   │   ├── dashboard/          ✅ layout, ✅ home, ⏳ services, ⏳ bookings
+│   │   │   ├── services/
+│   │   │   │   ├── page.tsx    ⏳ À créer (liste)
+│   │   │   │   ├── new/
+│   │   │   │   │   └── page.tsx ✅ Existe
+│   │   │   │   └── [id]/
+│   │   │   │       └── edit/
+│   │   │   │           └── page.tsx ⏳ À créer
+│   │   │   ├── bookings/
+│   │   │   │   └── new/
+│   │   │   │       └── page.tsx ⏳ À créer
+│   │   │   └── calendar/       ⏳ À créer
+│   │   └── (public)/
+│   │       └── book/[slug]/    ✅ Wizard complet
+│   ├── components/
+│   │   ├── ui/                 ✅ shadcn components
+│   │   └── booking/            ✅ 6 composants wizard
+│   ├── server/
+│   │   └── actions/
+│   │       └── services.ts     ✅ CRUD (corriger businessId)
+│   └── lib/
+│       ├── auth.ts             ✅
+│       └── prisma.ts           ✅
+├── prisma/
+│   └── schema.prisma           ✅ Complet
+└── package.json                ✅ Next.js 14 + Auth.js v5
 ```
 
 ---
 
-## 🚀 Prochaines actions dev-agent
+## 🚨 Risques identifiés
 
-1. **Créer `components/booking/service-selector.tsx`** — Liste des services avec sélection
-2. **Créer `components/booking/date-picker.tsx`** — Calendrier simple (react-day-picker ou natif)
-3. **Créer `components/booking/time-slot-picker.tsx`** — Grille d'horaires disponibles
-4. **Créer `components/booking/customer-form.tsx`** — Formulaire nom/email/téléphone
-5. **Créer `components/booking/booking-summary.tsx`** — Récap service/date/heure/prix
-
----
-
-## ⚠️ Risques
-
-| Risque | Mitigation |
-|--------|------------|
-| Composants UI complexes | Utiliser shadcn/ui existant, garder simple |
-| Intégration API | Tester chaque étape du wizard isolément |
-| Déploiement Vercel | Prévoir variables d'environnement DATABASE_URL, NEXTAUTH_SECRET |
+| Risque | Impact | Mitigation |
+|--------|--------|------------|
+| Business ID hardcodé | 🔴 Critique | Fix prioritaire Jour 2 matin |
+| Pas de liste services | 🔴 Critique | Bloque le flux core |
+| Repo dans worktree | 🟡 Moyen | Synchroniser avant Jour 3 |
+| Dépendance auth pour tests | 🟡 Moyen | Créer seed data pour tests manuels |
 
 ---
 
-*Stratégie mise à jour — Build focus, pas de validation, pas de pivot*
+## 📅 Timeline build 5 jours (revised)
+
+| Jour | Date | Focus | Livrable |
+|------|------|-------|----------|
+| **J1** | Ven 13/03 | Foundation | ✅ Auth, schema, dashboard layout |
+| **J2** | Sam 14/03 | Services CRUD | 🎯 Liste, edit, business ID dynamique |
+| **J3** | Dim 15/03 | Disponibilités | Slots récurrents, calendrier |
+| **J4** | Lun 16/03 | Réservations | CRUD bookings, emails |
+| **J5** | Mar 17/03 | Polish + Deploy | UI polish, Vercel live |
+
+---
+
+## 🎯 North Star Metric
+
+**"Premier RDV pris via la plateforme"**
+
+Proxy Jour 2 : **Service créé et visible dans le dashboard**
+
+---
+
+*Document mis à jour par chief-agent — 2026-03-14 01:21 UTC*  
+*Build mode activated — Pas de validation, juste exécution*
