@@ -39,10 +39,6 @@ booking-saas/
 │   │   └── page.tsx           # Landing page
 │   ├── components/
 │   │   └── ui/                # Composants shadcn/ui
-│   │       ├── button.tsx     # Bouton
-│   │       ├── card.tsx       # Card
-│   │       ├── input.tsx      # Input
-│   │       └── label.tsx      # Label
 │   ├── lib/
 │   │   ├── auth.ts            # Config NextAuth
 │   │   ├── prisma.ts          # Client Prisma
