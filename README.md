@@ -20,7 +20,7 @@ Ouvrez [http://localhost:3000](http://localhost:3000) dans votre navigateur.
 - **Framework**: [Next.js 15](https://nextjs.org/) (App Router)
 - **Langage**: [TypeScript](https://www.typescriptlang.org/) (strict mode)
 - **Styling**: [Tailwind CSS](https://tailwindcss.com/)
-- **UI Components**: [shadcn/ui](https://ui.shadcn.com/) (style base-nova)
+- **UI Components**: [shadcn/ui](https://ui.shadcn.com/) (init via CLI)
 - **Authentification**: [NextAuth v5](https://authjs.dev/) (Auth.js)
 - **Base de données**: [PostgreSQL](https://www.postgresql.org/) + [Prisma](https://www.prisma.io/)
 
@@ -38,12 +38,15 @@ booking-saas/
 │   │   ├── layout.tsx         # Layout racine
 │   │   └── page.tsx           # Landing page
 │   ├── components/
-│   │   ├── ui/                # Composants shadcn/ui
-│   │   └── dashboard/         # Composants dashboard
+│   │   └── ui/                # Composants shadcn/ui
+│   │       ├── button.tsx     # Bouton
+│   │       ├── card.tsx       # Card
+│   │       ├── input.tsx      # Input
+│   │       └── label.tsx      # Label
 │   ├── lib/
 │   │   ├── auth.ts            # Config NextAuth
 │   │   ├── prisma.ts          # Client Prisma
-│   │   └── utils.ts           # Utilitaires
+│   │   └── utils.ts           # Utilitaires (cn)
 │   └── types/
 │       └── next-auth.d.ts     # Types étendus
 ├── prisma/
@@ -91,7 +94,7 @@ booking-saas/
 
 ## 🎨 shadcn/ui
 
-Le projet utilise shadcn/ui avec le style **base-nova** pour les composants UI. Pour ajouter un composant :
+Le projet utilise shadcn/ui initialisé via CLI. Pour ajouter un composant :
 
 ```bash
 npx shadcn add <nom-du-composant>
