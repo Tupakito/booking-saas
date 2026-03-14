@@ -9,9 +9,6 @@ Plateforme de réservation en ligne pour professionnels.
 # Installation des dépendances
 npm install
 
-# Générer le client Prisma
-npx prisma generate
-
 # Lancer le serveur de développement
 npm run dev
 ```
@@ -26,9 +23,9 @@ Le projet est initialisé avec :
 - [x] Tailwind CSS
 - [x] shadcn/ui
 - [x] Structure src/app/
-- [x] Structure src/lib/
 - [x] Structure src/components/
-- [x] Structure prisma/
+- [x] Structure src/lib/
+- [x] Structure src/types/
 - [x] Fichiers de base (layout.tsx, page.tsx, globals.css)
 
 ## 🛠 Stack technique
@@ -37,7 +34,7 @@ Le projet est initialisé avec :
 - **Langage**: [TypeScript](https://www.typescriptlang.org/) (strict mode)
 - **Styling**: [Tailwind CSS](https://tailwindcss.com/)
 - **UI Components**: [shadcn/ui](https://ui.shadcn.com/)
-- **Base de données**: [PostgreSQL](https://www.postgresql.org/) + [Prisma](https://www.prisma.io/)
+- **Authentification**: [NextAuth v5](https://authjs.dev/) (Auth.js)
 
 ## 📁 Structure du projet
 
@@ -61,10 +58,12 @@ booking-saas/
 │   │       ├── table.tsx
 │   │       ├── dialog.tsx
 │   │       └── badge.tsx
-│   └── lib/
-│       ├── auth.ts            # Config NextAuth
-│       ├── prisma.ts          # Client Prisma
-│       └── utils.ts           # Utilitaires (cn)
+│   ├── lib/
+│   │   ├── auth.ts            # Config NextAuth
+│   │   ├── prisma.ts          # Client Prisma
+│   │   └── utils.ts           # Utilitaires (cn)
+│   └── types/
+│       └── next-auth.d.ts     # Types étendus NextAuth
 ├── prisma/
 │   └── schema.prisma          # Schéma de base de données
 ├── .env.example               # Variables d'environnement
@@ -98,12 +97,7 @@ booking-saas/
    - `NEXTAUTH_SECRET` : Clé secrète pour JWT (min 32 caractères)
    - `NEXTAUTH_URL` : URL de l'application
 
-3. Initialiser la base de données :
-   ```bash
-   npx prisma migrate dev --name init
-   ```
-
-4. Lancer l'application :
+3. Lancer l'application :
    ```bash
    npm run dev
    ```
