@@ -9,6 +9,9 @@ Plateforme de réservation en ligne pour professionnels.
 # Installation des dépendances
 npm install
 
+# Générer le client Prisma
+npx prisma generate
+
 # Lancer le serveur de développement
 npm run dev
 ```
@@ -17,19 +20,14 @@ Ouvrez [http://localhost:3000](http://localhost:3000) dans votre navigateur.
 
 ## ✅ Vérification installation
 
-Le projet est initialisé et fonctionnel avec :
+Le projet est initialisé et prêt pour `npm run dev` :
 - [x] Next.js 15 (App Router)
 - [x] TypeScript (strict mode)
 - [x] Tailwind CSS
-- [x] shadcn/ui
-- [x] package.json
-- [x] tsconfig.json
-- [x] tailwind.config.ts
-- [x] src/app/
-- [x] src/components/
-- [x] src/lib/
-- [x] prisma/
-- [x] `npm run dev` fonctionne sans erreur
+- [x] shadcn/ui configuré
+- [x] Prisma avec schema de base (User, Account, Session)
+- [x] .env.example
+- [x] `npm run dev` prêt
 
 ## 🛠 Stack technique
 
@@ -53,14 +51,6 @@ booking-saas/
 │   │   └── page.tsx           # Landing page
 │   ├── components/
 │   │   └── ui/                # Composants shadcn/ui
-│   │       ├── button.tsx
-│   │       ├── card.tsx
-│   │       ├── input.tsx
-│   │       ├── label.tsx
-│   │       ├── badge.tsx
-│   │       ├── calendar.tsx
-│   │       ├── dialog.tsx
-│   │       └── table.tsx
 │   ├── lib/
 │   │   ├── auth.ts            # Config NextAuth
 │   │   ├── prisma.ts          # Client Prisma
@@ -75,6 +65,22 @@ booking-saas/
 ├── tailwind.config.ts         # Config Tailwind
 └── tsconfig.json              # Config TypeScript
 ```
+
+## 🗄 Schéma Prisma
+
+Le schema Prisma inclut les modèles de base pour l'authentification :
+
+### Modèles Auth (NextAuth)
+- **User** - Utilisateurs avec rôle (USER/ADMIN)
+- **Account** - Comptes OAuth (Google, etc.)
+- **Session** - Sessions utilisateur
+- **VerificationToken** - Tokens de vérification email
+
+### Modèles Métier
+- **Business** - Établissements
+- **Service** - Services proposés
+- **Booking** - Réservations
+- **Availability** - Disponibilités
 
 ## 📝 Scripts disponibles
 
@@ -100,14 +106,25 @@ booking-saas/
    - `NEXTAUTH_SECRET` : Clé secrète pour JWT (min 32 caractères)
    - `NEXTAUTH_URL` : URL de l'application
 
-3. Lancer l'application :
+3. Initialiser la base de données :
+   ```bash
+   npx prisma migrate dev --name init
+   npx prisma generate
+   ```
+
+4. Lancer l'application :
    ```bash
    npm run dev
    ```
 
 ## 🎨 shadcn/ui
 
-Le projet utilise shadcn/ui pour les composants UI. Pour ajouter un composant :
+Le projet utilise shadcn/ui configuré avec :
+```bash
+npx shadcn@latest init
+```
+
+Pour ajouter un composant :
 ```bash
 npx shadcn add <nom-du-composant>
 ```
