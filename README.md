@@ -1,74 +1,132 @@
 ```markdown
-# Booking SaaS - Landing Page
+# Booking SaaS
 
-Landing page pour la plateforme de réservation en ligne.
+Plateforme de réservation en ligne pour professionnels.
 
 ## 🚀 Démarrage rapide
 
 ```bash
-cd landing-page
-
 # Installation des dépendances
 npm install
 
-# Build de production (testé en local)
-npm run build
+# Générer le client Prisma
+npx prisma generate
 
-# Démarrer le serveur de production
-npm start
+# Lancer le serveur de développement
+npm run dev
 ```
 
-## ✅ Vérification Build Local
+Ouvrez [http://localhost:3000](http://localhost:3000) dans votre navigateur.
 
-Le build a été testé en local avec succès :
-```bash
-✓ Compiled successfully
-✓ Generating static pages (4/4)
-✓ Finalizing page optimization
-```
+## ✅ Vérification installation
 
-Fichiers générés dans `landing-page/dist/`:
-- index.html
-- 404.html
-- _next/ (assets)
+Le projet est initialisé avec :
+- [x] Next.js 15 (App Router)
+- [x] TypeScript (strict mode)
+- [x] Tailwind CSS
+- [x] shadcn/ui
+- [x] src/app/
+- [x] src/lib/
+- [x] src/components/
+- [x] prisma/
+
+## 🛠 Stack technique
+
+- **Framework**: [Next.js 15](https://nextjs.org/) (App Router)
+- **Langage**: [TypeScript](https://www.typescriptlang.org/) (strict mode)
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
+- **UI Components**: [shadcn/ui](https://ui.shadcn.com/)
+- **Base de données**: [PostgreSQL](https://www.postgresql.org/) + [Prisma](https://www.prisma.io/)
 
 ## 📁 Structure du projet
 
 ```
-landing-page/
+booking-saas/
 ├── src/
-│   └── app/
-│       ├── globals.css    # Styles globaux
-│       ├── layout.tsx     # Layout racine
-│       └── page.tsx       # Page d'accueil
-├── dist/                   # Output du build (static)
-├── next.config.js          # Config Next.js (export static)
-├── vercel.json             # Config Vercel
-├── package.json            # Dépendances
-└── tsconfig.json           # Config TypeScript
+│   ├── app/                    # App Router Next.js
+│   │   ├── dashboard/         # Espace connecté
+│   │   ├── login/             # Page de connexion
+│   │   ├── register/          # Page d'inscription
+│   │   ├── globals.css        # Styles globaux
+│   │   ├── layout.tsx         # Layout racine
+│   │   └── page.tsx           # Landing page
+│   ├── components/
+│   │   └── ui/                # Composants shadcn/ui
+│   │       ├── button.tsx
+│   │       ├── card.tsx
+│   │       ├── input.tsx
+│   │       ├── label.tsx
+│   │       ├── badge.tsx
+│   │       ├── calendar.tsx
+│   │       ├── dialog.tsx
+│   │       └── table.tsx
+│   ├── lib/
+│   │   ├── auth.ts            # Config NextAuth
+│   │   ├── prisma.ts          # Client Prisma
+│   │   └── utils.ts           # Utilitaires
+│   └── types/
+│       └── next-auth.d.ts     # Types étendus
+├── prisma/
+│   └── schema.prisma          # Schéma de base de données
+├── .env.example               # Variables d'environnement
+├── components.json            # Config shadcn/ui
+├── next.config.ts             # Config Next.js
+├── tailwind.config.ts         # Config Tailwind
+└── tsconfig.json              # Config TypeScript
 ```
 
-## ⚙️ Configuration Vercel
+## 📦 Dépendances installées
 
-Le fichier `vercel.json` est configuré avec :
-- `buildCommand`: npm run build
-- `outputDirectory`: dist
-- `framework`: nextjs
-- `installCommand`: npm install
+- `next` - Framework React
+- `react`, `react-dom` - React
+- `typescript` - TypeScript
+- `tailwindcss` - CSS framework
+- `@base-ui/react` - Composants headless (via shadcn)
+- `class-variance-authority` - Gestion des variants
+- `clsx` - Concaténation de classes
+- `tailwind-merge` - Merge des classes Tailwind
 
 ## 📝 Scripts disponibles
 
 | Commande | Description |
 |----------|-------------|
-| `npm run dev` | Développement |
+| `npm run dev` | Développement avec hot reload |
 | `npm run build` | Build de production |
-| `npm start` | Serveur de production |
+| `npm run start` | Démarrer le serveur de production |
+| `npm run lint` | Linter le code |
+| `npm run db:generate` | Générer le client Prisma |
+| `npm run db:migrate` | Créer/appliquer les migrations |
+| `npm run db:studio` | Ouvrir Prisma Studio |
 
-## 🛠 Stack technique
+## ⚙️ Configuration
 
-- **Framework**: Next.js 14.2.5
-- **Langage**: TypeScript
-- **Output**: Static Export (dist/)
+1. Copier le fichier `.env.example` vers `.env` :
+   ```bash
+   cp .env.example .env
+   ```
+
+2. Configurer les variables d'environnement :
+   - `DATABASE_URL` : URL de connexion PostgreSQL
+   - `NEXTAUTH_SECRET` : Clé secrète pour JWT (min 32 caractères)
+   - `NEXTAUTH_URL` : URL de l'application
+
+3. Initialiser la base de données :
+   ```bash
+   npx prisma migrate dev --name init
+   npx prisma generate
+   ```
+
+4. Lancer l'application :
+   ```bash
+   npm run dev
+   ```
+
+## 🎨 shadcn/ui
+
+Le projet utilise shadcn/ui pour les composants UI. Pour ajouter un composant :
+```bash
+npx shadcn add <nom-du-composant>
+```
 
 ## 📄 Licence
 
