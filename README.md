@@ -25,12 +25,13 @@ Le projet est initialisé avec :
 - [x] TypeScript (strict mode)
 - [x] Tailwind CSS
 - [x] shadcn/ui
-- [x] Structure src/app/, src/components/, src/lib/
-- [x] Prisma avec schema.prisma
-- [x] .env.example
+- [x] Prisma avec modèles User/Business/Service/Booking
 - [x] next.config.ts
-- [x] tailwind.config.ts
 - [x] tsconfig.json
+- [x] tailwind.config.ts
+- [x] src/app/layout.tsx
+- [x] src/app/page.tsx
+- [x] .env.example
 
 ## 🛠 Stack technique
 
@@ -56,14 +57,6 @@ booking-saas/
 │   │   └── page.tsx           # Landing page
 │   ├── components/
 │   │   └── ui/                # Composants shadcn/ui
-│   │       ├── button.tsx
-│   │       ├── card.tsx
-│   │       ├── input.tsx
-│   │       ├── label.tsx
-│   │       ├── calendar.tsx
-│   │       ├── table.tsx
-│   │       ├── dialog.tsx
-│   │       └── badge.tsx
 │   └── lib/
 │       ├── auth.ts            # Config NextAuth
 │       ├── prisma.ts          # Client Prisma
@@ -76,6 +69,18 @@ booking-saas/
 ├── tailwind.config.ts         # Config Tailwind
 └── tsconfig.json              # Config TypeScript
 ```
+
+## 🗄 Modèles Prisma
+
+Le schema Prisma inclut les modèles suivants :
+
+- **User** - Utilisateurs (authentification)
+- **Account** - Comptes OAuth
+- **Session** - Sessions utilisateur
+- **Business** - Établissements
+- **Service** - Services proposés
+- **Booking** - Réservations
+- **Availability** - Disponibilités
 
 ## 📝 Scripts disponibles
 
@@ -104,37 +109,12 @@ booking-saas/
 3. Initialiser la base de données :
    ```bash
    npx prisma migrate dev --name init
-   npx prisma generate
    ```
 
 4. Lancer l'application :
    ```bash
    npm run dev
    ```
-
-## 📦 Dépendances principales
-
-- `next` - Framework React
-- `react`, `react-dom` - React
-- `typescript` - TypeScript
-- `tailwindcss` - CSS framework
-- `@base-ui/react` - Composants headless (via shadcn)
-- `@radix-ui/react-dialog` - Dialog component
-- `class-variance-authority` - Gestion des variants
-- `clsx` - Concaténation de classes
-- `tailwind-merge` - Merge des classes Tailwind
-
-## 🎨 shadcn/ui
-
-Le projet utilise shadcn/ui initialisé avec :
-```bash
-npx shadcn@latest init
-```
-
-Pour ajouter un composant :
-```bash
-npx shadcn add <nom-du-composant>
-```
 
 ## 📄 Licence
 
