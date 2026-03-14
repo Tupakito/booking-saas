@@ -3,17 +3,56 @@
 
 Plateforme de réservation en ligne pour professionnels (coiffeurs, artisans, commerçants locaux).
 
-## 🚀 Démarrage rapide
+## 🚨 Configuration Vercel Requise
+
+Pour éviter l'erreur 500 sur `/dashboard`, configurez ces variables d'environnement sur Vercel :
+
+| Variable | Description | Où la trouver |
+|----------|-------------|---------------|
+| `DATABASE_URL` | URL PostgreSQL | Vercel Postgres ou Neon |
+| `NEXTAUTH_SECRET` | Clé secrète JWT | `openssl rand -base64 32` |
+| `NEXTAUTH_URL` | URL de l'app | `https://votre-app.vercel.app` |
+
+### Étapes de configuration Vercel :
+
+1. **Aller sur Vercel Dashboard** → Votre projet → Settings → Environment Variables
+
+2. **Ajouter DATABASE_URL** :
+   - Si vous utilisez Vercel Postgres : 
+     - Storage → Connect Store → Create New → Postgres
+     - Copier la chaîne de connexion Pooled
+   - Si vous utilisez Neon : Copier l'URL de connexion avec `?sslmode=require`
+
+3. **Générer NEXTAUTH_SECRET** :
+   ```bash
+   openssl rand -base64 32
+   ```
+   Copier le résultat dans la variable `NEXTAUTH_SECRET`
+
+4. **Configurer NEXTAUTH_URL** :
+   - Valeur : `https://votre-app.vercel.app` (votre URL de production)
+
+5. **Redéployer** :
+   - Deployments → Redeploy (avec Build Cache clear)
+
+## 🚀 Démarrage rapide (Local)
 
 ```bash
-# Installation des dépendances
+# 1. Installer les dépendances
 npm install
 
-# Lancer le serveur de développement
+# 2. Copier et configurer les variables d'environnement
+cp .env.example .env
+# Éditer .env avec vos valeurs
+
+# 3. Générer le client Prisma
+npx prisma generate
+
+# 4. Lancer le serveur de développement
 npm run dev
 ```
 
-Ouvrez [http://localhost:3000](http://localhost:3000) dans votre navigateur.
+Ouvrez [http://localhost:3000](http://localhost:3000).
 
 ## 🛠 Stack technique
 
@@ -30,8 +69,8 @@ Ouvrez [http://localhost:3000](http://localhost:3000) dans votre navigateur.
 booking-saas/
 ├── src/
 │   ├── app/                    # App Router Next.js
-│   │   ├── api/               # Routes API
-│   │   ├── dashboard/         # Espace connecté
+│   │   ├── api/auth/          # Routes API NextAuth
+│   │   ├── dashboard/         # Espace connecté (protégé)
 │   │   ├── login/             # Page de connexion
 │   │   ├── register/          # Page d'inscription
 │   │   ├── globals.css        # Styles globaux
@@ -41,17 +80,18 @@ booking-saas/
 │   │   ├── ui/                # Composants shadcn/ui
 │   │   └── dashboard/         # Composants dashboard
 │   ├── lib/
-│   │   ├── auth.ts            # Config NextAuth
-│   │   ├── prisma.ts          # Client Prisma
+│   │   ├── auth.ts            # Configuration NextAuth
+│   │   ├── prisma.ts          # Client Prisma (singleton)
 │   │   └── utils.ts           # Utilitaires
 │   └── types/
-│       └── next-auth.d.ts     # Types étendus
+│       └── next-auth.d.ts     # Types étendus NextAuth
 ├── prisma/
 │   └── schema.prisma          # Schéma de base de données
+├── middleware.ts              # Protection des routes
+├── auth.ts                    # Export NextAuth handlers
+├── vercel.json                # Configuration build Vercel
 ├── .env.example               # Variables d'environnement
-├── components.json            # Config shadcn/ui
-├── tailwind.config.ts         # Config Tailwind
-└── tsconfig.json              # Config TypeScript
+└── README.md                  # Ce fichier
 ```
 
 ## 📝 Scripts disponibles
@@ -66,51 +106,35 @@ booking-saas/
 | `npm run db:migrate` | Créer/appliquer les migrations |
 | `npm run db:studio` | Ouvrir Prisma Studio |
 
-## ⚙️ Configuration
-
-1. Copier le fichier `.env.example` vers `.env` :
-   ```bash
-   cp .env.example .env
-   ```
-
-2. Configurer les variables d'environnement :
-   - `DATABASE_URL` : URL de connexion PostgreSQL
-   - `NEXTAUTH_SECRET` : Clé secrète pour JWT (min 32 caractères)
-   - `NEXTAUTH_URL` : URL de l'application
-
-3. Initialiser la base de données :
-   ```bash
-   npx prisma migrate dev --name init
-   npx prisma generate
-   ```
-
-4. Lancer l'application :
-   ```bash
-   npm run dev
-   ```
-
-## 🎨 shadcn/ui
-
-Le projet utilise shadcn/ui pour les composants UI. Pour ajouter un composant :
-
-```bash
-npx shadcn add <nom-du-composant>
-```
-
-Composants déjà installés :
-- `button`
-- `card`
-- `input`
-- `label`
-- `badge`
-- `table`
-- `dropdown-menu`
-
 ## 🔒 Authentification
 
-L'authentification est gérée par NextAuth v5 avec :
-- Credentials (email/password)
-- OAuth Google (optionnel)
+L'authentification utilise NextAuth v5 avec :
+- **Credentials** : Email + mot de passe
+- **JWT Strategy** : Sessions stockées dans des tokens signés
+- **Middleware** : Protection des routes `/dashboard/*`
+
+### Flux d'authentification :
+1. Utilisateur se connecte sur `/login`
+2. NextAuth vérifie les credentials via Prisma
+3. Token JWT créé et stocké dans un cookie
+4. Middleware vérifie le token sur chaque requête `/dashboard`
+5. Si non authentifié → redirection vers `/login`
+
+## 🐛 Dépannage Erreur 500
+
+Si `/dashboard` retourne 500 :
+
+| Cause | Solution |
+|-------|----------|
+| `DATABASE_URL` manquante | Vérifier les variables d'environnement Vercel |
+| `NEXTAUTH_SECRET` trop courte | Générer avec `openssl rand -base64 32` |
+| Prisma Client non généré | Vérifier `vercel.json` avec `prisma generate` |
+| Erreur de connexion DB | Vérifier que l'URL contient `?sslmode=require` |
+
+### Logs Vercel :
+1. Vercel Dashboard → Deployments → Latest
+2. Click sur "View Logs"
+3. Chercher "Error" ou "Exception"
 
 ## 📄 Licence
 
