@@ -1,110 +1,75 @@
 ```typescript
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import { Calendar, Clock, Users, ArrowRight } from "lucide-react";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-gradient-to-b from-background to-muted/20">
+    <main className="min-h-screen">
       {/* Hero Section */}
-      <section className="container mx-auto px-4 py-20 md:py-32">
-        <div className="text-center max-w-3xl mx-auto">
-          <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-6">
-            Simplifiez vos{" "}
-            <span className="text-primary-600">réservations</span>
-          </h1>
-          <p className="text-xl text-muted-foreground mb-8">
-            La plateforme tout-en-un pour gérer vos rendez-vous et vos clients.
-            Parfaite pour les coiffeurs, artisans et commerçants locaux.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/register">
-              <Button size="lg" className="gap-2">
+      <section className="bg-gradient-to-br from-primary-600 to-primary-800 text-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+          <div className="text-center">
+            <h1 className="text-4xl md:text-6xl font-bold mb-6">
+              Simplifiez vos réservations
+            </h1>
+            <p className="text-xl md:text-2xl mb-8 text-primary-100">
+              La plateforme tout-en-un pour gérer vos rendez-vous et vos clients
+            </p>
+            <div className="flex gap-4 justify-center">
+              <Link
+                href="/register"
+                className="bg-white text-primary-600 px-8 py-3 rounded-lg font-semibold hover:bg-primary-50 transition"
+              >
                 Commencer gratuitement
-                <ArrowRight className="w-4 h-4" />
-              </Button>
-            </Link>
-            <Link href="/login">
-              <Button variant="outline" size="lg">
+              </Link>
+              <Link
+                href="/login"
+                className="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white/10 transition"
+              >
                 Se connecter
-              </Button>
-            </Link>
+              </Link>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Features Section */}
-      <section className="container mx-auto px-4 py-20">
-        <h2 className="text-3xl font-bold text-center mb-12">
-          Fonctionnalités principales
-        </h2>
-        <div className="grid md:grid-cols-3 gap-6">
-          <FeatureCard
-            icon={Calendar}
-            title="Gestion des réservations"
-            description="Acceptez des réservations 24/7. Vos clients peuvent réserver selon vos disponibilités en temps réel."
-          />
-          <FeatureCard
-            icon={Clock}
-            title="Calendrier intelligent"
-            description="Visualisez votre planning d'un coup d'œil. Gérez vos disponibilités et vos congés facilement."
-          />
-          <FeatureCard
-            icon={Users}
-            title="Gestion des clients"
-            description="Gardez une trace de vos clients, leurs préférences et leur historique de réservations."
-          />
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="container mx-auto px-4 py-20">
-        <div className="bg-primary-600 rounded-2xl p-8 md:p-12 text-center text-white">
-          <h2 className="text-3xl font-bold mb-4">
-            Prêt à simplifier votre planning ?
+      <section className="py-20 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl font-bold text-center mb-12">
+            Fonctionnalités principales
           </h2>
-          <p className="text-primary-100 mb-8 max-w-xl mx-auto">
-            Rejoignez les professionnels qui gagnent du temps chaque jour avec notre solution de réservation.
-          </p>
-          <Link href="/register">
-            <Button size="lg" variant="secondary" className="gap-2">
-              Créer mon compte gratuit
-              <ArrowRight className="w-4 h-4" />
-            </Button>
-          </Link>
+          <div className="grid md:grid-cols-3 gap-8">
+            <FeatureCard
+              title="Gestion des services"
+              description="Créez et personnalisez vos services avec prix, durée et disponibilités."
+            />
+            <FeatureCard
+              title="Réservations en ligne"
+              description="Vos clients peuvent réserver 24/7 selon vos disponibilités."
+            />
+            <FeatureCard
+              title="Tableau de bord"
+              description="Suivez vos réservations, revenus et statistiques en temps réel."
+            />
+          </div>
         </div>
       </section>
-
-      {/* Footer */}
-      <footer className="border-t py-8 mt-20">
-        <div className="container mx-auto px-4 text-center text-muted-foreground">
-          <p>&copy; 2025 Booking SaaS. Tous droits réservés.</p>
-        </div>
-      </footer>
     </main>
   );
 }
 
 function FeatureCard({
-  icon: Icon,
   title,
   description,
 }: {
-  icon: React.ElementType;
   title: string;
   description: string;
 }) {
   return (
-    <Card className="h-full">
-      <CardContent className="pt-6">
-        <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
-          <Icon className="w-6 h-6 text-primary-600" />
-        </div>
-        <h3 className="text-xl font-semibold mb-2">{title}</h3>
-        <p className="text-muted-foreground">{description}</p>
-      </CardContent>
-    </Card>
+    <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+      <h3 className="text-xl font-semibold mb-3 text-gray-900">{title}</h3>
+      <p className="text-gray-600">{description}</p>
+    </div>
   );
 }
 ```
