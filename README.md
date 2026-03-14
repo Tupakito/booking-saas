@@ -39,6 +39,10 @@ booking-saas/
 │   │   └── page.tsx           # Landing page
 │   ├── components/
 │   │   ├── ui/                # Composants shadcn/ui
+│   │   │   ├── button.tsx     # Bouton
+│   │   │   ├── input.tsx      # Input
+│   │   │   ├── card.tsx       # Card
+│   │   │   └── label.tsx      # Label
 │   │   └── dashboard/         # Composants dashboard
 │   ├── lib/
 │   │   ├── auth.ts            # Config NextAuth
@@ -98,14 +102,10 @@ npx shadcn add <nom-du-composant>
 ```
 
 Composants déjà installés :
-- `button`
-- `card`
-- `input`
-- `label`
-- `badge`
-- `table`
-- `dropdown-menu`
-- `alert`
+- `button` - Bouton avec variants (default, outline, secondary, ghost, destructive, link)
+- `input` - Champ de saisie
+- `card` - Carte avec header, content, footer
+- `label` - Étiquette de formulaire
 
 ## 🔒 Authentification
 
