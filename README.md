@@ -1,112 +1,74 @@
 ```markdown
-# Booking SaaS
+# Booking SaaS - Landing Page
 
-Plateforme de réservation en ligne pour professionnels.
+Landing page pour la plateforme de réservation en ligne.
 
 ## 🚀 Démarrage rapide
 
 ```bash
+cd landing-page
+
 # Installation des dépendances
 npm install
 
-# Lancer le serveur de développement
-npm run dev
+# Build de production (testé en local)
+npm run build
+
+# Démarrer le serveur de production
+npm start
 ```
 
-Ouvrez [http://localhost:3000](http://localhost:3000) dans votre navigateur.
+## ✅ Vérification Build Local
 
-## ✅ Vérification installation
+Le build a été testé en local avec succès :
+```bash
+✓ Compiled successfully
+✓ Generating static pages (4/4)
+✓ Finalizing page optimization
+```
 
-Le projet est initialisé avec :
-- [x] Next.js 15 (App Router)
-- [x] TypeScript (strict mode)
-- [x] Tailwind CSS
-- [x] shadcn/ui
-- [x] src/app/
-- [x] src/lib/
-- [x] src/components/
-- [x] Git initialisé
-- [x] Commit initial prêt
-
-## 🛠 Stack technique
-
-- **Framework**: [Next.js 15](https://nextjs.org/) (App Router)
-- **Langage**: [TypeScript](https://www.typescriptlang.org/) (strict mode)
-- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
-- **UI Components**: [shadcn/ui](https://ui.shadcn.com/)
-- **Versioning**: Git
+Fichiers générés dans `landing-page/dist/`:
+- index.html
+- 404.html
+- _next/ (assets)
 
 ## 📁 Structure du projet
 
 ```
-booking-saas/
+landing-page/
 ├── src/
-│   ├── app/                    # App Router Next.js
-│   │   ├── dashboard/         # Espace connecté
-│   │   ├── login/             # Page de connexion
-│   │   ├── register/          # Page d'inscription
-│   │   ├── globals.css        # Styles globaux
-│   │   ├── layout.tsx         # Layout racine
-│   │   └── page.tsx           # Landing page
-│   ├── components/
-│   │   └── ui/                # Composants shadcn/ui
-│   │       ├── button.tsx
-│   │       ├── card.tsx
-│   │       ├── input.tsx
-│   │       ├── label.tsx
-│   │       ├── badge.tsx
-│   │       ├── calendar.tsx
-│   │       ├── dialog.tsx
-│   │       └── table.tsx
-│   ├── lib/
-│   │   ├── auth.ts            # Config NextAuth
-│   │   ├── prisma.ts          # Client Prisma
-│   │   └── utils.ts           # Utilitaires
-│   └── types/
-│       └── next-auth.d.ts     # Types étendus
-├── .git/                       # Repository Git
-├── .env.example               # Variables d'environnement
-├── components.json            # Config shadcn/ui
-├── next.config.ts             # Config Next.js
-├── tailwind.config.ts         # Config Tailwind
-├── tsconfig.json              # Config TypeScript
-└── package.json               # Dépendances
+│   └── app/
+│       ├── globals.css    # Styles globaux
+│       ├── layout.tsx     # Layout racine
+│       └── page.tsx       # Page d'accueil
+├── dist/                   # Output du build (static)
+├── next.config.js          # Config Next.js (export static)
+├── vercel.json             # Config Vercel
+├── package.json            # Dépendances
+└── tsconfig.json           # Config TypeScript
 ```
+
+## ⚙️ Configuration Vercel
+
+Le fichier `vercel.json` est configuré avec :
+- `buildCommand`: npm run build
+- `outputDirectory`: dist
+- `framework`: nextjs
+- `installCommand`: npm install
 
 ## 📝 Scripts disponibles
 
 | Commande | Description |
 |----------|-------------|
-| `npm run dev` | Développement avec hot reload |
+| `npm run dev` | Développement |
 | `npm run build` | Build de production |
-| `npm run start` | Démarrer le serveur de production |
-| `npm run lint` | Linter le code |
+| `npm start` | Serveur de production |
 
-## 🔄 Git
+## 🛠 Stack technique
 
-Le repository Git est initialisé. Pour faire le commit initial :
-
-```bash
-# Voir les fichiers modifiés
-git status
-
-# Ajouter tous les fichiers
-git add .
-
-# Commit initial
-git commit -m "Initial commit: Next.js + TypeScript + Tailwind + shadcn/ui"
-
-# Pousser sur un remote (optionnel)
-git remote add origin https://github.com/username/booking-saas.git
-git push -u origin main
-```
-
-## 🎨 shadcn/ui
-
-Le projet utilise shadcn/ui pour les composants UI. Pour ajouter un composant :
-```bash
-npx shadcn add <nom-du-composant>
-```
+- **Framework**: Next.js 14.2.5
+- **Langage**: TypeScript
+- **Output**: Static Export (dist/)
 
 ## 📄 Licence
 
