@@ -3,13 +3,13 @@
 
 Plateforme de réservation en ligne pour professionnels.
 
-## 🚀 Démarrage rapide (Local)
+## 🚀 Démarrage rapide
 
 ```bash
-# 1. Installation des dépendances
+# Installation des dépendances
 npm install
 
-# 2. Lancer le serveur de développement
+# Lancer le serveur de développement
 npm run dev
 ```
 
@@ -17,7 +17,7 @@ Ouvrez [http://localhost:3000](http://localhost:3000) dans votre navigateur.
 
 ## ✅ Vérification installation
 
-Le projet est initialisé et fonctionnel en local avec :
+Le projet est initialisé et fonctionnel avec :
 - [x] Next.js 15 (App Router)
 - [x] TypeScript (strict mode)
 - [x] Tailwind CSS
@@ -25,9 +25,11 @@ Le projet est initialisé et fonctionnel en local avec :
 - [x] package.json
 - [x] tsconfig.json
 - [x] tailwind.config.ts
-- [x] app/layout.tsx
-- [x] app/page.tsx
-- [x] Composants shadcn/ui (button, input, card)
+- [x] src/app/
+- [x] src/components/
+- [x] src/lib/
+- [x] prisma/
+- [x] `npm run dev` fonctionne sans erreur
 
 ## 🛠 Stack technique
 
@@ -35,6 +37,7 @@ Le projet est initialisé et fonctionnel en local avec :
 - **Langage**: [TypeScript](https://www.typescriptlang.org/) (strict mode)
 - **Styling**: [Tailwind CSS](https://tailwindcss.com/)
 - **UI Components**: [shadcn/ui](https://ui.shadcn.com/)
+- **Base de données**: [PostgreSQL](https://www.postgresql.org/) + [Prisma](https://www.prisma.io/)
 
 ## 📁 Structure du projet
 
@@ -50,42 +53,27 @@ booking-saas/
 │   │   └── page.tsx           # Landing page
 │   ├── components/
 │   │   └── ui/                # Composants shadcn/ui
-│   │       ├── button.tsx     # Bouton
-│   │       ├── card.tsx       # Card
-│   │       ├── input.tsx      # Input
-│   │       ├── label.tsx      # Label
-│   │       ├── badge.tsx      # Badge
-│   │       ├── calendar.tsx   # Calendrier
-│   │       ├── dialog.tsx     # Dialog/Modal
-│   │       └── table.tsx      # Tableau
-│   └── lib/
-│       └── utils.ts           # Utilitaires (cn)
+│   │       ├── button.tsx
+│   │       ├── card.tsx
+│   │       ├── input.tsx
+│   │       ├── label.tsx
+│   │       ├── badge.tsx
+│   │       ├── calendar.tsx
+│   │       ├── dialog.tsx
+│   │       └── table.tsx
+│   ├── lib/
+│   │   ├── auth.ts            # Config NextAuth
+│   │   ├── prisma.ts          # Client Prisma
+│   │   └── utils.ts           # Utilitaires
+│   └── types/
+│       └── next-auth.d.ts     # Types étendus
+├── prisma/
+│   └── schema.prisma          # Schéma de base de données
 ├── .env.example               # Variables d'environnement
 ├── components.json            # Config shadcn/ui
 ├── next.config.ts             # Config Next.js
 ├── tailwind.config.ts         # Config Tailwind
-├── tsconfig.json              # Config TypeScript
-└── package.json               # Dépendances
-```
-
-## 🎨 Composants shadcn/ui
-
-Les composants de base sont installés :
-
-| Composant | Fichier | Description |
-|-----------|---------|-------------|
-| Button | `button.tsx` | Bouton avec variants |
-| Card | `card.tsx` | Carte avec header/content/footer |
-| Input | `input.tsx` | Champ de saisie |
-| Label | `label.tsx` | Étiquette de formulaire |
-| Badge | `badge.tsx` | Badge de statut |
-| Calendar | `calendar.tsx` | Calendrier interactif |
-| Dialog | `dialog.tsx` | Modal/Dialog |
-| Table | `table.tsx` | Tableau de données |
-
-Pour ajouter un composant :
-```bash
-npx shadcn add <nom-du-composant>
+└── tsconfig.json              # Config TypeScript
 ```
 
 ## 📝 Scripts disponibles
@@ -96,18 +84,33 @@ npx shadcn add <nom-du-composant>
 | `npm run build` | Build de production |
 | `npm run start` | Démarrer le serveur de production |
 | `npm run lint` | Linter le code |
+| `npm run db:generate` | Générer le client Prisma |
+| `npm run db:migrate` | Créer/appliquer les migrations |
+| `npm run db:studio` | Ouvrir Prisma Studio |
 
-## ⚙️ Configuration locale
+## ⚙️ Configuration
 
 1. Copier le fichier `.env.example` vers `.env` :
    ```bash
    cp .env.example .env
    ```
 
-2. Lancer l'application :
+2. Configurer les variables d'environnement :
+   - `DATABASE_URL` : URL de connexion PostgreSQL
+   - `NEXTAUTH_SECRET` : Clé secrète pour JWT (min 32 caractères)
+   - `NEXTAUTH_URL` : URL de l'application
+
+3. Lancer l'application :
    ```bash
    npm run dev
    ```
+
+## 🎨 shadcn/ui
+
+Le projet utilise shadcn/ui pour les composants UI. Pour ajouter un composant :
+```bash
+npx shadcn add <nom-du-composant>
+```
 
 ## 📄 Licence
 
