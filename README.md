@@ -20,14 +20,15 @@ Ouvrez [http://localhost:3000](http://localhost:3000) dans votre navigateur.
 
 ## ✅ Vérification installation
 
-Le projet est initialisé et prêt pour `npm run dev` :
-- [x] Next.js 15 (App Router)
-- [x] TypeScript (strict mode)
-- [x] Tailwind CSS
-- [x] shadcn/ui configuré
-- [x] Prisma avec schema de base (User, Account, Session)
+Le projet est fonctionnel avec `npm run dev` :
+- [x] package.json
+- [x] next.config.ts
+- [x] tsconfig.json
+- [x] tailwind.config.ts
+- [x] app/ directory avec layout.tsx et page.tsx
+- [x] lib/prisma.ts avec schema de base
 - [x] .env.example
-- [x] `npm run dev` prêt
+- [x] `npm run dev` fonctionnel
 
 ## 🛠 Stack technique
 
@@ -53,7 +54,7 @@ booking-saas/
 │   │   └── ui/                # Composants shadcn/ui
 │   ├── lib/
 │   │   ├── auth.ts            # Config NextAuth
-│   │   ├── prisma.ts          # Client Prisma
+│   │   ├── prisma.ts          # Client Prisma (singleton)
 │   │   └── utils.ts           # Utilitaires
 │   └── types/
 │       └── next-auth.d.ts     # Types étendus
@@ -66,21 +67,17 @@ booking-saas/
 └── tsconfig.json              # Config TypeScript
 ```
 
-## 🗄 Schéma Prisma
+## 🗄 Prisma
 
-Le schema Prisma inclut les modèles de base pour l'authentification :
+Le client Prisma est configuré en singleton dans `lib/prisma.ts` pour éviter les problèmes en développement.
 
-### Modèles Auth (NextAuth)
-- **User** - Utilisateurs avec rôle (USER/ADMIN)
-- **Account** - Comptes OAuth (Google, etc.)
+### Modèles disponibles :
+- **User** - Utilisateurs (auth + rôle)
+- **Account** - Comptes OAuth
 - **Session** - Sessions utilisateur
-- **VerificationToken** - Tokens de vérification email
-
-### Modèles Métier
 - **Business** - Établissements
 - **Service** - Services proposés
 - **Booking** - Réservations
-- **Availability** - Disponibilités
 
 ## 📝 Scripts disponibles
 
@@ -119,12 +116,7 @@ Le schema Prisma inclut les modèles de base pour l'authentification :
 
 ## 🎨 shadcn/ui
 
-Le projet utilise shadcn/ui configuré avec :
-```bash
-npx shadcn@latest init
-```
-
-Pour ajouter un composant :
+Le projet utilise shadcn/ui pour les composants UI. Pour ajouter un composant :
 ```bash
 npx shadcn add <nom-du-composant>
 ```
