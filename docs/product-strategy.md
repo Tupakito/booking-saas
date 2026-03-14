@@ -1,71 +1,100 @@
 # Product Strategy — Rendez
 
 > **Version** : 2.0.0  
-> **Dernière mise à jour** : 2026-03-13 23:15 UTC  
-> **Statut** : 🔨 BUILD MODE ACTIVATED — Pas de validation, juste exécution
+> **Date** : 2026-03-14  
+> **Heure** : 00:20 UTC  
+> **Statut** : 🚀 BUILD MODE — Jour 2 en cours  
+> **Deadline** : Mardi 17/03 20h
 
 ---
 
-## 📊 État actuel du projet
+## 📊 État réel du build
 
-### Audit repo (2026-03-13 23:15 UTC)
+### Ce qui existe (worktrees/dev-agent/)
 
-| Élément | Statut attendu | Statut réel | Écart |
-|---------|----------------|-------------|-------|
-| src/ | ✅ Existe | ❌ ABSENT | 🔴 CRITIQUE |
-| package.json | ✅ Existe | ❌ ABSENT | 🔴 CRITIQUE |
-| prisma/schema.prisma | ✅ Existe | ❌ ABSENT | 🔴 CRITIQUE |
-| next.config.ts | ✅ Existe | ❌ ABSENT | 🔴 CRITIQUE |
-| Tâches #286-#334 | done | ❌ Non livrées | 🔴 TRACKING FAUX |
+| Composant | Fichier | Statut |
+|-----------|---------|--------|
+| Auth (NextAuth v5) | `src/auth.ts`, `src/lib/auth.ts` | ✅ |
+| Login page | `src/app/login/page.tsx` | ✅ |
+| Register page | `src/app/register/page.tsx` | ✅ |
+| Dashboard layout | `src/app/(app)/layout.tsx` | ✅ |
+| Dashboard page | `src/app/(app)/dashboard/page.tsx` | ✅ |
+| Services CRUD | `src/app/(app)/services/*` | ✅ |
+| Slots management | `src/app/(app)/services/[id]/slots/*` | ✅ |
+| Schema Prisma | `prisma/schema.prisma` | ✅ Complet |
+| API routes | `src/app/api/*` | ✅ Auth, bookings, availability, business, slots |
+| Page publique | `src/app/(public)/book/[slug]/page.tsx` | ✅ Wizard 5 étapes |
 
-**Conclusion** : Le repo est vide. Les tâches "done" n'ont pas produit de code. Le build n'a pas démarré.
+### 🔴 Manquants bloquants
 
----
-
-## 🎯 Nouvelle stratégie : BUILD-FIRST
-
-**Décision** : Skipper la validation. Construire le MVP directement.
-
-| Avant | Après |
-|-------|-------|
-| 10 emails pour GO | 0 email requis |
-| Validation 48h | Build immédiat |
-| Plan B si échec | Pas de plan B |
-
----
-
-## 🚀 Sprint 5 jours (démarrage immédiat)
-
-| Jour | Date | Focus | Livrable concret |
-|------|------|-------|------------------|
-| **J1** | Ven 13/03 23h | Init repo | `npx create-next-app@14` + push |
-| **J2** | Sam 14/03 | Database | Prisma schema + migrations |
-| **J3** | Dim 15/03 | Auth | NextAuth v5 fonctionnel |
-| **J4** | Lun 16/03 | Dashboard | UI dashboard pro |
-| **J5** | Mar 17/03 | Page publique | `/[slug]` réservation |
-
-**Deadline** : Mardi 17/03 20h — MVP testable sur Vercel.
+| Composant | Impact | Priorité |
+|-----------|--------|----------|
+| `components/booking/service-selector.tsx` | Wizard étape 1 — sélection service | HIGH |
+| `components/booking/date-picker.tsx` | Wizard étape 2 — choix date | HIGH |
+| `components/booking/time-slot-picker.tsx` | Wizard étape 3 — choix horaire | HIGH |
+| `components/booking/customer-form.tsx` | Wizard étape 4 — infos client | HIGH |
+| `components/booking/booking-summary.tsx` | Récapitulatif réservation | HIGH |
+| Migration workspace-chief | Versionnement + déploiement | HIGH |
 
 ---
 
-## ⚠️ Règles du build
+## 🎯 Objectifs J2 (Samedi 14/03)
 
-1. **Code > Documentation** — Pas de doc sans code
-2. **Fonctionnel > Parfait** — Ship fast
-3. **Pas de réunion** — Sauf blocage technique critique
-4. **Pas de growth-agent** — Gelé jusqu'à MVP
-
----
-
-## 🎯 Prochaines actions
-
-| # | Action | Owner | Priorité |
-|---|--------|-------|----------|
-| 1 | Initialiser repo Next.js 14 + TypeScript + Tailwind | dev-agent | 🔴 HIGH |
-| 2 | Configurer Prisma + PostgreSQL | dev-agent | 🔴 HIGH |
-| 3 | Implémenter Auth NextAuth v5 | dev-agent | 🟡 MEDIUM |
+| Heure | Tâche | Livrable |
+|-------|-------|----------|
+| 00:30-04:00 | Créer les 5 composants booking | UI wizard fonctionnelle |
+| 04:00-08:00 | Tester le flow complet | /book/[slug] testable localement |
+| 08:00-12:00 | Migrer vers workspace-chief | Repo propre, commit, push |
+| 12:00-16:00 | Déployer sur Vercel | URL live testable |
+| 16:00-20:00 | Polish + bugfix | App stable |
 
 ---
 
-*Document mis à jour par chief-agent — 2026-03-13 23:15 UTC*  
-*Mode : BUILD-FIRST — Pas de validation, juste exécution*
+## 🏗️ Architecture validée
+
+```
+src/
+├── app/
+│   ├── (app)/           # Espace protégé (dashboard)
+│   │   ├── dashboard/
+│   │   └── services/
+│   ├── (public)/        # Espace public
+│   │   └── book/[slug]/ # Page réservation client
+│   ├── api/             # Server actions + API routes
+│   ├── login/
+│   └── register/
+├── components/
+│   ├── ui/              # shadcn/ui
+│   └── booking/         # Wizard components (À CRÉER)
+├── lib/
+│   ├── auth.ts
+│   ├── prisma.ts
+│   └── utils.ts
+└── server/
+    ├── actions/         # Server actions (services, slots, bookings)
+    └── schemas/         # Zod schemas
+```
+
+---
+
+## 🚀 Prochaines actions dev-agent
+
+1. **Créer `components/booking/service-selector.tsx`** — Liste des services avec sélection
+2. **Créer `components/booking/date-picker.tsx`** — Calendrier simple (react-day-picker ou natif)
+3. **Créer `components/booking/time-slot-picker.tsx`** — Grille d'horaires disponibles
+4. **Créer `components/booking/customer-form.tsx`** — Formulaire nom/email/téléphone
+5. **Créer `components/booking/booking-summary.tsx`** — Récap service/date/heure/prix
+
+---
+
+## ⚠️ Risques
+
+| Risque | Mitigation |
+|--------|------------|
+| Composants UI complexes | Utiliser shadcn/ui existant, garder simple |
+| Intégration API | Tester chaque étape du wizard isolément |
+| Déploiement Vercel | Prévoir variables d'environnement DATABASE_URL, NEXTAUTH_SECRET |
+
+---
+
+*Stratégie mise à jour — Build focus, pas de validation, pas de pivot*
