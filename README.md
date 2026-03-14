@@ -20,7 +20,7 @@ Ouvrez [http://localhost:3000](http://localhost:3000) dans votre navigateur.
 - **Framework**: [Next.js 15](https://nextjs.org/) (App Router)
 - **Langage**: [TypeScript](https://www.typescriptlang.org/) (strict mode)
 - **Styling**: [Tailwind CSS](https://tailwindcss.com/)
-- **UI Components**: [shadcn/ui](https://ui.shadcn.com/)
+- **UI Components**: [shadcn/ui](https://ui.shadcn.com/) (style base-nova)
 - **Authentification**: [NextAuth v5](https://authjs.dev/) (Auth.js)
 - **Base de données**: [PostgreSQL](https://www.postgresql.org/) + [Prisma](https://www.prisma.io/)
 
@@ -91,7 +91,7 @@ booking-saas/
 
 ## 🎨 shadcn/ui
 
-Le projet utilise shadcn/ui pour les composants UI. Pour ajouter un composant :
+Le projet utilise shadcn/ui avec le style **base-nova** pour les composants UI. Pour ajouter un composant :
 
 ```bash
 npx shadcn add <nom-du-composant>
