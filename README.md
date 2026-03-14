@@ -32,31 +32,43 @@ Ouvrez [http://localhost:3000](http://localhost:3000) dans votre navigateur.
 ```
 booking-saas/
 ├── src/
-│   ├── app/                    # App Router Next.js
-│   │   ├── api/               # Routes API
-│   │   ├── dashboard/         # Espace connecté (protégé)
-│   │   ├── login/             # Page de connexion (public)
-│   │   ├── register/          # Page d'inscription (public)
+│   ├── app/
+│   │   ├── dashboard/          # Espace connecté
+│   │   │   ├── page.tsx       # Dashboard avec calendrier et réservations
+│   │   │   ├── layout.tsx     # Layout dashboard avec navigation
+│   │   │   ├── services/      # Gestion des services
+│   │   │   └── settings/      # Paramètres
+│   │   ├── login/             # Page de connexion
+│   │   ├── register/          # Page d'inscription
 │   │   ├── globals.css        # Styles globaux
 │   │   ├── layout.tsx         # Layout racine
-│   │   └── page.tsx           # Landing page (public)
+│   │   └── page.tsx           # Landing page
 │   ├── components/
-│   │   ├── ui/                # Composants shadcn/ui
-│   │   └── dashboard/         # Composants dashboard
-│   ├── lib/
-│   │   ├── auth.ts            # Config NextAuth
-│   │   ├── prisma.ts          # Client Prisma
-│   │   └── utils.ts           # Utilitaires
-│   └── types/
-│       └── next-auth.d.ts     # Types étendus
+│   │   └── ui/                # Composants shadcn/ui
+│   │       ├── button.tsx
+│   │       ├── card.tsx
+│   │       ├── input.tsx
+│   │       ├── label.tsx
+│   │       ├── calendar.tsx   # Calendrier 7 jours
+│   │       ├── table.tsx      # Tableau de réservations
+│   │       ├── dialog.tsx     # Modal nouveau RDV
+│   │       └── badge.tsx      # Badges de statut
+│   └── lib/
+│       ├── auth.ts
+│       ├── prisma.ts
+│       └── utils.ts
 ├── prisma/
-│   └── schema.prisma          # Schéma de base de données
-├── .env.example               # Variables d'environnement
-├── components.json            # Config shadcn/ui
-├── next.config.ts             # Config Next.js
-├── tailwind.config.ts         # Config Tailwind
-└── tsconfig.json              # Config TypeScript
+│   └── schema.prisma
+└── ...
 ```
+
+## 🎯 Fonctionnalités Dashboard
+
+- **Header** avec nom du business et déconnexion
+- **Vue calendrier** avec 7 jours glissants
+- **Liste des réservations** du jour avec statuts (confirmé/en attente/annulé)
+- **Bouton 'Nouveau RDV'** ouvrant un modal
+- **Navigation** vers Settings et Services
 
 ## 📝 Scripts disponibles
 
@@ -65,7 +77,6 @@ booking-saas/
 | `npm run dev` | Développement avec hot reload |
 | `npm run build` | Build de production |
 | `npm run start` | Démarrer le serveur de production |
-| `npm run lint` | Linter le code |
 | `npm run db:generate` | Générer le client Prisma |
 | `npm run db:migrate` | Créer/appliquer les migrations |
 | `npm run db:studio` | Ouvrir Prisma Studio |
@@ -85,45 +96,12 @@ booking-saas/
 3. Initialiser la base de données :
    ```bash
    npx prisma migrate dev --name init
-   npx prisma generate
    ```
 
 4. Lancer l'application :
    ```bash
    npm run dev
    ```
-
-## 🗄 Prisma Schema
-
-Le projet utilise Prisma avec PostgreSQL. Les modèles principaux sont :
-
-- **User** - Utilisateurs (authentification)
-- **Account** - Comptes OAuth
-- **Session** - Sessions utilisateur
-- **Business** - Établissements
-- **Service** - Services proposés
-- **Booking** - Réservations
-- **Availability** - Disponibilités
-
-## 🎨 shadcn/ui
-
-Le projet utilise shadcn/ui pour les composants UI. Pour ajouter un composant :
-
-```bash
-npx shadcn add <nom-du-composant>
-```
-
-Composants déjà installés :
-- `button`
-- `card`
-- `input`
-- `label`
-
-## 🔒 Authentification
-
-L'authentification est gérée par NextAuth v5 avec :
-- Credentials (email/password)
-- OAuth Google (optionnel)
 
 ## 📄 Licence
 
