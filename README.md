@@ -18,6 +18,20 @@ npm run dev
 
 Ouvrez [http://localhost:3000](http://localhost:3000) dans votre navigateur.
 
+## ✅ Vérification installation
+
+Le projet est initialisé avec :
+- [x] Next.js 15 (App Router)
+- [x] TypeScript (strict mode)
+- [x] Tailwind CSS
+- [x] shadcn/ui
+- [x] Structure src/app/, src/components/, src/lib/
+- [x] Prisma avec schema.prisma
+- [x] .env.example
+- [x] next.config.ts
+- [x] tailwind.config.ts
+- [x] tsconfig.json
+
 ## 🛠 Stack technique
 
 - **Framework**: [Next.js 15](https://nextjs.org/) (App Router)
@@ -32,12 +46,9 @@ Ouvrez [http://localhost:3000](http://localhost:3000) dans votre navigateur.
 ```
 booking-saas/
 ├── src/
-│   ├── app/
-│   │   ├── dashboard/          # Espace connecté
-│   │   │   ├── page.tsx       # Dashboard avec calendrier et réservations
-│   │   │   ├── layout.tsx     # Layout dashboard avec navigation
-│   │   │   ├── services/      # Gestion des services
-│   │   │   └── settings/      # Paramètres
+│   ├── app/                    # App Router Next.js
+│   │   ├── api/               # Routes API
+│   │   ├── dashboard/         # Espace connecté
 │   │   ├── login/             # Page de connexion
 │   │   ├── register/          # Page d'inscription
 │   │   ├── globals.css        # Styles globaux
@@ -49,26 +60,22 @@ booking-saas/
 │   │       ├── card.tsx
 │   │       ├── input.tsx
 │   │       ├── label.tsx
-│   │       ├── calendar.tsx   # Calendrier 7 jours
-│   │       ├── table.tsx      # Tableau de réservations
-│   │       ├── dialog.tsx     # Modal nouveau RDV
-│   │       └── badge.tsx      # Badges de statut
+│   │       ├── calendar.tsx
+│   │       ├── table.tsx
+│   │       ├── dialog.tsx
+│   │       └── badge.tsx
 │   └── lib/
-│       ├── auth.ts
-│       ├── prisma.ts
-│       └── utils.ts
+│       ├── auth.ts            # Config NextAuth
+│       ├── prisma.ts          # Client Prisma
+│       └── utils.ts           # Utilitaires
 ├── prisma/
-│   └── schema.prisma
-└── ...
+│   └── schema.prisma          # Schéma de base de données
+├── .env.example               # Variables d'environnement
+├── components.json            # Config shadcn/ui
+├── next.config.ts             # Config Next.js
+├── tailwind.config.ts         # Config Tailwind
+└── tsconfig.json              # Config TypeScript
 ```
-
-## 🎯 Fonctionnalités Dashboard
-
-- **Header** avec nom du business et déconnexion
-- **Vue calendrier** avec 7 jours glissants
-- **Liste des réservations** du jour avec statuts (confirmé/en attente/annulé)
-- **Bouton 'Nouveau RDV'** ouvrant un modal
-- **Navigation** vers Settings et Services
 
 ## 📝 Scripts disponibles
 
@@ -77,6 +84,7 @@ booking-saas/
 | `npm run dev` | Développement avec hot reload |
 | `npm run build` | Build de production |
 | `npm run start` | Démarrer le serveur de production |
+| `npm run lint` | Linter le code |
 | `npm run db:generate` | Générer le client Prisma |
 | `npm run db:migrate` | Créer/appliquer les migrations |
 | `npm run db:studio` | Ouvrir Prisma Studio |
@@ -96,12 +104,37 @@ booking-saas/
 3. Initialiser la base de données :
    ```bash
    npx prisma migrate dev --name init
+   npx prisma generate
    ```
 
 4. Lancer l'application :
    ```bash
    npm run dev
    ```
+
+## 📦 Dépendances principales
+
+- `next` - Framework React
+- `react`, `react-dom` - React
+- `typescript` - TypeScript
+- `tailwindcss` - CSS framework
+- `@base-ui/react` - Composants headless (via shadcn)
+- `@radix-ui/react-dialog` - Dialog component
+- `class-variance-authority` - Gestion des variants
+- `clsx` - Concaténation de classes
+- `tailwind-merge` - Merge des classes Tailwind
+
+## 🎨 shadcn/ui
+
+Le projet utilise shadcn/ui initialisé avec :
+```bash
+npx shadcn@latest init
+```
+
+Pour ajouter un composant :
+```bash
+npx shadcn add <nom-du-composant>
+```
 
 ## 📄 Licence
 
