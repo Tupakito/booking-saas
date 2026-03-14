@@ -1,200 +1,110 @@
+```typescript
 import Link from "next/link";
-import { Calendar, Clock, Shield, Zap, CheckCircle, Star } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { Calendar, Clock, Users, ArrowRight } from "lucide-react";
 
-export default function HomePage() {
+export default function Home() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white to-gray-50">
-      {/* Navigation */}
-      <nav className="fixed top-0 w-full bg-white/80 backdrop-blur-md border-b border-gray-100 z-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <div className="flex items-center space-x-2">
-              <Calendar className="w-8 h-8 text-primary-600" />
-              <span className="text-xl font-bold text-gray-900">Booking-Saas</span>
-            </div>
-            <div className="flex items-center space-x-4">
-              <Link href="/dashboard" className="text-gray-600 hover:text-gray-900">
-                Dashboard
-              </Link>
-              <Link href="/login" className="btn-secondary text-sm">
-                Connexion
-              </Link>
-              <Link href="/register" className="btn-primary text-sm">
-                Essai gratuit
-              </Link>
-            </div>
-          </div>
-        </div>
-      </nav>
-
+    <main className="min-h-screen bg-gradient-to-b from-background to-muted/20">
       {/* Hero Section */}
-      <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto text-center">
-          <div className="inline-flex items-center space-x-2 bg-primary-50 text-primary-700 px-4 py-2 rounded-full text-sm font-medium mb-8">
-            <Star className="w-4 h-4" />
-            <span>Nouveau — Lancement offre spéciale</span>
-          </div>
-          
-          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-gray-900 leading-tight mb-6">
-            La prise de rendez-vous{" "}
-            <span className="text-primary-600">simplifiée</span>
+      <section className="container mx-auto px-4 py-20 md:py-32">
+        <div className="text-center max-w-3xl mx-auto">
+          <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-6">
+            Simplifiez vos{" "}
+            <span className="text-primary-600">réservations</span>
           </h1>
-          
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-10">
-            Permettez à vos clients de réserver en ligne 24/7. Gérez votre agenda, 
-            vos services et vos disponibilités en quelques clics.
+          <p className="text-xl text-muted-foreground mb-8">
+            La plateforme tout-en-un pour gérer vos rendez-vous et vos clients.
+            Parfaite pour les coiffeurs, artisans et commerçants locaux.
           </p>
-          
-          <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-4">
-            <Link href="/register" className="btn-primary text-lg">
-              Commencer gratuitement
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link href="/register">
+              <Button size="lg" className="gap-2">
+                Commencer gratuitement
+                <ArrowRight className="w-4 h-4" />
+              </Button>
             </Link>
-            <Link href="/demo" className="btn-secondary text-lg">
-              Voir la démo
+            <Link href="/login">
+              <Button variant="outline" size="lg">
+                Se connecter
+              </Button>
             </Link>
           </div>
-          
-          <p className="mt-4 text-sm text-gray-500">
-            Sans engagement • 14 jours d'essai gratuit • Puis 19€/mois
-          </p>
         </div>
       </section>
 
       {/* Features Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
-              Tout ce qu'il faut pour gérer vos rendez-vous
-            </h2>
-            <p className="text-gray-600 text-lg">
-              Une solution complète, simple et élégante
-            </p>
-          </div>
-          
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="card text-center">
-              <div className="w-12 h-12 bg-primary-100 rounded-xl flex items-center justify-center mx-auto mb-4">
-                <Calendar className="w-6 h-6 text-primary-600" />
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                Réservation en ligne
-              </h3>
-              <p className="text-gray-600">
-                Vos clients réservent 24/7 sans appeler. Page publique personnalisée.
-              </p>
-            </div>
-            
-            <div className="card text-center">
-              <div className="w-12 h-12 bg-primary-100 rounded-xl flex items-center justify-center mx-auto mb-4">
-                <Clock className="w-6 h-6 text-primary-600" />
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                Gestion intelligente
-              </h3>
-              <p className="text-gray-600">
-                Définissez vos disponibilités une fois. Le système gère le reste.
-              </p>
-            </div>
-            
-            <div className="card text-center">
-              <div className="w-12 h-12 bg-primary-100 rounded-xl flex items-center justify-center mx-auto mb-4">
-                <Shield className="w-6 h-6 text-primary-600" />
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                Sécurisé & fiable
-              </h3>
-              <p className="text-gray-600">
-                Données sécurisées, sauvegardes automatiques, disponibilité 99.9%.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Pricing Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-50">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">
-            Un prix simple, sans surprise
-          </h2>
-          <p className="text-gray-600 text-lg mb-12">
-            Tout inclus, sans engagement
-          </p>
-          
-          <div className="card max-w-md mx-auto border-2 border-primary-500 relative">
-            <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-primary-600 text-white px-4 py-1 rounded-full text-sm font-medium">
-              Offre de lancement
-            </div>
-            
-            <div className="pt-4">
-              <span className="text-5xl font-bold text-gray-900">19€</span>
-              <span className="text-gray-600">/mois</span>
-            </div>
-            
-            <p className="text-gray-600 mt-2">Par commerce, sans limite de RDV</p>
-            
-            <ul className="mt-8 space-y-4 text-left">
-              <li className="flex items-center space-x-3">
-                <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0" />
-                <span>Réservation en ligne illimitée</span>
-              </li>
-              <li className="flex items-center space-x-3">
-                <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0" />
-                <span>Page publique personnalisée</span>
-              </li>
-              <li className="flex items-center space-x-3">
-                <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0" />
-                <span>Gestion des services et disponibilités</span>
-              </li>
-              <li className="flex items-center space-x-3">
-                <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0" />
-                <span>Emails de confirmation automatiques</span>
-              </li>
-              <li className="flex items-center space-x-3">
-                <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0" />
-                <span>Support par email</span>
-              </li>
-            </ul>
-            
-            <Link href="/register" className="btn-primary w-full mt-8 block text-center">
-              Commencer l'essai gratuit
-            </Link>
-            
-            <p className="text-sm text-gray-500 mt-4">
-              14 jours gratuits, sans carte bancaire
-            </p>
-          </div>
+      <section className="container mx-auto px-4 py-20">
+        <h2 className="text-3xl font-bold text-center mb-12">
+          Fonctionnalités principales
+        </h2>
+        <div className="grid md:grid-cols-3 gap-6">
+          <FeatureCard
+            icon={Calendar}
+            title="Gestion des réservations"
+            description="Acceptez des réservations 24/7. Vos clients peuvent réserver selon vos disponibilités en temps réel."
+          />
+          <FeatureCard
+            icon={Clock}
+            title="Calendrier intelligent"
+            description="Visualisez votre planning d'un coup d'œil. Gérez vos disponibilités et vos congés facilement."
+          />
+          <FeatureCard
+            icon={Users}
+            title="Gestion des clients"
+            description="Gardez une trace de vos clients, leurs préférences et leur historique de réservations."
+          />
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-primary-600">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl font-bold text-white mb-4">
-            Prêt à simplifier vos rendez-vous ?
+      <section className="container mx-auto px-4 py-20">
+        <div className="bg-primary-600 rounded-2xl p-8 md:p-12 text-center text-white">
+          <h2 className="text-3xl font-bold mb-4">
+            Prêt à simplifier votre planning ?
           </h2>
-          <p className="text-primary-100 text-lg mb-8">
-            Rejoignez les commerces qui gagnent du temps chaque jour.
+          <p className="text-primary-100 mb-8 max-w-xl mx-auto">
+            Rejoignez les professionnels qui gagnent du temps chaque jour avec notre solution de réservation.
           </p>
-          <Link href="/register" className="inline-block bg-white text-primary-600 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 transition-colors">
-            Créer mon compte gratuit
+          <Link href="/register">
+            <Button size="lg" variant="secondary" className="gap-2">
+              Créer mon compte gratuit
+              <ArrowRight className="w-4 h-4" />
+            </Button>
           </Link>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="bg-gray-900 text-gray-400 py-12 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center">
-          <div className="flex items-center space-x-2 mb-4 md:mb-0">
-            <Calendar className="w-6 h-6 text-primary-400" />
-            <span className="text-white font-semibold">Booking-Saas</span>
-          </div>
-          <p className="text-sm">
-            © 2024 Booking-Saas. Tous droits réservés.
-          </p>
+      <footer className="border-t py-8 mt-20">
+        <div className="container mx-auto px-4 text-center text-muted-foreground">
+          <p>&copy; 2025 Booking SaaS. Tous droits réservés.</p>
         </div>
       </footer>
-    </div>
+    </main>
   );
 }
+
+function FeatureCard({
+  icon: Icon,
+  title,
+  description,
+}: {
+  icon: React.ElementType;
+  title: string;
+  description: string;
+}) {
+  return (
+    <Card className="h-full">
+      <CardContent className="pt-6">
+        <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
+          <Icon className="w-6 h-6 text-primary-600" />
+        </div>
+        <h3 className="text-xl font-semibold mb-2">{title}</h3>
+        <p className="text-muted-foreground">{description}</p>
+      </CardContent>
+    </Card>
+  );
+}
+```

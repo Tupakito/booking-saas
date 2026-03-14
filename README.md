@@ -1,87 +1,118 @@
+```markdown
 # Booking SaaS
 
-Plateforme de réservation en ligne pour professionnels.
+Plateforme de réservation en ligne pour professionnels (coiffeurs, artisans, commerçants locaux).
 
-## Stack technique
-
-- **Framework**: Next.js 15 (App Router)
-- **Authentification**: NextAuth v5 (Auth.js)
-- **Base de données**: PostgreSQL + Prisma ORM
-- **UI**: Tailwind CSS + shadcn/ui
-- **Langage**: TypeScript
-
-## Prérequis
-
-- Node.js 18+
-- PostgreSQL
-- Compte Google Cloud Console (pour OAuth, optionnel)
-
-## Installation
+## 🚀 Démarrage rapide
 
 ```bash
-# 1. Cloner et installer les dépendances
+# Installation des dépendances
 npm install
 
-# 2. Configurer les variables d'environnement
-cp .env.example .env
-# Éditer .env avec vos valeurs
-
-# 3. Initialiser la base de données
-npx prisma migrate dev
-npx prisma generate
-
-# 4. Lancer le serveur de développement
+# Lancer le serveur de développement
 npm run dev
 ```
 
-## Configuration OAuth Google (optionnel)
+Ouvrez [http://localhost:3000](http://localhost:3000) dans votre navigateur.
 
-1. Aller sur [Google Cloud Console](https://console.cloud.google.com/)
-2. Créer un projet ou sélectionner un existant
-3. Activer l'API Google+ (ou People API)
-4. Créer des identifiants OAuth 2.0 (type "Application web")
-5. Ajouter `http://localhost:3000/api/auth/callback/google` dans les URI de redirection autorisées
-6. Copier le Client ID et Client Secret dans `.env`
+## 🛠 Stack technique
 
-## Structure du projet
+- **Framework**: [Next.js 15](https://nextjs.org/) (App Router)
+- **Langage**: [TypeScript](https://www.typescriptlang.org/) (strict mode)
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
+- **UI Components**: [shadcn/ui](https://ui.shadcn.com/)
+- **Authentification**: [NextAuth v5](https://authjs.dev/) (Auth.js)
+- **Base de données**: [PostgreSQL](https://www.postgresql.org/) + [Prisma](https://www.prisma.io/)
+
+## 📁 Structure du projet
 
 ```
-src/
-├── app/                    # App Router Next.js
-│   ├── api/auth/          # Routes API NextAuth
-│   ├── dashboard/         # Espace protégé (nécessite connexion)
-│   ├── login/             # Page de connexion
-│   ├── register/          # Page d'inscription
-│   ├── layout.tsx         # Layout racine
-│   └── page.tsx           # Landing page
-├── components/
-│   └── ui/                # Composants shadcn/ui
-├── lib/
-│   ├── auth.ts            # Configuration NextAuth
-│   ├── prisma.ts          # Client Prisma
-│   └── utils.ts           # Utilitaires
-├── types/
-│   └── next-auth.d.ts     # Types étendus pour NextAuth
-├── auth.ts                # Export NextAuth handlers
-└── middleware.ts          # Protection des routes
-prisma/
-└── schema.prisma          # Schéma de base de données
+booking-saas/
+├── src/
+│   ├── app/                    # App Router Next.js
+│   │   ├── api/               # Routes API
+│   │   ├── dashboard/         # Espace connecté
+│   │   ├── login/             # Page de connexion
+│   │   ├── register/          # Page d'inscription
+│   │   ├── globals.css        # Styles globaux
+│   │   ├── layout.tsx         # Layout racine
+│   │   └── page.tsx           # Landing page
+│   ├── components/
+│   │   ├── ui/                # Composants shadcn/ui
+│   │   └── dashboard/         # Composants dashboard
+│   ├── lib/
+│   │   ├── auth.ts            # Config NextAuth
+│   │   ├── prisma.ts          # Client Prisma
+│   │   └── utils.ts           # Utilitaires
+│   └── types/
+│       └── next-auth.d.ts     # Types étendus
+├── prisma/
+│   └── schema.prisma          # Schéma de base de données
+├── .env.example               # Variables d'environnement
+├── components.json            # Config shadcn/ui
+├── tailwind.config.ts         # Config Tailwind
+└── tsconfig.json              # Config TypeScript
 ```
 
-## Scripts disponibles
+## 📝 Scripts disponibles
 
-- `npm run dev` - Développement
-- `npm run build` - Build de production
-- `npm run db:migrate` - Créer une migration Prisma
-- `npm run db:studio` - Ouvrir Prisma Studio
+| Commande | Description |
+|----------|-------------|
+| `npm run dev` | Développement avec hot reload |
+| `npm run build` | Build de production |
+| `npm run start` | Démarrer le serveur de production |
+| `npm run lint` | Linter le code |
+| `npm run db:generate` | Générer le client Prisma |
+| `npm run db:migrate` | Créer/appliquer les migrations |
+| `npm run db:studio` | Ouvrir Prisma Studio |
 
-## Fonctionnalités
+## ⚙️ Configuration
 
-- [x] Authentification (email/password + Google OAuth)
-- [x] Protection des routes avec middleware
-- [x] Dashboard avec navigation
-- [ ] CRUD établissements
-- [ ] Gestion des services
-- [ ] Système de réservations
-- [ ] Calendrier de disponibilités
+1. Copier le fichier `.env.example` vers `.env` :
+   ```bash
+   cp .env.example .env
+   ```
+
+2. Configurer les variables d'environnement :
+   - `DATABASE_URL` : URL de connexion PostgreSQL
+   - `NEXTAUTH_SECRET` : Clé secrète pour JWT (min 32 caractères)
+   - `NEXTAUTH_URL` : URL de l'application
+
+3. Initialiser la base de données :
+   ```bash
+   npx prisma migrate dev --name init
+   npx prisma generate
+   ```
+
+4. Lancer l'application :
+   ```bash
+   npm run dev
+   ```
+
+## 🎨 shadcn/ui
+
+Le projet utilise shadcn/ui pour les composants UI. Pour ajouter un composant :
+
+```bash
+npx shadcn add <nom-du-composant>
+```
+
+Composants déjà installés :
+- `button`
+- `card`
+- `input`
+- `label`
+- `badge`
+- `table`
+- `dropdown-menu`
+
+## 🔒 Authentification
+
+L'authentification est gérée par NextAuth v5 avec :
+- Credentials (email/password)
+- OAuth Google (optionnel)
+
+## 📄 Licence
+
+Propriétaire - Tous droits réservés
 ```

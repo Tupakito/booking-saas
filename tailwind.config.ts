@@ -1,3 +1,4 @@
+```typescript
 import type { Config } from "tailwindcss";
 
 const config: Config = {
@@ -22,12 +23,10 @@ const config: Config = {
           900: "#1e3a8a",
         },
       },
-      fontFamily: {
-        sans: ["Inter", "system-ui", "sans-serif"],
-      },
     },
   },
   plugins: [],
 };
 
 export default config;
+```

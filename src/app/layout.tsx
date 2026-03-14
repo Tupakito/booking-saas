@@ -1,25 +1,36 @@
+```typescript
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { SessionProvider } from "@/components/providers/session-provider";
 
-const inter = Inter({ subsets: ["latin"] });
+const geistSans = Geist({
+  variable: "--font-geist-sans",
+  subsets: ["latin"],
+});
+
+const geistMono = Geist_Mono({
+  variable: "--font-geist-mono",
+  subsets: ["latin"],
+});
 
 export const metadata: Metadata = {
-  title: "Booking-Saas — La prise de rendez-vous simplifiée",
-  description: "Permettez à vos clients de réserver en ligne 24/7. Simple, puissant, moderne. À partir de 19€/mois.",
+  title: "Booking SaaS - Gérez vos réservations",
+  description: "Plateforme de réservation en ligne pour professionnels",
 };
 
 export default function RootLayout({
   children,
-}: {
+}: Readonly<{
   children: React.ReactNode;
-}) {
+}>) {
   return (
     <html lang="fr">
-      <body className={inter.className}>
-        <SessionProvider>{children}</SessionProvider>
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+      >
+        {children}
       </body>
     </html>
   );
 }
+```
