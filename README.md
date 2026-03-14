@@ -3,16 +3,13 @@
 
 Plateforme de réservation en ligne pour professionnels.
 
-## 🚀 Démarrage rapide
+## 🚀 Démarrage rapide (Local)
 
 ```bash
-# Installation des dépendances
+# 1. Installation des dépendances
 npm install
 
-# Générer le client Prisma
-npx prisma generate
-
-# Lancer le serveur de développement
+# 2. Lancer le serveur de développement
 npm run dev
 ```
 
@@ -20,19 +17,17 @@ Ouvrez [http://localhost:3000](http://localhost:3000) dans votre navigateur.
 
 ## ✅ Vérification installation
 
-Le projet est initialisé avec :
+Le projet est initialisé et fonctionnel en local avec :
 - [x] Next.js 15 (App Router)
 - [x] TypeScript (strict mode)
 - [x] Tailwind CSS
-- [x] shadcn/ui (CLI)
-- [x] Prisma
+- [x] shadcn/ui
 - [x] package.json
 - [x] tsconfig.json
 - [x] tailwind.config.ts
 - [x] app/layout.tsx
-- [x] lib/prisma.ts
-- [x] schema.prisma
-- [x] .env.example
+- [x] app/page.tsx
+- [x] Composants shadcn/ui (button, input, card)
 
 ## 🛠 Stack technique
 
@@ -40,8 +35,6 @@ Le projet est initialisé avec :
 - **Langage**: [TypeScript](https://www.typescriptlang.org/) (strict mode)
 - **Styling**: [Tailwind CSS](https://tailwindcss.com/)
 - **UI Components**: [shadcn/ui](https://ui.shadcn.com/)
-- **Authentification**: [NextAuth v5](https://authjs.dev/) (Auth.js)
-- **Base de données**: [PostgreSQL](https://www.postgresql.org/) + [Prisma](https://www.prisma.io/)
 
 ## 📁 Structure du projet
 
@@ -49,7 +42,7 @@ Le projet est initialisé avec :
 booking-saas/
 ├── src/
 │   ├── app/                    # App Router Next.js
-│   │   ├── dashboard/         # Espace connecté (prêt pour auth)
+│   │   ├── dashboard/         # Espace connecté
 │   │   ├── login/             # Page de connexion
 │   │   ├── register/          # Page d'inscription
 │   │   ├── globals.css        # Styles globaux
@@ -57,34 +50,43 @@ booking-saas/
 │   │   └── page.tsx           # Landing page
 │   ├── components/
 │   │   └── ui/                # Composants shadcn/ui
-│   ├── lib/
-│   │   ├── auth.ts            # Config NextAuth
-│   │   ├── prisma.ts          # Client Prisma (singleton)
-│   │   └── utils.ts           # Utilitaires
-│   └── types/
-│       └── next-auth.d.ts     # Types étendus
-├── prisma/
-│   └── schema.prisma          # Schéma de base de données
+│   │       ├── button.tsx     # Bouton
+│   │       ├── card.tsx       # Card
+│   │       ├── input.tsx      # Input
+│   │       ├── label.tsx      # Label
+│   │       ├── badge.tsx      # Badge
+│   │       ├── calendar.tsx   # Calendrier
+│   │       ├── dialog.tsx     # Dialog/Modal
+│   │       └── table.tsx      # Tableau
+│   └── lib/
+│       └── utils.ts           # Utilitaires (cn)
 ├── .env.example               # Variables d'environnement
 ├── components.json            # Config shadcn/ui
 ├── next.config.ts             # Config Next.js
 ├── tailwind.config.ts         # Config Tailwind
-└── tsconfig.json              # Config TypeScript
+├── tsconfig.json              # Config TypeScript
+└── package.json               # Dépendances
 ```
 
-## 🗄 Prisma
+## 🎨 Composants shadcn/ui
 
-Le client Prisma est configuré en singleton dans `src/lib/prisma.ts` pour éviter les problèmes en développement.
+Les composants de base sont installés :
 
-### Modèles disponibles :
+| Composant | Fichier | Description |
+|-----------|---------|-------------|
+| Button | `button.tsx` | Bouton avec variants |
+| Card | `card.tsx` | Carte avec header/content/footer |
+| Input | `input.tsx` | Champ de saisie |
+| Label | `label.tsx` | Étiquette de formulaire |
+| Badge | `badge.tsx` | Badge de statut |
+| Calendar | `calendar.tsx` | Calendrier interactif |
+| Dialog | `dialog.tsx` | Modal/Dialog |
+| Table | `table.tsx` | Tableau de données |
 
-- **User** - Utilisateurs (auth + rôle)
-- **Account** - Comptes OAuth
-- **Session** - Sessions utilisateur
-- **Business** - Établissements
-- **Service** - Services proposés
-- **Booking** - Réservations
-- **Availability** - Disponibilités
+Pour ajouter un composant :
+```bash
+npx shadcn add <nom-du-composant>
+```
 
 ## 📝 Scripts disponibles
 
@@ -94,52 +96,18 @@ Le client Prisma est configuré en singleton dans `src/lib/prisma.ts` pour évit
 | `npm run build` | Build de production |
 | `npm run start` | Démarrer le serveur de production |
 | `npm run lint` | Linter le code |
-| `npm run db:generate` | Générer le client Prisma |
-| `npm run db:migrate` | Créer/appliquer les migrations |
-| `npm run db:studio` | Ouvrir Prisma Studio |
 
-## ⚙️ Configuration
+## ⚙️ Configuration locale
 
 1. Copier le fichier `.env.example` vers `.env` :
    ```bash
    cp .env.example .env
    ```
 
-2. Configurer les variables d'environnement :
-   - `DATABASE_URL` : URL de connexion PostgreSQL
-   - `NEXTAUTH_SECRET` : Clé secrète pour JWT (min 32 caractères)
-   - `NEXTAUTH_URL` : URL de l'application
-
-3. Initialiser la base de données :
-   ```bash
-   npx prisma migrate dev --name init
-   npx prisma generate
-   ```
-
-4. Lancer l'application :
+2. Lancer l'application :
    ```bash
    npm run dev
    ```
-
-## 🎨 shadcn/ui
-
-Le projet utilise shadcn/ui initialisé avec le CLI :
-```bash
-npx shadcn@latest init
-```
-
-Pour ajouter un composant :
-```bash
-npx shadcn add <nom-du-composant>
-```
-
-## 🔐 Prêt pour Auth et Dashboard
-
-La base est prête pour :
-- Authentification avec NextAuth v5 (Prisma adapter inclus)
-- Dashboard avec protection de routes
-- Gestion des réservations
-- Gestion des services
 
 ## 📄 Licence
 
