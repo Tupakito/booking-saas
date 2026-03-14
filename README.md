@@ -38,21 +38,18 @@ booking-saas/
 │   │   ├── layout.tsx         # Layout racine
 │   │   └── page.tsx           # Landing page
 │   ├── components/
-│   │   └── ui/                # Composants shadcn/ui
-│   │       ├── button.tsx     # Bouton
-│   │       ├── card.tsx       # Card
-│   │       ├── input.tsx      # Input
-│   │       └── label.tsx      # Label
-│   ├── lib/
-│   │   ├── auth.ts            # Config NextAuth
-│   │   ├── prisma.ts          # Client Prisma
-│   │   └── utils.ts           # Utilitaires
-│   └── types/
-│       └── next-auth.d.ts     # Types étendus
+│   │   ├── ui/                # Composants shadcn/ui
+│   │   └── dashboard/         # Composants dashboard
+│   └── lib/
+│       ├── auth.ts            # Config NextAuth
+│       ├── prisma.ts          # Client Prisma
+│       └── utils.ts           # Utilitaires
+├── public/                     # Fichiers statiques
 ├── prisma/
 │   └── schema.prisma          # Schéma de base de données
 ├── .env.example               # Variables d'environnement
 ├── components.json            # Config shadcn/ui
+├── next.config.ts             # Config Next.js
 ├── tailwind.config.ts         # Config Tailwind
 └── tsconfig.json              # Config TypeScript
 ```
@@ -105,6 +102,17 @@ Composants déjà installés :
 - `card`
 - `input`
 - `label`
+
+## 📦 Dépendances principales
+
+- `next` - Framework React
+- `react`, `react-dom` - React
+- `typescript` - TypeScript
+- `tailwindcss` - CSS framework
+- `@base-ui/react` - Composants headless (via shadcn)
+- `class-variance-authority` - Gestion des variants
+- `clsx` - Concaténation de classes
+- `tailwind-merge` - Merge des classes Tailwind
 
 ## 🔒 Authentification
 
